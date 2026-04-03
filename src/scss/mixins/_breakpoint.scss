@@ -1,0 +1,30 @@
+/* stylelint-disable */
+@mixin xxl {
+  @media (min-width: (1920px)) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: (1440px)) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: (1024px)) {
+    @content;
+  }
+}
+
+@mixin lg-max {
+  @media (max-width: (1024px)) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: (768px)) {
+    @content;
+  }
+}

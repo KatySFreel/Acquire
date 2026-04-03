@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+<div class="site-container">
+  @include('partials/header.html')
+
+  <main class="main">
+    <section class="offer" aria-label="Monolith Lab — branding studio">
+      <video
+          class="offer__video"
+          autoplay
+          muted
+          loop
+          webkit-playsinline
+          playsinline
+          preload="metadata"
+          poster="/img/offer-poster.jpg"
+      >
+        <source src="/video/offer.mp4" type="video/mp4" />
+        <source src="/video/offer.webm" type="video/webm" />
+        Ваш браузер не поддерживает видео. Посмотрите наше портфолио ниже.
+      </video>
+
+      <div class="offer__wrapper container">
+        <h1 class="offer__title"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-delay="200"
+            data-aos-duration="1000"
+        >
+          global <span>branding</span> studio
+        </h1>
+      </div>
+
+      <div class="brands" aria-label="Наши клиенты">
+        <div class="brands__track">
+          <div class="brands__group">
+            <div class="brands__item">
+              <img src="img/brands/maserati.svg" alt="Maserati" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/swarovski.svg" alt="Swarovski" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/ferrero.svg" alt="Ferrero" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/estetica.svg" alt="Estetica Vision" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/kanabion.svg" alt="Kanabion" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/mars.svg" alt="Mars" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/i-media.svg" alt="i-media" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/nova.svg" alt="nova" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/uryuk.svg" alt="uryuk" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/claypaky.svg" alt="claypaky" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/edictum.svg" alt="edictum" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/alekhins.svg" alt="alekhins" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/WoodSlab.svg" alt="WoodSlab" loading="lazy">
+            </div>
+          </div>
+
+          <div class="brands__group" aria-hidden="true">
+            <div class="brands__item">
+              <img src="img/brands/maserati.svg" alt="Maserati" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/swarovski.svg" alt="Swarovski" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/ferrero.svg" alt="Ferrero" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/estetica.svg" alt="Estetica Vision" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/kanabion.svg" alt="Kanabion" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/mars.svg" alt="Mars" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/i-media.svg" alt="i-media" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/nova.svg" alt="nova" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/uryuk.svg" alt="uryuk" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/claypaky.svg" alt="claypaky" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/edictum.svg" alt="edictum" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/alekhins.svg" alt="alekhins" loading="lazy">
+            </div>
+            <div class="brands__item">
+              <img src="img/brands/WoodSlab.svg" alt="WoodSlab" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits section" aria-labelledby="benefits-title">
+      <div class="container-mini">
+        <div class="benefits__wrapper">
+          <h2 class="benefits__title title" id="benefits-title" style="display: none">
+            Почему Monolith Lab
+          </h2>
+
+          <p class="benefits__subtitle" style="display: none">
+            Мы делаем брендинг и digital-дизайн, который работает на узнаваемость и продажи.
+          </p>
+
+          <div class="benefits__line">
+            <span class="benefits__line-progress"></span>
+          </div>
+
+          <ul class="benefits__menu list-reset">
+            <li class="benefits__item">
+              <div class="benefits__item-wrap">
+                <h3 class="benefits__item-title"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1000"
+                >
+                  Уникальность.
+                </h3>
+
+                <div class="benefits__item-content"
+                     data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom"
+                     data-aos-duration="1000"
+                >
+                  <h4>
+                    Простая заявка
+                  </h4>
+
+                  <p>
+                    Вы заполняете простую анкету. Мы делаем всю глубину: анализ, позиционирование, визуальный код.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="benefits__item">
+              <div class="benefits__item-wrap">
+                <h3 class="benefits__item-title"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1000"
+                >
+                  Хирургическая точность.
+                </h3>
+
+                <div class="benefits__item-content"
+                     data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom"
+                     data-aos-duration="1000"
+                >
+                  <h4>
+                    Перфекционизм
+                  </h4>
+
+                  <p>
+                    Анализ конкурентов, дизайн и позиционирование вашего бренда мы проводим с хирургической точностью.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="benefits__item">
+              <div class="benefits__item-wrap">
+                <h3 class="benefits__item-title"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1000"
+                >
+                  Не считаем итерации.
+                </h3>
+
+                <div class="benefits__item-content"
+                     data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom"
+                     data-aos-duration="1000"
+                >
+                  <h4>
+                    Без ограничений
+                  </h4>
+
+                  <p>
+                    Мы делаем столько итераций сколько потребуется. Даже если вы хотите добавить что-то в конце - мы сделаем  без дополнительных трат.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="benefits__item">
+              <div class="benefits__item-wrap">
+                <h3 class="benefits__item-title"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1000"
+                >
+                  Брендбокс.
+                </h3>
+
+                <div class="benefits__item-content"
+                     data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom"
+                     data-aos-duration="1000"
+                >
+                  <h4>
+                    Манифест компании
+                  </h4>
+
+                  <p>
+                    Физическая коробка с вашим брендбуком — премиум-издание, которое приятно держать в руках.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="benefits__item">
+              <div class="benefits__item-wrap">
+                <h3 class="benefits__item-title"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1000"
+                >
+                  Прозрачность.
+                </h3>
+
+                <div class="benefits__item-content"
+                     data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom"
+                     data-aos-duration="1000"
+                >
+                  <h4>
+                    Цены и этапы
+                  </h4>
+
+                  <p>
+                    Абсолютно прозрачная ценовая политика и прозрачные этапы услуг.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="benefits__item">
+              <div class="benefits__item-wrap">
+                <h3 class="benefits__item-title"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1000"
+                >
+                  Поддержка.
+                </h3>
+
+                <div class="benefits__item-content"
+                     data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom"
+                     data-aos-duration="1000"
+                >
+                  <h4>
+                    Запуск
+                  </h4>
+
+                  <p>
+                    Мы на связи. Консультируем, подсказываем, сопровождаем.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote" aria-label="Цитата">
+      <div class="quote__container container">
+        <div class="quote__wrapper">
+
+          <figure class="quote__figure">
+            <blockquote class="quote__title"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="top-bottom"
+                        data-aos-duration="1000"
+            >
+              <p>
+                Ваш бренд — это самая важная инвестиция,<br>
+                которую вы можете сделать в свой бизнес.
+              </p>
+            </blockquote>
+
+            <figcaption class="quote__text"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="top-bottom"
+                        data-aos-duration="1000"
+            >
+              Стив Форбс
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container-mini">
+        <h2 class="title" id="portfolio-title"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="1000"
+        >
+          Портфолио
+        </h2>
+
+        <p class="portfolio__intro" style="display: none">
+          Примеры проектов Monolith Lab: брендинг, айдентика, веб-дизайн и рекламные материалы.
+        </p>
+      </div>
+
+      <ul class="container portfolio__list list-reset">
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="0">
+          <a href="https://www.behance.net/gallery/203764103/Kanabion-Branding" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/1.webp" type="image/webp">
+              <img src="img/portfolio/1.jpg" alt="Kanabion — брендинг и айдентика"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Kanabion</h3>
+            <p class="portfolio__text">Брендинг. Айдентика. Наружная реклама.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="100">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/2.webp" type="image/webp">
+              <img src="img/portfolio/2.jpg" alt="i-media — брендинг, маркетинг и веб-дизайн"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">i-media</h3>
+            <p class="portfolio__text">Брендинг. Маркетинг. Веб-дизайн. Айдентика.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="200">
+          <a href="https://www.behance.net/gallery/203767321/Ferrero-Dolce-Vita-Event-Identity-Design" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/3.webp" type="image/webp">
+              <img src="img/portfolio/3.jpg" alt="Ferrero — дизайн айдентики мероприятия"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Ferrero</h3>
+            <p class="portfolio__text">Дизайн айдентики мероприятия.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="300">
+          <a href="https://www.behance.net/gallery/203768653/Maserati-Estetica-Collaboration-Pillow-Design" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/4.webp" type="image/webp">
+              <img src="img/portfolio/4.jpg" alt="Maserati — коллаборация, дизайн подушки"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Maserati</h3>
+            <p class="portfolio__text">Коллаборация. Дизайн подушки.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="400">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/5.webp" type="image/webp">
+              <img src="img/portfolio/5.jpg" alt="Нова Глоу — брендинг и дизайн айдентики"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Нова Глоу</h3>
+            <p class="portfolio__text">Брендинг. Дизайн айдентики.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="500">
+          <a href="https://www.behance.net/gallery/203767535/Uryuk-Print-Advertisment" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/6.webp" type="image/webp">
+              <img src="img/portfolio/6.jpg" alt="Урюк — наружная реклама"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Урюк</h3>
+            <p class="portfolio__text">Наружная реклама.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="600">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/7.webp" type="image/webp">
+              <img src="img/portfolio/7.jpg" alt="Mars — дизайн айдентики мероприятия"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Mars</h3>
+            <p class="portfolio__text">Дизайн айдентики мероприятия.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="700">
+          <a href="https://www.behance.net/gallery/203771237/Maca-Food-Supplement-Brand-Identity-Design" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/8.webp" type="image/webp">
+              <img src="img/portfolio/8.jpg" alt="Maca — брендинг и дизайн айдентики"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Maca</h3>
+            <p class="portfolio__text">Брендинг. Дизайн айдентики.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="800">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/9.webp" type="image/webp">
+              <img src="img/portfolio/9.jpg" alt="Estetica Vision — дизайн логотипа"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Estetica Vision</h3>
+            <p class="portfolio__text">Дизайн логотипа.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="900">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/10.webp" type="image/webp">
+              <img src="img/portfolio/10.jpg" alt="Swarovski — коллаборация, каталог картин"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Swarovski</h3>
+            <p class="portfolio__text">Коллаборация. Каталог картин.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="1000">
+          <a href="https://www.behance.net/gallery/203767003/BiBi-White-Facial-Cream-Branding" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/11.webp" type="image/webp">
+              <img src="img/portfolio/11.jpg" alt="BiBi White — логотип, айдентика, упаковка"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">BiBi White</h3>
+            <p class="portfolio__text">Дизайн логотипа. Айдентика. Упаковка. Брендинг.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="1100">
+          <a href="https://www.behance.net/gallery/203765975/Sway-Dental-Aligner-Branding" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/12.webp" type="image/webp">
+              <img src="img/portfolio/12.jpg" alt="Sway — логотип, айдентика и упаковка"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Sway</h3>
+            <p class="portfolio__text">Брендинг. Дизайн логотипа. Айдентика. Упаковка.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="1200">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/13.webp" type="image/webp">
+              <img src="img/portfolio/13.jpg" alt="Edictum — веб-дизайн"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Edictum</h3>
+            <p class="portfolio__text">Веб-дизайн.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="1300">
+          <a href="https://www.behance.net/gallery/211345163/Website-for-online-English-school-Web-design" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/14.webp" type="image/webp">
+              <img src="img/portfolio/14.jpg" alt="Bright Way School — брендинг и веб-дизайн"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Bright Way School</h3>
+            <p class="portfolio__text">Брендинг. Веб-дизайн.</p>
+          </a>
+        </li>
+
+        <li class="portfolio__list-item"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="800"
+            data-aos-delay="1400">
+          <a href="https://wood-slab-site.tilda.ws/" target="_blank" rel="noopener noreferrer" class="portfolio__item">
+            <picture class="portfolio__picture">
+              <source srcset="img/portfolio/15.webp" type="image/webp">
+              <img src="img/portfolio/15.jpg" alt="Woodslab — веб-дизайн"
+                   width="600" height="450" loading="lazy" decoding="async">
+            </picture>
+            <h3 class="portfolio__title">Woodslab</h3>
+            <p class="portfolio__text">Веб-дизайн.</p>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="quote" aria-label="Цитата">
+      <div class="quote__container container">
+        <div class="quote__wrapper">
+          <figure class="quote__figure">
+            <blockquote class="quote__title"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="top-bottom"
+                        data-aos-duration="1000"
+            >
+              <p>
+                Ваш бренд — это то, что люди говорят о вас,<br>
+                когда вас нет в комнате.
+              </p>
+            </blockquote>
+
+            <figcaption class="quote__text"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="top-bottom"
+                        data-aos-duration="1000"
+            >
+              Джефф Безос
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="service section" id="service" aria-labelledby="service-title">
+      <div class="container-mini service__top" data-aos="fade-up"
+           data-aos-anchor-placement="top-bottom"
+           data-aos-duration="1000">
+        <h2 class="service__title title" id="service-title">Услуги</h2>
+
+        <p class="service__text">
+          Стоимость рассчитывается после заявки
+        </p>
+      </div>
+
+      <div class="container">
+        <p class="service__intro" style="display: none">
+          Monolith Lab — брендинг, айдентика и digital-дизайн: создаём визуальные системы, сайты и дизайн-материалы для компаний и стартапов.
+        </p>
+
+        <ul class="service__list list-reset">
+          <!-- 1 -->
+          <li class="service__item"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+              data-aos-delay="0"
+              data-service="branding">
+            <div class="service__content">
+              <h3 class="service__card-title">Брендинг и ребрендинг</h3>
+
+              <p class="service__description">
+                Анализ бренда и аудитории, позиционирование и бренд-платформа. Разработка логотипа, айдентики и брендбука.
+              </p>
+
+              <div class="service__icon js-lottie" data-lottie="/icons/Design.json" aria-hidden="true"></div>
+
+              <div class="service__footer">
+                <span class="service__price">от 800 000 ₽</span>
+
+                <button class="card-btn btn-reset" type="button" aria-label="Подробнее про услугу: Брендинг и ребрендинг">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <g opacity="0.75">
+                      <path d="M3.99609 9.59375H15.1903" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9.59375 4V15.1942" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <!-- 2 -->
+          <li class="service__item"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+              data-aos-delay="100"
+              data-service="support">
+            <div class="service__content">
+              <h3 class="service__card-title">Поддержка бренда</h3>
+
+              <p class="service__description">
+                Работаем как внутренняя команда дизайнеров: гибко, быстро и без ограничений по правкам. Полное владение результатом.
+              </p>
+
+              <div class="service__icon js-lottie" data-lottie="/icons/Business Network-2.json" aria-hidden="true"></div>
+
+              <div class="service__footer">
+                <span class="service__price">от 400 000 ₽/месяц</span>
+
+                <button class="card-btn btn-reset" type="button" aria-label="Подробнее про услугу: Поддержка бренда">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <g opacity="0.75">
+                      <path d="M3.99609 9.59375H15.1903" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9.59375 4V15.1942" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <!-- 3 -->
+          <li class="service__item"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+              data-service="webdesign">
+            <div class="service__content">
+              <h3 class="service__card-title">Веб-дизайн</h3>
+
+              <p class="service__description">
+                Лендинги, интернет-магазины и многостраничные сайты — выстраиваем навигацию и пользовательский путь, который ведёт к конверсии.
+              </p>
+
+              <div class="service__icon js-lottie" data-lottie="/icons/Graphic Design.json" aria-hidden="true"></div>
+
+              <div class="service__footer">
+                <span class="service__price">от 300 000 ₽</span>
+
+                <button class="card-btn btn-reset" type="button" aria-label="Подробнее про услугу: Веб-дизайн">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <g opacity="0.75">
+                      <path d="M3.99609 9.59375H15.1903" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9.59375 4V15.1942" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <!-- 4 -->
+          <li class="service__item service__item--featured"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+              data-aos-delay="300"
+              data-service="full">
+            <div class="service__content">
+              <h3 class="service__card-title">Полный пакет</h3>
+
+              <p class="service__description">
+                Комплексное решение: бренд-стратегия, дизайн-система, сайт и необходимые дизайн-материалы для запуска.
+              </p>
+
+              <div class="service__icon js-lottie" data-lottie="/icons/3DDesign.json" aria-hidden="true"></div>
+
+              <div class="service__footer">
+                <span class="service__price">Выгоднее</span>
+
+                <button class="card-btn btn-reset" type="button" aria-label="Подробнее про услугу: Полный пакет">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <g opacity="0.75">
+                      <path d="M3.99609 9.59375H15.1903" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9.59375 4V15.1942" stroke="#F0EFEB" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="line-wrap">
+      <div class="line line--bottom">
+        <span class="line__progress"></span>
+      </div>
+    </div>
+
+    <section class="decore section" aria-label="Фирменная графика Monolith Lab">
+      <div class="container">
+        <div class="decore__wrapper">
+          <picture class="decore__picture">
+            <source
+                srcset="img/Brand-xs.webp"
+                media="(max-width: 500px)"
+                type="image/webp"
+            >
+            <source
+                srcset="img/Brand-xl.webp"
+                type="image/webp"
+            >
+
+            <source
+                srcset="img/Brand-xs.jpg"
+                media="(max-width: 500px)"
+                type="image/jpg"
+            >
+
+            <img
+                src="img/Brand-xl.jpg"
+                alt="Фирменная графика Monolith Lab"
+                loading="lazy"
+                decoding="async"
+            >
+          </picture>
+
+          <svg
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1341"
+              height="253"
+              viewBox="0 0 1341 253"
+              fill="none"
+              aria-hidden="true"
+              focusable="false"
+          >
+            <path d="M182.906 75.1342C204.584 75.1342 222.36 81.5991 236.234 94.5289C250.107 107.459 257.044 123.92 257.044 143.912V248.383H217.536V143.912C217.536 134.894 214.339 127.886 207.944 122.888C201.657 117.781 193.312 115.227 182.906 115.227C172.501 115.227 164.155 117.781 157.868 122.888C151.69 127.886 148.601 134.894 148.601 143.912V248.383H108.606V143.912C108.606 134.894 105.462 127.886 99.1758 122.888C92.9977 117.781 84.7059 115.227 74.3006 115.227C64.0036 115.227 55.6577 117.781 49.2627 122.888C42.8678 127.886 39.6703 134.894 39.6703 143.912V248.383H0V143.912C0 124.028 6.99108 107.622 20.9732 94.6919C34.9554 81.6534 52.7312 75.1342 74.3006 75.1342C86.115 75.1342 96.9538 78.0678 106.817 83.9352C116.681 89.8025 123.943 97.4626 128.603 106.915C133.481 97.5712 140.851 89.9655 150.715 84.0981C160.578 78.1222 171.309 75.1342 182.906 75.1342Z" fill="#E61700"/>
+            <path d="M368.16 75.1342C383.876 75.1342 398.401 79.1001 411.732 87.0318C425.064 94.9635 435.578 105.775 443.274 119.465C450.969 133.047 454.817 147.878 454.817 163.959C454.817 179.931 450.915 194.708 443.111 208.29C435.415 221.871 424.956 232.628 411.732 240.56C398.509 248.492 384.147 252.457 368.648 252.457C352.931 252.457 338.407 248.492 325.076 240.56C311.744 232.628 301.23 221.871 293.534 208.29C285.839 194.708 281.991 179.931 281.991 163.959C281.991 147.878 285.839 133.047 293.534 119.465C301.338 105.775 311.852 94.9635 325.076 87.0318C338.299 79.1001 352.661 75.1342 368.16 75.1342ZM368.16 114.902C355.262 114.902 344.26 119.682 335.156 129.244C326.159 138.697 321.661 150.268 321.661 163.959C321.661 177.323 326.214 188.786 335.318 198.348C344.423 207.909 355.37 212.69 368.16 212.69C381.167 212.69 392.222 207.909 401.327 198.348C410.54 188.786 415.147 177.323 415.147 163.959C415.147 150.268 410.54 138.697 401.327 129.244C392.222 119.682 381.167 114.902 368.16 114.902Z" fill="#E61700"/>
+            <path d="M560.568 75.1342C582.137 75.1342 599.533 81.5991 612.757 94.5289C626.089 107.35 632.755 123.811 632.755 143.912V248.383H592.759V143.912C592.759 134.785 589.941 127.723 584.305 122.725C578.669 117.727 570.756 115.227 560.568 115.227C550.271 115.227 542.141 117.727 536.18 122.725C530.219 127.723 527.238 134.785 527.238 143.912V248.383H487.568V143.912C487.568 123.92 494.288 107.459 507.728 94.5289C521.277 81.5991 538.89 75.1342 560.568 75.1342Z" fill="#E61700"/>
+            <path d="M744.521 75.1342C760.237 75.1342 774.761 79.1001 788.093 87.0318C801.425 94.9635 811.939 105.775 819.634 119.465C827.33 133.047 831.178 147.878 831.178 163.959C831.178 179.931 827.276 194.708 819.472 208.29C811.776 221.871 801.317 232.628 788.093 240.56C774.87 248.492 760.508 252.457 745.009 252.457C729.292 252.457 714.768 248.492 701.436 240.56C688.104 232.628 677.591 221.871 669.895 208.29C662.2 194.708 658.352 179.931 658.352 163.959C658.352 147.878 662.2 133.047 669.895 119.465C677.699 105.775 688.213 94.9635 701.436 87.0318C714.66 79.1001 729.021 75.1342 744.521 75.1342ZM744.521 114.902C731.623 114.902 720.621 119.682 711.517 129.244C702.52 138.697 698.022 150.268 698.022 163.959C698.022 177.323 702.574 188.786 711.679 198.348C720.784 207.909 731.731 212.69 744.521 212.69C757.528 212.69 768.583 207.909 777.688 198.348C786.901 188.786 791.508 177.323 791.508 163.959C791.508 150.268 786.901 138.697 777.688 129.244C768.583 119.682 757.528 114.902 744.521 114.902Z" fill="#E61700"/>
+            <path d="M867.668 248.383V0H907.176V248.383H867.668Z" fill="#F0EFEB"/>
+            <path d="M980.898 12.0606C988.051 12.0606 994.175 14.614 999.269 19.7207C1004.36 24.8274 1006.91 30.9664 1006.91 38.1375C1006.91 45.3087 1004.36 51.4476 999.269 56.5544C994.175 61.6611 988.051 64.2145 980.898 64.2145C973.635 64.2145 967.511 61.6611 962.526 56.5544C957.54 51.4476 955.047 45.3087 955.047 38.1375C955.047 30.9664 957.54 24.8274 962.526 19.7207C967.511 14.614 973.635 12.0606 980.898 12.0606ZM961.062 248.383V79.8606H1000.57V248.383H961.062Z" fill="#F0EFEB"/>
+            <path d="M1111.36 30.4774V79.8606H1144.37V119.465H1111.36V248.383H1071.69V119.465H1038.85V79.8606H1071.69V40.7452L1111.36 30.4774Z" fill="#F0EFEB"/>
+            <path d="M1266.21 75.1342C1287.89 75.1342 1305.77 81.5991 1319.86 94.5289C1333.95 107.459 1341 123.92 1341 143.912V248.383H1301.49V162.003C1301.49 154.18 1300.19 147.172 1297.59 140.978C1295.1 134.677 1291.74 129.733 1287.51 126.147C1283.39 122.453 1278.84 119.682 1273.85 117.835C1268.98 115.879 1263.88 114.902 1258.57 114.902C1253.37 114.902 1248.22 115.934 1243.12 117.998C1238.14 120.063 1233.53 123.051 1229.31 126.962C1225.19 130.765 1221.83 135.709 1219.23 141.793C1216.73 147.878 1215.49 154.615 1215.49 162.003V248.383H1175.98V0H1215.49V96.8106C1221.23 89.6395 1228.87 84.2611 1238.41 80.6755C1248.06 76.9813 1257.32 75.1342 1266.21 75.1342Z" fill="#F0EFEB"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="line-wrap">
+      <div class="line line--bottom">
+        <span class="line__progress"></span>
+      </div>
+    </div>
+
+    <section class="cta section" id="cta" aria-labelledby="cta-title">
+      <div class="container-mini">
+        <div class="cta__wrapper">
+
+          <address class="cta__contacts">
+            <h2 class="visually-hidden" id="cta-title" style="display: none">Контакты и форма заявки</h2>
+
+            <div class="cta__contact-item"
+                 data-aos="fade-up"
+                 data-aos-anchor-placement="top-bottom"
+                 data-aos-duration="1000"
+            >
+              <div class="cta__contact-icon-wrapper">
+                <div class="cta__contact-icon js-lottie" data-lottie="/icons/Communication.json"></div>
+              </div>
+
+              <div class="cta__contact-content">
+                <h3 class="cta__contact-title">Почта</h3>
+                <p class="cta__contact-subtitle">Задайте любой вопрос.</p>
+                <a href="mailto:info@monolithlab.io" class="cta__contact-link">
+                  info@monolithlab.io
+                </a>
+              </div>
+            </div>
+
+            <div class="cta__contact-item"
+                 data-aos="fade-up"
+                 data-aos-anchor-placement="top-bottom"
+                 data-aos-duration="1000"
+            >
+              <div class="cta__contact-icon-wrapper">
+                <div class="cta__contact-icon js-lottie" data-lottie="/icons/Telegram.json"></div>
+              </div>
+
+              <div class="cta__contact-content">
+                <h3 class="cta__contact-title">Telegram</h3>
+                <p class="cta__contact-subtitle">Общение проще.</p>
+                <a href="https://t.me/monolithlab"
+                   class="cta__contact-link"
+                   target="_blank"
+                   rel="noopener">
+                  @monolithlab
+                </a>
+              </div>
+            </div>
+
+            <p class="cta__description"
+               data-aos="fade-up"
+               data-aos-anchor-placement="top-bottom"
+               data-aos-duration="1000"
+            >
+              В Telegram-чате вы можете пользоваться любой удобной формой общения — текстом,
+              голосовыми сообщениями и «кружочками». Мы за вас всё зафиксируем,
+              задокументируем и разложим по полочкам.
+            </p>
+          </address>
+
+          <div class="cta__form-wrapper" aria-labelledby="cta-form-title"
+               data-aos="fade-up"
+               data-aos-anchor-placement="top-bottom"
+               data-aos-duration="1000"
+          >
+            <h2 class="cta__form-title" id="cta-form-title">Заявка на любую услугу</h2>
+            <p class="cta__form-subtitle">Расскажите нам о своём проекте.</p>
+
+            <form class="cta__form" action="mail.php" method="POST">
+              <label class="visually-hidden" for="cta-name">Имя*</label>
+              <input
+                  id="cta-name"
+                  type="text"
+                  name="name"
+                  class="cta__input"
+                  placeholder="Имя*"
+                  autocomplete="name"
+                  required
+              >
+
+              <label class="visually-hidden" for="cta-email">Ваша почта*</label>
+              <input
+                  id="cta-email"
+                  type="email"
+                  name="email"
+                  class="cta__input"
+                  placeholder="Ваша почта*"
+                  autocomplete="email"
+                  required
+              >
+
+              <label class="visually-hidden" for="cta-service">Услуга*</label>
+              <input
+                  id="cta-service"
+                  type="text"
+                  name="service"
+                  class="cta__input"
+                  placeholder="Услуга*"
+                  autocomplete="off"
+                  required
+              >
+
+              <label class="visually-hidden" for="cta-message">Комментарий</label>
+              <textarea
+                  id="cta-message"
+                  name="message"
+                  class="cta__textarea"
+                  placeholder="Комментарий"
+                  rows="4"
+              ></textarea>
+
+              <div class="cta__status" aria-live="polite" role="status"></div>
+
+              <button type="submit" class="cta__submit btn-reset">
+                Отправить
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="line-wrap">
+      <div class="line line--bottom">
+        <span class="line__progress"></span>
+      </div>
+    </div>
+
+    <section class="startup section" id="startup" aria-labelledby="startup-title">
+      <div class="container-mini">
+        <div class="startup__wrapper">
+
+          <div class="startup__left">
+            <div class="startup__header">
+              <h2 class="startup__title" id="startup-title"
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="top-bottom"
+                  data-aos-duration="1000"
+              >Поддержка стартапов</h2>
+
+              <div class="startup__text"
+                   data-aos="fade-up"
+                   data-aos-anchor-placement="top-bottom"
+                   data-aos-duration="1000"
+              >
+                <p>
+                  Мы поддерживаем малый бизнес и стартапы, особенно те, кто стремится изменить мир.
+                </p>
+                <p>
+                  Расскажите нам о своей идее: что вами движет и в чём уникальность вашего проекта?
+                </p>
+                <p>
+                  Мы изучаем каждую заявку и ищем тех, чьи цели соответствуют нашему видению.
+                </p>
+              </div>
+            </div>
+
+            <address class="startup__card"
+                     data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom"
+                     data-aos-duration="1000"
+            >
+              <div class="startup__icon-wrap">
+                <div class="startup__icon js-lottie" data-lottie="/icons/Communication.json"></div>
+              </div>
+
+              <div class="startup__card-content">
+                <h3 class="startup__card-title">Только для стартапов</h3>
+                <p class="startup__card-subtitle">Заявка на почту</p>
+                <a class="startup__card-link" href="mailto:start@monolithlab.io">
+                  start@monolithlab.io
+                </a>
+              </div>
+            </address>
+          </div>
+
+          <div class="startup__right" aria-hidden="true" data-aos="fade-up"
+               data-aos-anchor-placement="top-bottom"
+               data-aos-duration="1000">
+            <picture class="startup__picture">
+              <source srcset="img/start.webp" type="image/webp">
+              <img src="img/start.png" loading="lazy" decoding="async" alt="">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="popup" id="popup-branding"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="popup-branding-title"
+         aria-describedby="popup-branding-desc"
+         hidden>
+      <button class="popup__overlay btn-reset" type="button" aria-label="Закрыть окно"></button>
+      <div class="popup__content" role="document">
+        <div class="popup__top">
+          <div class="popup__header">
+            <h2 class="popup__title">Брендинг и ребрендинг</h2>
+            <p class="popup__subtitle">
+              Анализ бренда и аудитории. А так же позиционирование бренда и создание брендовой платформы. Разработка лого и айдентики и создание брендбука.
+            </p>
+          </div>
+
+          <span class="popup__duration">от 9 Недель</span>
+        </div>
+
+        <h3 class="popup__section-title">Что входит в базовый пакет?</h3>
+
+        <div class="popup__columns">
+          <div class="popup__column">
+            <ul class="popup__list list-reset">
+              <li>Стратегия-лайт: позиционирование (1 страница), ценностное предложение, каркас ключевых сообщений, товарная матрица (для компании, бренда, принципы коммуникации).</li>
+              <li>Визуальная система бренда:</li>
+              <li>2–3 направления на защиту → развитие одного финального;</li>
+              <li>Логотип (основной и дополнительные версии, построение на сетке, минимальные размеры, охранные поля);</li>
+              <li>Цветовая палитра, шрифтовая (типографическая) система, композиционные принципы, модульные сетки;</li>
+              <li>Графические элементы/узоры, стиль иконок (небольшой набор), руководство по фотографиям и иллюстрациям;</li>
+              <li>Базовые цифровые материалы: иконка сайта, превью для социальных сетей, аватар и шапка профиля.</li>
+            </ul>
+          </div>
+          <div class="popup__column">
+            <ul class="popup__list list-reset">
+              <li>Шаблоны (8 шт.): презентация (обложка и внутренние слайды), коммерческое предложение/оферта, бланк/счёт, дизайн подписи для электронной почты, пост и история для соцсетей, баннер 1920×1080, фирменный сувенир/наклейка (можно заменить на нужные).</li>
+              <li>Брендбук (PDF): правила логотипа, цвета и шрифты, сетки, графика, «можно/нельзя», основные носители, тональность бренда, примеры применения.</li>
+              <li>Коммуникация и отслеживание прогресса: один канал связи, еженедельные обновления, контрольные точки по этапам.</li>
+              <li>Правки: без ограничения количества в рамках этапов (для каждого этапа — фиксированный срок).</li>
+              <li>Файлы и права: исходные файлы в рабочих форматах (Figma, Adobe Illustrator, SVG, PDF, PNG), передача прав по договору.</li>
+              <li>Поддержка 15 дней: ответы на вопросы, мелкие доработки в рамках руководства, консультации по внедрению.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <!-- Этап 1 -->
+          <div class="timeline__item">
+            <h4 class="timeline__title">Брифинг</h4>
+            <div class="timeline__dot"></div>
+            <span class="timeline__duration opacity">2 недели</span>
+          </div>
+
+          <!-- Этап 2 -->
+          <div class="timeline__item">
+            <h4 class="timeline__title">Анализ рынка и аудитории</h4>
+            <div class="timeline__dot"></div>
+            <span class="timeline__duration">3 недели</span>
+          </div>
+
+          <!-- Этап 3 -->
+          <div class="timeline__item">
+            <h4 class="timeline__title">Разработка концепции и утверждение</h4>
+            <div class="timeline__dot"></div>
+            <span class="timeline__duration">2 недели</span>
+          </div>
+
+          <!-- Этап 4 -->
+          <div class="timeline__item">
+            <h4 class="timeline__title">Разработка остальных материалов</h4>
+            <div class="timeline__dot"></div>
+            <span class="timeline__duration">2 недели</span>
+          </div>
+
+          <!-- Этап 5 -->
+          <div class="timeline__item">
+            <h4 class="timeline__title">Переход к новому бренду и поддержка</h4>
+            <div class="timeline__dot"></div>
+            <span class="timeline__duration">1-2 недели</span>
+          </div>
+        </div>
+
+        <div class="popup__footer">
+          <span class="popup__price">от 800 000 руб.</span>
+          <button type="button" class="card-btn btn-reset popup__close" aria-label="Закрыть окно">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.75">
+                <path d="M3.99609 9.59375H15.1903" stroke="white" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-support"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="popup-branding-title"
+         aria-describedby="popup-branding-desc"
+         hidden>
+      <button class="popup__overlay btn-reset" type="button" aria-label="Закрыть окно"></button>
+      <div class="popup__content" role="document">
+        <div class="popup__top">
+          <div class="popup__header">
+            <h2 class="popup__title">Поддержка бренда</h2>
+            <p class="popup__subtitle">
+              Мы работаем как ваша внутренняя команда дизайнеров: сплочённые, гибкие и преданные своему делу. Неограниченное количество правок, быстрая коммуникация и полное владение результатом.
+            </p>
+          </div>
+          <!--          <span class="popup__duration">9 Недель</span>-->
+        </div>
+
+        <h3 class="popup__section-title">Что входит в базовый пакет?</h3>
+
+        <div class="popup__columns">
+          <div class="popup__column">
+            <ul class="popup__list list-reset">
+              <li>
+                Графический дизайн (дизайн смм постов, дизайн диджитал рекламы, дизайн наружной рекламы) .
+              </li>
+              <li>
+                2Д Моушн дизайн (базовый, например легкие loop анимации для смм).
+              </li>
+              <li>
+                Ведение сайта (изменение картинок).
+              </li>
+              <li>Неограниченное количество правок.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popup__footer">
+          <span class="popup__price">от 400 000 руб./месяц </span>
+          <button class="card-btn btn-reset popup__close" type="button" aria-label="Закрыть окно">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.75">
+                <path d="M3.99609 9.59375H15.1903" stroke="white" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-webdesign"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="popup-branding-title"
+         aria-describedby="popup-branding-desc"
+         hidden>
+      <button class="popup__overlay btn-reset" type="button" aria-label="Закрыть окно"></button>
+      <div class="popup__content" role="document">
+        <div class="popup__top">
+          <div class="popup__header">
+            <h2 class="popup__title">Веб-дизайн</h2>
+            <p class="popup__subtitle">
+              Лендинги, интернет-магазины и многостраничные сайты — мы выстраиваем понятную навигацию и комфортный пользовательский путь, который помогает принять правильное решение.
+            </p>
+          </div>
+
+          <span class="popup__duration">от 7 Недель</span>
+        </div>
+
+<!--        <h3 class="popup__section-title">Что входит в базовый пакет?</h3>-->
+
+<!--        <div class="popup__columns">-->
+<!--          <div class="popup__column">-->
+<!--            <ul class="popup__list list-reset">-->
+<!--              <li>-->
+<!--                Графический дизайн (дизайн смм постов, дизайн диджитал рекламы, дизайн наружной рекламы) .-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                2Д Моушн дизайн (базовый, например легкие loop анимации для смм).-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                Ведение сайта (изменение картинок).-->
+<!--              </li>-->
+<!--              <li>Неограниченное количество правок.</li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="timeline">-->
+<!--          &lt;!&ndash; Этап 1 &ndash;&gt;-->
+<!--          <div class="timeline__item">-->
+<!--            <h4 class="timeline__title">Брифинг</h4>-->
+<!--            <div class="timeline__dot"></div>-->
+<!--            <span class="timeline__duration opacity">2 недели</span>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Этап 2 &ndash;&gt;-->
+<!--          <div class="timeline__item">-->
+<!--            <h4 class="timeline__title">Анализ рынка и аудитории</h4>-->
+<!--            <div class="timeline__dot"></div>-->
+<!--            <span class="timeline__duration">3 недели</span>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Этап 3 &ndash;&gt;-->
+<!--          <div class="timeline__item">-->
+<!--            <h4 class="timeline__title">Разработка концепции и утверждение</h4>-->
+<!--            <div class="timeline__dot"></div>-->
+<!--            <span class="timeline__duration">2 недели</span>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Этап 4 &ndash;&gt;-->
+<!--          <div class="timeline__item">-->
+<!--            <h4 class="timeline__title">Разработка остальных материалов</h4>-->
+<!--            <div class="timeline__dot"></div>-->
+<!--            <span class="timeline__duration">2 недели</span>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Этап 5 &ndash;&gt;-->
+<!--          <div class="timeline__item">-->
+<!--            <h4 class="timeline__title">Переход к новому бренду и поддержка</h4>-->
+<!--            <div class="timeline__dot"></div>-->
+<!--            <span class="timeline__duration">1-2 недели</span>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <div class="popup__footer">
+          <span class="popup__price">от 300 000 руб.</span>
+          <button class="card-btn btn-reset popup__close" type="button" aria-label="Закрыть окно">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.75">
+                <path d="M3.99609 9.59375H15.1903" stroke="white" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-full"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="popup-branding-title"
+         aria-describedby="popup-branding-desc"
+         hidden>
+      <button class="popup__overlay btn-reset" type="button" aria-label="Закрыть окно"></button>
+      <div class="popup__content" role="document">
+        <div class="popup__top">
+          <div class="popup__header">
+            <h2 class="popup__title">Полный пакет</h2>
+            <p class="popup__subtitle">
+              Полный пакет включает все услуги с выгодными условиями.
+            </p>
+          </div>
+
+          <!--          <span class="popup__duration">9 Недель</span>-->
+        </div>
+
+        <div class="popup__footer">
+          <span class="popup__price">Выгоднее</span>
+          <button class="card-btn btn-reset popup__close" type="button" aria-label="Закрыть окно">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.75">
+                <path d="M3.99609 9.59375H15.1903" stroke="white" stroke-width="1.59917" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+  @include('partials/footer.html')
+</div>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+// Базовые стили для обеих шапок
+.header {
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  pointer-events: auto;
+}
+
+// Absolute шапка (изначальная)
+.header--absolute {
+  position: absolute;
+  top: 15px;
+  opacity: 1;
+  transition: opacity 0.4s cubic-bezier(0, 0, 0.8, 1.0);
+
+  @include xl { top: 30px; }
+
+  // Скрываем когда появляется fixed
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// Fixed шапка (появляется при скролле)
+.header--fixed {
+  position: fixed;
+  top: 15px;
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 0;
+
+  // Класс для плавной анимации
+  &.transtime {
+    transition: transform 0.4s cubic-bezier(0, 0, 0.8, 1.0),
+    opacity 0.4s cubic-bezier(0, 0, 0.8, 1.0);
+  }
+
+  // Когда проскроллили - шапка выезжает
+  &.is-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.header-container {
+  border-radius: 16px;
+  border: 1px solid var(--border-light, rgba(255, 255, 255, 0.05));
+  background: rgba(13, 16, 18, 0.30);
+  backdrop-filter: blur(12.5px);
+  will-change: transform;
+  transform: translateZ(0);
+  width: 100%;
+
+  @include xl {
+    border-radius: 25px;
+  }
+}
+
+.header__wrapper {
+  display: flex;
+  align-items: center;
+  height: 58px;
+  position: relative;
+  padding: 8px 20px;
+
+  @include lg {
+    padding: 0 18px 0 40px;
+    height: 77px;
+  }
+}
+
+.header__logo {
+  width: 112px;
+  height: 21px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.header__navigation {
+  position: relative;
+  left: calc(50% - 112px);
+  transform: translateX(-50%);
+  z-index: 1;
+  display: none;
+
+  @include lg {
+    display: block;
+  }
+}
+
+.header__menu {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  color: var(--back, #F0EFEB);
+  font-family: "FunnelDisplay-Medium", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  li {
+    cursor: pointer;
+    transition: color 0.2s;
+
+    @include hover {
+      color: var(--accent, #E61700);
+    }
+  }
+}
+
+.header__burger {
+  display: inline-flex;
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.header__btn {
+  &--desc {
+    display: none;
+
+    @include lg {
+      display: flex;
+    }
+  }
+
+  &--mob {
+    display: flex;
+    width: 100%;
+
+    @include lg {
+      display: none;
+    }
+  }
+}
+
+/* mobile menu по умолчанию скрыто анимацией */
+.header__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px 20px 20px 20px;
+  flex: 1;
+  min-height: 0;
+
+  /* анимация скрытия */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-12px);
+  filter: blur(6px);
+  transition:
+          opacity 0.28s ease,
+          transform 0.28s ease,
+          filter 0.28s ease,
+          visibility 0.28s ease;
+
+  @include lg {
+    display: none;         /* на десктопе мобильного меню нет */
+  }
+}
+
+@media (max-width: 1023px) {
+  .header-container {
+    overflow: hidden;
+    transition: height 0.28s ease;
+    height: 58px; /* закрытое состояние = высота wrapper на мобиле */
+  }
+
+  .header-container.is-open {
+    height: calc(100vh - 30px); /* раскрыто */
+    height: calc(100dvh - 30px); /* раскрыто */
+    height: calc(100svh - 30px); /* раскрыто */
+  }
+
+  .header-container.is-open .header__mobile {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* на мобиле: при открытии делаем шапку высокой, чтобы меню было внутри */
+@media (max-width: 1023px) {
+  .header-container {
+    overflow: hidden; /* чтобы внутри всё красиво обрезалось по радиусу */
+  }
+
+  .header.is-open {
+    height: calc(100vh - 30px); /* 30px сверху и 30px снизу условно */
+    height: calc(100dvh - 30px); /* 30px сверху и 30px снизу условно */
+    height: calc(100svh - 30px); /* 30px сверху и 30px снизу условно */
+  }
+}
+
+.header__mobile {
+  position: static;
+  height: calc(100vh - 90px);
+  height: calc(100dvh - 90px);
+  height: calc(100svh - 90px);
+  flex: 1; /* займет оставшееся место в хедере */
+}
+
+.header__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+
+  li {
+    color: var(--back, #F0EFEB);
+    font-family: "FunnelDisplay-Medium", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.header__mobile-contacts {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header__mobile-title {
+  color: var(--back, #F0EFEB);
+  font-family: "FunnelDisplay-Bold", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 4px;
+}
+
+.header__mobile-contact {
+  color: var(--link, rgba(255, 255, 255, 0.50));
+  font-family: "FunnelDisplay-Regular", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.is-lock {
+  overflow: hidden;
+}
