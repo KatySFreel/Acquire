@@ -1,11 +1,8 @@
-//FunnelDisplay
-@include font-face("FunnelDisplay-Bold", "../fonts/FunnelDisplay-Bold", 700, normal);
-@include font-face("FunnelDisplay-SemiBold", "../fonts/FunnelDisplay-SemiBold", 600, normal);
-@include font-face("FunnelDisplay-Medium", "../fonts/FunnelDisplay-Medium", 500, normal);
-@include font-face("FunnelDisplay-Regular", "../fonts/FunnelDisplay-Regular", 400, normal);
+// BebasNeue
+@include font-face("BebasNeue-Regular", "../fonts/BebasNeue-Regular", 400, normal);
 
-//Inter
-@include font-face("Inter-Bold", "../fonts/Inter-Bold", 700, normal);
-@include font-face("Inter-SemiBold", "../fonts/Inter-SemiBold", 600, normal);
-@include font-face("Inter-Medium", "../fonts/Inter-Medium", 500, normal);
-@include font-face("Inter-Regular", "../fonts/Inter-Regular", 400, normal);
+// Roboto
+@include font-face("Roboto-Bold", "../fonts/Roboto-Bold", 700, normal);
+@include font-face("Roboto-SemiBold", "../fonts/Roboto-SemiBold", 600, normal);
+@include font-face("Roboto-Medium", "../fonts/Roboto-Medium", 500, normal);
+@include font-face("Roboto-Regular", "../fonts/Roboto-Regular", 400, normal);

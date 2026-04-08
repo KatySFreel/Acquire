@@ -1,656 +1,440 @@
 // =========================
 // App state
 // =========================
-let lenis = null;
 
-// iOS/touch scroll lock helper
-let unlockTouchScroll = null;
+import Lenis from '@studio-freight/lenis';
 
-// =========================
-// Lenis
-// =========================
-function initLenis() {
-    const instance = new Lenis({
-        duration: 1.2,
-        easing: (t) => 1 - Math.pow(1 - t, 3),
+function initSmoothScroll() {
+    const lenis = new Lenis({
+        duration: 1.1, // 👈 скорость (1 = быстрее, 1.5–2 = медленнее)
+        easing: (t) => 1 - Math.pow(1 - t, 3), // мягкость
         smooth: true,
-        direction: 'vertical',
         smoothTouch: false,
-        touchMultiplier: 1,
     });
 
     function raf(time) {
-        instance.raf(time);
+        lenis.raf(time);
         requestAnimationFrame(raf);
     }
+
     requestAnimationFrame(raf);
-
-    return instance;
 }
 
-// =========================
-// Scroll lock (Lenis-friendly)
-// =========================
-function lockPageScroll() {
-    document.documentElement.classList.add('is-lock');
-    document.body.classList.add('is-lock');
+function preloaderAnimation() {
+    const preloader = document.getElementById('preloader');
+    const logo = document.querySelector('.preloader__logo');
 
-    // iOS: блокируем touchmove
-    const prevent = (e) => e.preventDefault();
-    window.addEventListener('touchmove', prevent, { passive: false });
+    if (!preloader || !logo) return;
 
-    unlockTouchScroll = () => {
-        window.removeEventListener('touchmove', prevent);
-        unlockTouchScroll = null;
-    };
-}
+    const visiblePause = 900;
+    const alreadyShown = sessionStorage.getItem('preloader-shown');
 
-function unlockPageScroll() {
-    document.documentElement.classList.remove('is-lock');
-    document.body.classList.remove('is-lock');
-    if (typeof unlockTouchScroll === 'function') unlockTouchScroll();
-}
-
-// =========================
-// Benefits progress
-// =========================
-function initBenefitsProgress(lenisInstance) {
-    const section = document.querySelector('.benefits');
-    const line = document.querySelector('.benefits__line-progress');
-    if (!section || !line || !lenisInstance) return;
-
-    lenisInstance.on('scroll', () => {
-        const rect = section.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        const start = windowHeight * 0.2;
-        const end = windowHeight;
-
-        let progress = (start - rect.top) / (rect.height - (end - start));
-        progress = Math.min(Math.max(progress, 0), 1);
-
-        line.style.height = `${progress * 100}%`;
-    });
-}
-
-function initLineProgress(lenisInstance) {
-    if (!lenisInstance) return;
-
-    const lines = Array.from(document.querySelectorAll('.line'))
-        .map((wrap) => ({
-            wrap,
-            bar: wrap.querySelector('.line__progress'),
-        }))
-        .filter((x) => x.bar);
-
-    if (!lines.length) return;
-
-    const clamp01 = (v) => Math.min(Math.max(v, 0), 1);
-    let rafId = null;
-
-    const update = () => {
-        rafId = null;
-
-        const windowHeight = window.innerHeight;
-        const start = windowHeight * 0.3;
-        const end = windowHeight; // можно 0.9*windowHeight, если нужно быстрее
-
-        for (const { wrap, bar } of lines) {
-            const rect = wrap.getBoundingClientRect();
-
-            // та же формула, что у benefits
-            let progress = (rect.top - start) / (rect.height - (end - start));
-            progress = clamp01(progress);
-
-            bar.style.height = `${progress * 100}%`;
-        }
-    };
-
-    update();
-
-    lenisInstance.on('scroll', () => {
-        if (rafId) return;
-        rafId = requestAnimationFrame(update);
-    });
-
-    window.addEventListener('resize', update);
-}
-
-function initCtaForm() {
-    const form = document.querySelector('.cta__form');
-    if (!form) return;
-
-    const statusEl = form.querySelector('.cta__status');
-    const hintEl = form.querySelector('.cta__hint');
-    const submitBtn = form.querySelector('.cta__submit');
-    const COOLDOWN_MS = 30_000;
-
-    const setStatus = (type, text) => {
-        if (!statusEl) return;
-        statusEl.classList.remove('is-success', 'is-error', 'is-loading');
-        if (type) statusEl.classList.add(type);
-        statusEl.textContent = text || '';
-    };
-
-    const setCooldown = (msLeft) => {
-        submitBtn.disabled = true;
-        form.classList.add('is-disabled');
-
-        const tick = () => {
-            const left = Math.max(0, msLeft);
-            const sec = Math.ceil(left / 1000);
-
-            submitBtn.textContent = sec > 0 ? `Отправить через ${sec} сек` : 'Отправить';
-
-            if (left <= 0) {
-                submitBtn.disabled = false;
-                form.classList.remove('is-disabled');
-                submitBtn.textContent = 'Отправить';
-                return;
-            }
-            msLeft -= 250;
-            requestAnimationFrame(tick);
-        };
-        tick();
-    };
-
-    const validate = () => {
-        const name = form.elements.name?.value?.trim() || '';
-        const email = form.elements.email?.value?.trim() || '';
-        const service = form.elements.service?.value?.trim() || '';
-        const message = form.elements.message?.value?.trim() || '';
-
-        if (name.length < 2) return 'Введите имя (минимум 2 символа).';
-        if (!email) return 'Укажите email.';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Проверьте email.';
-        if (service.length < 2) return 'Укажите услугу (минимум 2 символа).';
-
-        // сообщение НЕ обязательное, но если заполнено — можно минимально проверить
-        if (message && message.length < 10) return 'Если заполняете сообщение — минимум 10 символов.';
-        return null;
-    };
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // если уже на кулдауне
-        if (submitBtn.disabled) return;
-
-        const err = validate();
-        if (err) {
-            setStatus('is-error', err);
-            return;
-        }
-
-        setStatus('is-loading', 'Отправляем…');
-        submitBtn.disabled = true;
-
-        try {
-            const action = form.getAttribute('action') || '/contact.php';
-            const fd = new FormData(form);
-
-            const res = await fetch(action, {
-                method: 'POST',
-                body: fd,
-                headers: { 'Accept': 'application/json' },
-            });
-
-            const data = await res.json().catch(() => null);
-
-            if (res.ok && data?.ok) {
-                setStatus('is-success', data.message || 'Заявка отправлена.');
-                if (hintEl) hintEl.style.display = 'none';
-                form.reset();
-                // блок повторной отправки на 30 сек
-                setCooldown(COOLDOWN_MS);
-            } else {
-                const msg = data?.message || 'Не удалось отправить. Проверьте поля и попробуйте ещё раз.';
-                setStatus('is-error', msg);
-
-                // если 429 — тоже уходим на кулдаун
-                if (res.status === 429) {
-                    setCooldown(COOLDOWN_MS);
-                    return; // чтобы не включить кнопку обратно ниже
-                }
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Отправить';
-            }
-        } catch (error) {
-            setStatus('is-error', 'Ошибка сети. Попробуйте ещё раз.');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Отправить';
-        }
-    });
-}
-
-// =========================
-// Smooth anchor scroll (Lenis)
-// =========================
-function initAnchorScroll(lenisInstance, { onBeforeScroll } = {}) {
-    if (!lenisInstance) return;
-
-    document.body.addEventListener('click', function(e) {
-        let link = e.target;
-        while (link && link.tagName !== 'A') {
-            link = link.parentElement;
-        }
-
-        if (!link) return;
-
-        const href = link.getAttribute('href');
-        if (!href) return;
-
-        let hash;
-
-        // Обрабатываем оба формата: "/#portfolio" и "#portfolio"
-        if (href.startsWith('/#')) {
-            // Проверяем что мы на главной странице
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                hash = href.substring(1); // Убираем "/" оставляем "#portfolio"
-                e.preventDefault(); // Предотвращаем переход
-            } else {
-                // На другой странице - пусть браузер перейдет на главную
-                return;
-            }
-        } else if (href.startsWith('#')) {
-            hash = href; // Уже "#portfolio"
-            e.preventDefault();
-        } else {
-            return; // Не якорная ссылка
-        }
-
-        if (hash === '#') return;
-
-        const target = document.querySelector(hash);
-        if (!target) return;
-
-        if (onBeforeScroll) onBeforeScroll();
-
-        lenisInstance.scrollTo(target, {
-            offset: -100,
-            duration: 1.2,
-        });
-    });
-}
-
-// =========================
-// Lottie
-// =========================
-function initLottie() {
-    if (!window.lottie) return;
-
-    document.querySelectorAll('.js-lottie').forEach((el) => {
-        if (!el.dataset.lottie) return;
-
-        window.lottie.loadAnimation({
-            container: el,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: el.dataset.lottie,
-        });
-    });
-}
-
-// =========================
-// Tilt
-// =========================
-function initTilt() {
-    if (!window.VanillaTilt) return;
-
-    document.querySelectorAll('.service__item').forEach((card) => {
-        window.VanillaTilt.init(card, {
-            max: 5,
-            speed: 400,
-            glare: true,
-            'max-glare': 0.2,
-            perspective: 1000,
-            transition: true,
-            easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
-            gyroscope: true,
-        });
-    });
-}
-
-// =========================
-// Cards entrance animation
-// =========================
-function initCardsEntrance() {
-    const cards = document.querySelectorAll('.service__item');
-    if (!cards.length) return;
-
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-
-        setTimeout(() => {
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-}
-
-// =========================
-// Header mobile menu (Lenis-aware)
-// =========================
-function initHeaderMobileMenu({ lenisInstance } = {}) {
-    // Получаем ОБЕ шапки
-    const headerAbsolute = document.querySelector('.header--absolute .header-container');
-    const headerFixed = document.querySelector('.header--fixed .header-container');
-
-    // Бургеры и мобильные меню из обеих шапок
-    const burgerAbsolute = document.querySelector('.header--absolute .header__burger');
-    const burgerFixed = document.querySelector('.header--fixed .header__burger');
-    const mobileAbsolute = document.querySelector('.header--absolute .header__mobile');
-    const mobileFixed = document.querySelector('.header--fixed .header__mobile');
-
-    // Проверяем наличие хотя бы одной шапки
-    if ((!headerAbsolute && !headerFixed) || (!burgerAbsolute && !burgerFixed)) {
-        return { close: () => {} };
-    }
-
-    const burgerIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <path d="M4.5 9.0015H31.5M4.5 18.0015H31.5M4.5 27.0015H31.5"
-            stroke="#F0EFEB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  `;
-
-    const closeIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <path d="M8 8L28 28M8 28L28 8"
-            stroke="#F0EFEB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  `;
-
-    const OPEN_CLASS = 'is-open';
-
-    const open = () => {
-        // Открываем обе шапки
-        if (headerAbsolute) headerAbsolute.classList.add(OPEN_CLASS);
-        if (headerFixed) headerFixed.classList.add(OPEN_CLASS);
-
-        if (burgerAbsolute) {
-            burgerAbsolute.setAttribute('aria-expanded', 'true');
-            burgerAbsolute.innerHTML = closeIcon;
-        }
-        if (burgerFixed) {
-            burgerFixed.setAttribute('aria-expanded', 'true');
-            burgerFixed.innerHTML = closeIcon;
-        }
-
-        if (mobileAbsolute) mobileAbsolute.setAttribute('aria-hidden', 'false');
-        if (mobileFixed) mobileFixed.setAttribute('aria-hidden', 'false');
-
-        // Lenis stop + lock scroll
-        if (lenisInstance) lenisInstance.stop();
-        lockPageScroll();
-    };
-
-    const close = () => {
-        // Закрываем обе шапки
-        if (headerAbsolute) headerAbsolute.classList.remove(OPEN_CLASS);
-        if (headerFixed) headerFixed.classList.remove(OPEN_CLASS);
-
-        if (burgerAbsolute) {
-            burgerAbsolute.setAttribute('aria-expanded', 'false');
-            burgerAbsolute.innerHTML = burgerIcon;
-        }
-        if (burgerFixed) {
-            burgerFixed.setAttribute('aria-expanded', 'false');
-            burgerFixed.innerHTML = burgerIcon;
-        }
-
-        if (mobileAbsolute) mobileAbsolute.setAttribute('aria-hidden', 'true');
-        if (mobileFixed) mobileFixed.setAttribute('aria-hidden', 'true');
-
-        unlockPageScroll();
-        if (lenisInstance) lenisInstance.start();
-    };
-
-    const toggle = () => {
-        // Проверяем состояние любой из шапок
-        const isOpen = headerAbsolute?.classList.contains(OPEN_CLASS) ||
-            headerFixed?.classList.contains(OPEN_CLASS);
-        isOpen ? close() : open();
-    };
-
-    // Стартовое состояние для обеих шапок
-    if (burgerAbsolute) {
-        burgerAbsolute.innerHTML = burgerIcon;
-        burgerAbsolute.setAttribute('aria-expanded', 'false');
-    }
-    if (burgerFixed) {
-        burgerFixed.innerHTML = burgerIcon;
-        burgerFixed.setAttribute('aria-expanded', 'false');
-    }
-    if (mobileAbsolute) mobileAbsolute.setAttribute('aria-hidden', 'true');
-    if (mobileFixed) mobileFixed.setAttribute('aria-hidden', 'true');
-
-    // События для обоих бургеров
-    if (burgerAbsolute) burgerAbsolute.addEventListener('click', toggle);
-    if (burgerFixed) burgerFixed.addEventListener('click', toggle);
-
-    // Закрыть по клику на ссылку в меню (в обеих шапках)
-    if (mobileAbsolute) {
-        mobileAbsolute.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => close());
-        });
-    }
-    if (mobileFixed) {
-        mobileFixed.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => close());
-        });
-    }
-
-    // ESC
-    document.addEventListener('keydown', (e) => {
-        const isOpen = headerAbsolute?.classList.contains(OPEN_CLASS) ||
-            headerFixed?.classList.contains(OPEN_CLASS);
-        if (e.key === 'Escape' && isOpen) close();
-    });
-
-    // При переходе на десктоп закрыть
-    const mq = window.matchMedia('(min-width: 1024px)');
-    const onMqChange = (e) => {
-        if (e.matches) close();
-    };
-    mq.addEventListener ? mq.addEventListener('change', onMqChange) : mq.addListener(onMqChange);
-
-    return { close };
-}
-
-// =========================
-// PopupManager (оставил твой класс, без изменений логики)
-// =========================
-class PopupManager {
-    constructor(lenisInstance) {
-        this.popups = document.querySelectorAll('.popup');
-        this.activePopup = null;
-        this.lenis = lenisInstance;
-        this.popupLenis = null;
-        this.scrollPosition = 0;
-        this.init();
-    }
-
-    init() {
-        document.querySelectorAll('.service__item').forEach((card) => {
-            card.addEventListener('click', () => {
-                const serviceType = card.getAttribute('data-service');
-                this.openPopup(serviceType);
-            });
-        });
-
-        this.popups.forEach((popup) => {
-            const closeBtn = popup.querySelector('.popup__close');
-            const overlay = popup.querySelector('.popup__overlay');
-
-            if (closeBtn) closeBtn.addEventListener('click', () => this.closePopup(popup));
-            if (overlay) overlay.addEventListener('click', () => this.closePopup(popup));
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.activePopup) this.closePopup(this.activePopup);
-        });
-    }
-
-    openPopup(serviceType) {
-        const popup = document.getElementById(`popup-${serviceType}`);
-        if (!popup) return;
-
-        this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (this.lenis) this.lenis.stop();
-
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${this.scrollPosition}px`;
-        document.body.style.width = '100%';
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-
-        document.documentElement.classList.add('popup-open');
-        document.body.classList.add('popup-open');
-
-        popup.classList.add('active');
-        this.activePopup = popup;
-
-        const popupContent = popup.querySelector('.popup__content');
-
-        if (!popupContent) return;
-
-        setTimeout(() => {
-            this.popupLenis = new Lenis({
-                wrapper: popupContent,
-                content: popupContent,
-                duration: 1,
-                easing: (t) => 1 - Math.pow(1 - t, 3),
-                smooth: true,
-                direction: 'vertical',
-                smoothTouch: false,
-                touchMultiplier: 1,
-            });
-
-            const rafPopup = (time) => {
-                if (!this.popupLenis) return;
-                this.popupLenis.raf(time);
-                if (this.activePopup) requestAnimationFrame(rafPopup);
-            };
-            requestAnimationFrame(rafPopup);
-
-            popupContent.style.opacity = '1';
-        }, 50);
-    }
-
-    closePopup(popup) {
-        if (this.popupLenis) {
-            this.popupLenis.destroy();
-            this.popupLenis = null;
-        }
-
-        popup.classList.remove('active');
-        this.activePopup = null;
-
-        document.documentElement.classList.remove('popup-open');
-        document.body.classList.remove('popup-open');
-
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.paddingRight = '';
-
-        window.scrollTo(0, this.scrollPosition);
-
-        if (this.lenis) this.lenis.start();
-    }
-}
-
-class HeaderAnimation {
-    constructor() {
-        this.headerAbsolute = document.querySelector('.header--absolute');
-        this.headerFixed = document.querySelector('.header--fixed');
-        this.scrollDistance = 150;
-
-        this.init();
-    }
-
-    init() {
-        // Добавляем класс для transition с задержкой
-        setTimeout(() => {
-            this.headerFixed.classList.add('transtime');
-
-            // Проверяем начальную позицию при загрузке
-            if (window.pageYOffset > this.scrollDistance) {
-                this.showFixed();
-            }
-        }, 500);
-
-        // Отслеживаем скролл
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    this.handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-
-    handleScroll() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (scrollTop >= this.scrollDistance) {
-            this.showFixed();
-        } else {
-            this.hideFixed();
-        }
-    }
-
-    showFixed() {
-        this.headerAbsolute.classList.add('is-hidden');
-        this.headerFixed.classList.add('is-visible');
-    }
-
-    hideFixed() {
-        this.headerAbsolute.classList.remove('is-hidden');
-        this.headerFixed.classList.remove('is-visible');
-    }
-}
-
-function initBrandsMarquee() {
-    const track = document.querySelector('.brands__track');
-    const group = track?.querySelector('.brands__group');
-    if (!track || !group) return;
-
-    const SPEED = 120; // px/сек — меняешь как хочешь
-
-    const update = () => {
-        const distance = group.scrollWidth; // ширина одного набора
-        const duration = distance / SPEED;  // секунды
-        track.style.setProperty('--marquee-distance', `${distance}px`);
-        track.style.setProperty('--marquee-duration', `${duration}s`);
-    };
-
-    update();
-    window.addEventListener('resize', update);
-}
-
-function initAOS() {
-    if (typeof AOS === 'undefined') {
-        console.error('AOS не загружен!');
+    if (alreadyShown) {
+        preloader.remove();
+        document.body.classList.remove('is-loading');
         return;
     }
 
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: true, // анимация срабатывает только один раз
-        offset: 100,
-        disable: false, // не отключать на мобильных
-        anchorPlacement: 'top-bottom',
+    sessionStorage.setItem('preloader-shown', 'true');
+    document.body.classList.add('is-loading');
+
+    logo.addEventListener('animationend', (event) => {
+        if (event.animationName === 'logoReveal') {
+            setTimeout(() => {
+                logo.classList.add('is-hide');
+
+                logo.addEventListener('animationend', (e) => {
+                    if (e.animationName === 'logoHide') {
+                        preloader.classList.add('is-loaded');
+
+                        preloader.addEventListener('transitionend', () => {
+                            preloader.remove();
+                            document.body.classList.remove('is-loading');
+                        }, { once: true });
+                    }
+                }, { once: true });
+            }, visiblePause);
+        }
+    }, { once: true });
+}
+
+function initPageTransitions() {
+    const links = document.querySelectorAll('a[href]');
+
+    links.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+
+            if (!href) return;
+            if (href.startsWith('#')) return;
+            if (link.target === '_blank') return;
+            if (link.hasAttribute('download')) return;
+            if (link.hostname !== window.location.hostname) return;
+
+            e.preventDefault();
+
+            document.body.classList.add('is-page-leaving');
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 600);
+        });
+    });
+}
+
+function pageEnterAnimation() {
+    document.body.classList.add('is-page-entering');
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            document.body.classList.add('is-page-entering-ready');
+        });
+    });
+
+    const transition = document.querySelector('.page-transition');
+
+    if (!transition) return;
+
+    transition.addEventListener('transitionend', (e) => {
+        if (e.propertyName !== 'transform') return;
+
+        document.body.classList.remove('is-page-entering');
+        document.body.classList.remove('is-page-entering-ready');
+    }, { once: true });
+}
+
+function headerSticky() {
+    const offerSection = document.querySelector('.offer');
+    const darkHeader = document.querySelector('.main .header--dark');
+
+    if (!offerSection || !darkHeader) return;
+
+    function toggleDarkHeader() {
+        const offerRect = offerSection.getBoundingClientRect();
+        const darkHeaderHeight = darkHeader.offsetHeight;
+
+        const shouldShow = offerRect.bottom <= 0;
+
+        darkHeader.classList.toggle('is-visible', shouldShow);
+    }
+
+    window.addEventListener('scroll', toggleDarkHeader, { passive: true });
+    window.addEventListener('resize', toggleDarkHeader);
+    window.addEventListener('load', toggleDarkHeader);
+
+    toggleDarkHeader();
+}
+
+function headerDropdown() {
+    const dropdownItem = document.querySelector('.nav__item--has-dropdown');
+    const toggle = document.querySelector('.nav__toggle');
+
+    if (!dropdownItem || !toggle) return;
+
+    const isTouch = window.matchMedia('(hover: none)').matches;
+
+    if (isTouch) {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const isOpen = dropdownItem.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdownItem.contains(e.target)) {
+                dropdownItem.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+}
+
+function initCustomCursor(targetSelector) {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    const targets = document.querySelectorAll(targetSelector);
+    if (!targets.length) return;
+
+    targets.forEach((target) => {
+        const cursor = target.querySelector('.custom-cursor');
+        if (!cursor) return;
+
+        target.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+
+        target.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+
+        target.addEventListener('mousemove', (e) => {
+            const rect = target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            cursor.style.left = `${x}px`;
+            cursor.style.top = `${y}px`;
+        });
+    });
+}
+
+function animateCounter(element, duration = 1800) {
+    const endValue = parseInt(element.dataset.value, 10);
+    const prefix = element.dataset.prefix || '';
+    const suffix = element.dataset.suffix || '';
+
+    let startValue = 0;
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.floor(startValue + (endValue - startValue) * easedProgress);
+
+        element.textContent = `${prefix}${currentValue}${suffix}`;
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = `${prefix}${endValue}${suffix}`;
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
+
+function initNumbersAnimation() {
+    const section = document.querySelector('.numbers');
+    const counters = document.querySelectorAll('.js-counter');
+
+    if (!section || !counters.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            counters.forEach((counter) => {
+                if (!counter.classList.contains('is-animated')) {
+                    counter.classList.add('is-animated');
+                    animateCounter(counter);
+                }
+            });
+
+            obs.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.35
+    });
+
+    observer.observe(section);
+}
+
+function worksCards() {
+    const cards = document.querySelectorAll('.works-card');
+
+    if (!cards.length) return;
+
+    const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
+
+    if (!isDesktop) return;
+
+    cards.forEach((card) => {
+        const video = card.querySelector('.works-card__video');
+
+        card.addEventListener('mouseenter', () => {
+            cards.forEach((item) => {
+                item.classList.remove('is-active');
+
+                const itemVideo = item.querySelector('.works-card__video');
+                if (itemVideo) {
+                    itemVideo.pause();
+                    itemVideo.currentTime = 0;
+                }
+            });
+
+            card.classList.add('is-active');
+
+            if (video) {
+                video.play().catch(() => {});
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+
+            card.classList.remove('is-active');
+        });
+    });
+
+    const grid = document.querySelector('.js-works-grid');
+
+    if (!grid) return;
+
+    grid.addEventListener('mouseleave', () => {
+        cards.forEach((item) => {
+            item.classList.remove('is-active');
+
+            const itemVideo = item.querySelector('.works-card__video');
+            if (itemVideo) {
+                itemVideo.pause();
+                itemVideo.currentTime = 0;
+            }
+        });
+    });
+}
+
+function worksParallax() {
+    const cards = document.querySelectorAll('.works-card');
+
+    if (!cards.length) return;
+
+    const mediaQuery = window.matchMedia('(min-width: 1025px)');
+    let rafId = null;
+    let isRunning = false;
+
+    const items = [...cards].map((card) => {
+        const parallax = card.querySelector('.works-card__parallax');
+
+        return {
+            card,
+            parallax,
+            currentY: 0,
+            targetY: 0,
+        };
+    }).filter(item => item.parallax);
+
+    if (!items.length) return;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const updateTargets = () => {
+        if (!mediaQuery.matches) {
+            items.forEach((item) => {
+                item.targetY = 0;
+                item.currentY = 0;
+                item.parallax.style.transform = 'translate3d(0, 0, 0)';
+            });
+            return;
+        }
+
+        const windowHeight = window.innerHeight;
+
+        items.forEach((item) => {
+            const rect = item.card.getBoundingClientRect();
+
+            const progress = (rect.top + rect.height) / (windowHeight + rect.height);
+            const centered = 0.5 - progress;
+
+            // было 36 — это заметно. Делаем гораздо мягче
+            item.targetY = clamp(centered * 38, -9, 9);
+        });
+    };
+
+    const animate = () => {
+        let shouldContinue = false;
+
+        items.forEach((item) => {
+            item.currentY += (item.targetY - item.currentY) * 0.08;
+
+            if (Math.abs(item.targetY - item.currentY) > 0.02) {
+                shouldContinue = true;
+            }
+
+            item.parallax.style.transform = `translate3d(0, ${item.currentY.toFixed(3)}px, 0)`;
+        });
+
+        if (shouldContinue) {
+            rafId = requestAnimationFrame(animate);
+        } else {
+            rafId = null;
+            isRunning = false;
+        }
+    };
+
+    const requestTick = () => {
+        updateTargets();
+
+        if (!isRunning) {
+            isRunning = true;
+            rafId = requestAnimationFrame(animate);
+        }
+    };
+
+    requestTick();
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick);
+    mediaQuery.addEventListener('change', requestTick);
+}
+
+function sloganWordsRotate() {
+    const wrapper = document.querySelector('.contact-cta__words-inner');
+    if (!wrapper) return;
+
+    const words = wrapper.querySelectorAll('.contact-cta__word');
+    if (!words.length) return;
+
+    let currentIndex = 0;
+    let wordHeight = words[0].getBoundingClientRect().height;
+    let intervalId = null;
+
+    const updatePosition = () => {
+        wrapper.style.transform = `translateY(-${currentIndex * wordHeight}px)`;
+    };
+
+    const updateSizes = () => {
+        wordHeight = words[0].getBoundingClientRect().height;
+        updatePosition();
+    };
+
+    const startRotation = () => {
+        if (intervalId) clearInterval(intervalId);
+
+        intervalId = setInterval(() => {
+            currentIndex = (currentIndex + 1) % words.length;
+            updatePosition();
+        }, 2200);
+    };
+
+    updateSizes();
+    startRotation();
+
+    let resizeTimeout = null;
+
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+
+        resizeTimeout = setTimeout(() => {
+            updateSizes();
+        }, 100);
+    });
+}
+
+function initFloatingLabels() {
+    const fields = document.querySelectorAll('.contact-form__field');
+
+    fields.forEach((field) => {
+        const input = field.querySelector('input, textarea');
+
+        if (!input) return;
+
+        const toggleFilled = () => {
+            if (input.value.trim() !== '') {
+                field.classList.add('is-filled');
+            } else {
+                field.classList.remove('is-filled');
+            }
+        };
+
+        toggleFilled();
+        input.addEventListener('input', toggleFilled);
+        input.addEventListener('blur', toggleFilled);
     });
 }
 
@@ -658,40 +442,26 @@ function initAOS() {
 // App init
 // =========================
 function initApp() {
-    // 1) Lenis
-    lenis = initLenis();
+    const alreadyShown = sessionStorage.getItem('preloader-shown');
 
-    // 2) Header menu (важно: до anchor scroll, чтобы закрывать меню перед скроллом)
-    const headerMenu = initHeaderMobileMenu({ lenisInstance: lenis });
+    preloaderAnimation();
+    initPageTransitions();
 
-    // 3) Smooth anchxors (закрыть меню перед прокруткой)
-    initAnchorScroll(lenis, {
-        onBeforeScroll: () => headerMenu.close(),
-    });
+    if (alreadyShown) {
+        pageEnterAnimation();
+    }
 
-    // 4) Benefits progress
-    initBenefitsProgress(lenis);
+    initSmoothScroll();
 
-    initLineProgress(lenis);
-
-    // 5) Popups
-    new PopupManager(lenis);
-
-    new HeaderAnimation();
-
-    // 6) UI effects
-    initTilt();
-    initCardsEntrance();
-
-    // 7) Lottie
-    initLottie();
-
-    initBrandsMarquee();
-
-    initCtaForm();
-
-    // 8) AOS - ДОБАВЬ ЭТО
-    initAOS();
+    headerDropdown();
+    headerSticky();
+    initCustomCursor('.offer__wrapper');
+    initCustomCursor('.quote-block');
+    initNumbersAnimation();
+    worksCards();
+    worksParallax();
+    sloganWordsRotate();
+    initFloatingLabels();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

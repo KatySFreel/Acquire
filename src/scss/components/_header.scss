@@ -1,258 +1,280 @@
-// Базовые стили для обеих шапок
 .header {
-  left: 50%;
-  transform: translateX(-50%);
+  position: sticky;
+  top: 0;
   z-index: 100;
   width: 100%;
-  pointer-events: auto;
-}
 
-// Absolute шапка (изначальная)
-.header--absolute {
-  position: absolute;
-  top: 15px;
-  opacity: 1;
-  transition: opacity 0.4s cubic-bezier(0, 0, 0.8, 1.0);
-
-  @include xl { top: 30px; }
-
-  // Скрываем когда появляется fixed
-  &.is-hidden {
+  &--dark {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
+    transform: translateY(-100%);
+    mix-blend-mode: difference;
+
+    transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease,
+            transform 0.3s ease;
+
+
+    &.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
   }
 }
 
-// Fixed шапка (появляется при скролле)
-.header--fixed {
-  position: fixed;
-  top: 15px;
-  transform: translateX(-50%) translateY(-100%);
-  opacity: 0;
-
-  // Класс для плавной анимации
-  &.transtime {
-    transition: transform 0.4s cubic-bezier(0, 0, 0.8, 1.0),
-    opacity 0.4s cubic-bezier(0, 0, 0.8, 1.0);
-  }
-
-  // Когда проскроллили - шапка выезжает
-  &.is-visible {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-.header-container {
-  border-radius: 16px;
-  border: 1px solid var(--border-light, rgba(255, 255, 255, 0.05));
-  background: rgba(13, 16, 18, 0.30);
-  backdrop-filter: blur(12.5px);
-  will-change: transform;
-  transform: translateZ(0);
-  width: 100%;
-
-  @include xl {
-    border-radius: 25px;
-  }
-}
-
-.header__wrapper {
-  display: flex;
-  align-items: center;
-  height: 58px;
+.header__inner {
   position: relative;
-  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 40px;
+  padding-left: 40px;
+  backdrop-filter: blur(5px);
+  background: rgba(250, 251, 252, 0.05);
+  border-radius: 0 0 4px 4px;
 
   @include lg {
-    padding: 0 18px 0 40px;
-    height: 77px;
+    padding-left: 20px;
+  }
+
+  @include md {
+    row-gap: 12px;
   }
 }
 
 .header__logo {
-  width: 112px;
-  height: 21px;
-  display: block;
-  margin-bottom: 5px;
-}
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
 
-.header__navigation {
-  position: relative;
-  left: calc(50% - 112px);
-  transform: translateX(-50%);
-  z-index: 1;
-  display: none;
-
-  @include lg {
+  img {
     display: block;
+    width: auto;
+    height: 23px;
+
+    @include lg {
+      height: 26px;
+    }
+
+    @include md {
+      height: 24px;
+    }
   }
 }
 
-.header__menu {
+.header__nav {
+  margin-left: 50px;
+  margin-right: auto;
+
+  @include md {
+    position: absolute;
+    bottom: calc(100% - 75px);
+    margin: 0;
+  }
+}
+
+.header__cta {
+  flex-shrink: 0;
+  z-index: 41;
+}
+
+.nav__item {
+  position: relative;
+  height: 100%;
+
+  &--has-dropdown {
+    &:hover {
+      .nav__dropdown {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+    }
+
+    &:hover .nav__arrow {
+      transform: rotate(180deg);
+    }
+
+    &.is-open {
+      .nav__dropdown {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav__arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.nav__toggle {
+  cursor: pointer;
+}
+
+.nav__link,
+.nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    color: var(--yellow-accent);
+  }
+
+  @include md {
+    font-size: 16px;
+  }
+}
+
+.nav__arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav__list {
   display: flex;
   align-items: center;
-  gap: 48px;
-  color: var(--back, #F0EFEB);
-  font-family: "FunnelDisplay-Medium", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  li {
-    cursor: pointer;
-    transition: color 0.2s;
-
-    @include hover {
-      color: var(--accent, #E61700);
-    }
-  }
-}
-
-.header__burger {
-  display: inline-flex;
-  margin-left: auto;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
+  gap: 30px;
+  height: 100%;
 
   @include lg {
-    display: none;
+    gap: 34px;
+  }
+
+  @include md {
+    justify-content: space-between;
+    width: calc(100vw - 40px);
+    gap: min(16px, 24px);
   }
 }
 
-.header__btn {
-  &--desc {
-    display: none;
-
-    @include lg {
-      display: flex;
-    }
-  }
-
-  &--mob {
-    display: flex;
-    width: 100%;
-
-    @include lg {
-      display: none;
-    }
-  }
-}
-
-/* mobile menu по умолчанию скрыто анимацией */
-.header__mobile {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  padding: 30px 20px 20px 20px;
-  flex: 1;
-  min-height: 0;
-
-  /* анимация скрытия */
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 6px;
+  width: 387px;
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-12px);
-  filter: blur(6px);
-  transition:
-          opacity 0.28s ease,
-          transform 0.28s ease,
-          filter 0.28s ease,
-          visibility 0.28s ease;
+  transform: translateY(14px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
 
-  @include lg {
-    display: none;         /* на десктопе мобильного меню нет */
+  @include md {
+    width: calc(100vw - 40px);
+    top: calc(100% + 10px);
   }
 }
 
-@media (max-width: 1023px) {
-  .header-container {
-    overflow: hidden;
-    transition: height 0.28s ease;
-    height: 58px; /* закрытое состояние = высота wrapper на мобиле */
-  }
-
-  .header-container.is-open {
-    height: calc(100vh - 30px); /* раскрыто */
-    height: calc(100dvh - 30px); /* раскрыто */
-    height: calc(100svh - 30px); /* раскрыто */
-  }
-
-  .header-container.is-open .header__mobile {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-    filter: blur(0);
+.dropdown {
+  @include md {
+    padding: 8px 0 0;
   }
 }
 
-/* на мобиле: при открытии делаем шапку высокой, чтобы меню было внутри */
-@media (max-width: 1023px) {
-  .header-container {
-    overflow: hidden; /* чтобы внутри всё красиво обрезалось по радиусу */
-  }
-
-  .header.is-open {
-    height: calc(100vh - 30px); /* 30px сверху и 30px снизу условно */
-    height: calc(100dvh - 30px); /* 30px сверху и 30px снизу условно */
-    height: calc(100svh - 30px); /* 30px сверху и 30px снизу условно */
-  }
-}
-
-.header__mobile {
-  position: static;
-  height: calc(100vh - 90px);
-  height: calc(100dvh - 90px);
-  height: calc(100svh - 90px);
-  flex: 1; /* займет оставшееся место в хедере */
-}
-
-.header__mobile-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-
-  li {
-    color: var(--back, #F0EFEB);
-    font-family: "FunnelDisplay-Medium", sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-}
-
-.header__mobile-contacts {
-  margin-top: auto;
+.dropdown__list {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 20px;
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+  background: rgba(250, 251, 252, 0.1);
 }
 
-.header__mobile-title {
-  color: var(--back, #F0EFEB);
-  font-family: "FunnelDisplay-Bold", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-bottom: 4px;
+.dropdown__icon {
+  transform: rotate(-90deg);
+  color: var(--yellow-accent);
 }
 
-.header__mobile-contact {
-  color: var(--link, rgba(255, 255, 255, 0.50));
-  font-family: "FunnelDisplay-Regular", sans-serif;
-  font-size: 16px;
-  font-style: normal;
+.dropdown__item {
+  @include hover {
+    .dropdown__link {
+      color: var(--yellow-accent);
+    }
+
+    .dropdown__icon {
+      opacity: 1;
+    }
+  }
+}
+
+.dropdown__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--white);
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    color: var(--yellow-accent);
+  }
+
+  &:hover .dropdown__icon {
+    opacity: 1;
+  }
 }
 
-.is-lock {
-  overflow: hidden;
+.dropdown__icon {
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-audit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 30px;
+  border-radius: 0 0 4px 4px;
+  background: var(--blue-accent);
+  color: var(--white);
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background 0.2s ease, opacity 0.2s ease;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 110;
+
+  @include hover() {
+    background: var(--yellow-accent);
+  }
+
+  @include lg {
+    min-height: 42px;
+    padding: 10px 22px;
+  }
 }

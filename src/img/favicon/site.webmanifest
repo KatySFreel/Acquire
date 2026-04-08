@@ -1,11 +1,6 @@
 {
- "name": "Monolith Lab",
-  "short_name": "Monolith",
-  "description": "Global branding studio",
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#E61700",
-  "background_color": "#0D1012",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

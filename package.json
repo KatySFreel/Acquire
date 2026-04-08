@@ -58,9 +58,6 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@studio-freight/lenis": "^1.0.42",
-    "aos": "^2.3.4",
-    "graph-modal": "^1.0.7",
-    "graph-tabs": "^1.0.2",
     "inputmask": "^5.0.8",
     "just-validate": "^4.3.0",
     "rellax": "^1.12.1",

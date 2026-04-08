@@ -5,10 +5,8 @@
 @import "settings";
 
 // подключения компонентов
+@import "./components/preloader";
 @import "./components/header";
 @import "./components/footer";
-
-
 @import "./index";
-@import "./_manifest";
 @import "./_legal";

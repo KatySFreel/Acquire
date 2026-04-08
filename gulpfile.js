@@ -9,7 +9,6 @@ import { scripts } from './gulp/tasks/scripts.js';
 import { scriptsBackend } from './gulp/tasks/scripts-backend.js';
 import { resources } from './gulp/tasks/resources.js';
 import { images } from './gulp/tasks/images.js';
-import { webpImages } from './gulp/tasks/webp.js';
 import { htmlInclude } from './gulp/tasks/html-include.js';
 import { cacheTask } from './gulp/tasks/cache.js';
 import { rewrite } from './gulp/tasks/rewrite.js';
@@ -37,12 +36,12 @@ const watcher = () => {
   gulp.watch(`${app.paths.base.src}/*.html`, htmlInclude);
   gulp.watch(`${app.paths.resourcesFolder}/**`, resources);
   gulp.watch(`${app.paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
-  gulp.watch(`${app.paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
 }
 
-const dev = gulp.series(clean, htmlInclude, scripts, styles, resources, images, webpImages, watcher);
-const backend = gulp.series(clean, htmlInclude, scriptsBackend, stylesBackend, resources, images, webpImages);
-const build = gulp.series(clean, htmlInclude, scripts, styles, resources, images, webpImages, htmlMinify);
+const dev = gulp.series(clean, htmlInclude, scripts, styles, resources, images, watcher);
+const backend = gulp.series(clean, htmlInclude, scriptsBackend, stylesBackend, resources, images);
+const build = gulp.series(clean, htmlInclude, scripts, styles, resources, images, htmlMinify);
+
 const cache = gulp.series(cacheTask, rewrite);
 const zip = zipFiles;
 
