@@ -1,15 +1,47 @@
+import Lenis from '@studio-freight/lenis';
+
 // =========================
 // App state
 // =========================
+const App = {
+    lenis: null,
+    pageLeaveTimeout: null,
+};
 
-import Lenis from '@studio-freight/lenis';
+// =========================
+// Helpers
+// =========================
+function isFinePointer() {
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+}
 
-function initSmoothScroll() {
+function isTouchDevice() {
+    return window.matchMedia('(hover: none)').matches;
+}
+
+function isInternalLink(link) {
+    if (!link) return false;
+    if (!link.href) return false;
+    if (link.target === '_blank') return false;
+    if (link.hasAttribute('download')) return false;
+    if (link.hasAttribute('data-no-transition')) return false;
+
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#')) return false;
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) return false;
+
+    return link.hostname === window.location.hostname;
+}
+
+// =========================
+// Smooth scroll / Lenis
+// =========================
+function initLenis() {
     const lenis = new Lenis({
-        duration: 1.1, // 👈 скорость (1 = быстрее, 1.5–2 = медленнее)
-        easing: (t) => 1 - Math.pow(1 - t, 3), // мягкость
-        smooth: true,
+        duration: 1.2,
+        smoothWheel: true,
         smoothTouch: false,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
     });
 
     function raf(time) {
@@ -18,13 +50,57 @@ function initSmoothScroll() {
     }
 
     requestAnimationFrame(raf);
+
+    App.lenis = lenis;
+    return lenis;
 }
 
+function initAnchorScroll(lenis) {
+    if (!lenis) return;
+
+    const anchors = document.querySelectorAll('a[href^="#"]');
+
+    anchors.forEach((anchor) => {
+        anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
+
+            if (!href || href === '#') return;
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+
+            lenis.scrollTo(target, {
+                duration: 1.1,
+            });
+        });
+    });
+
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+
+        if (target) {
+            requestAnimationFrame(() => {
+                lenis.scrollTo(target, {
+                    duration: 1.1,
+                });
+            });
+        }
+    }
+}
+
+// =========================
+// Preloader / page transitions
+// =========================
 function preloaderAnimation() {
     const preloader = document.getElementById('preloader');
     const logo = document.querySelector('.preloader__logo');
 
-    if (!preloader || !logo) return;
+    if (!preloader || !logo) {
+        document.body.classList.remove('is-loading');
+        return;
+    }
 
     const visiblePause = 900;
     const alreadyShown = sessionStorage.getItem('preloader-shown');
@@ -39,50 +115,30 @@ function preloaderAnimation() {
     document.body.classList.add('is-loading');
 
     logo.addEventListener('animationend', (event) => {
-        if (event.animationName === 'logoReveal') {
-            setTimeout(() => {
-                logo.classList.add('is-hide');
+        if (event.animationName !== 'logoReveal') return;
 
-                logo.addEventListener('animationend', (e) => {
-                    if (e.animationName === 'logoHide') {
-                        preloader.classList.add('is-loaded');
+        setTimeout(() => {
+            logo.classList.add('is-hide');
 
-                        preloader.addEventListener('transitionend', () => {
-                            preloader.remove();
-                            document.body.classList.remove('is-loading');
-                        }, { once: true });
-                    }
+            logo.addEventListener('animationend', (e) => {
+                if (e.animationName !== 'logoHide') return;
+
+                preloader.classList.add('is-loaded');
+
+                preloader.addEventListener('transitionend', () => {
+                    preloader.remove();
+                    document.body.classList.remove('is-loading');
                 }, { once: true });
-            }, visiblePause);
-        }
+            }, { once: true });
+        }, visiblePause);
     }, { once: true });
 }
 
-function initPageTransitions() {
-    const links = document.querySelectorAll('a[href]');
-
-    links.forEach((link) => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-
-            if (!href) return;
-            if (href.startsWith('#')) return;
-            if (link.target === '_blank') return;
-            if (link.hasAttribute('download')) return;
-            if (link.hostname !== window.location.hostname) return;
-
-            e.preventDefault();
-
-            document.body.classList.add('is-page-leaving');
-
-            setTimeout(() => {
-                window.location.href = href;
-            }, 600);
-        });
-    });
-}
-
 function pageEnterAnimation() {
+    const transition = document.querySelector('.page-transition');
+
+    document.body.classList.remove('is-page-leaving');
+    document.body.classList.remove('is-page-entering-ready');
     document.body.classList.add('is-page-entering');
 
     requestAnimationFrame(() => {
@@ -90,8 +146,6 @@ function pageEnterAnimation() {
             document.body.classList.add('is-page-entering-ready');
         });
     });
-
-    const transition = document.querySelector('.page-transition');
 
     if (!transition) return;
 
@@ -103,6 +157,50 @@ function pageEnterAnimation() {
     }, { once: true });
 }
 
+function initPageTransitions() {
+    const links = document.querySelectorAll('a[href]');
+
+    links.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            if (!isInternalLink(link)) return;
+
+            const href = link.getAttribute('href');
+            if (!href) return;
+
+            e.preventDefault();
+
+            document.body.classList.add('is-page-leaving');
+
+            clearTimeout(App.pageLeaveTimeout);
+            App.pageLeaveTimeout = setTimeout(() => {
+                window.location.href = href;
+            }, 600);
+        });
+    });
+}
+
+function initPageShowHandler() {
+    window.addEventListener('pageshow', (event) => {
+        const preloader = document.getElementById('preloader');
+
+        if (sessionStorage.getItem('preloader-shown') && preloader) {
+            preloader.remove();
+        }
+
+        document.body.classList.remove('is-loading');
+        document.body.classList.remove('is-page-leaving');
+
+        if (event.persisted) {
+            document.body.classList.remove('is-page-entering');
+            document.body.classList.remove('is-page-entering-ready');
+            pageEnterAnimation();
+        }
+    });
+}
+
+// =========================
+// Header
+// =========================
 function headerSticky() {
     const offerSection = document.querySelector('.offer');
     const darkHeader = document.querySelector('.main .header--dark');
@@ -111,8 +209,6 @@ function headerSticky() {
 
     function toggleDarkHeader() {
         const offerRect = offerSection.getBoundingClientRect();
-        const darkHeaderHeight = darkHeader.offsetHeight;
-
         const shouldShow = offerRect.bottom <= 0;
 
         darkHeader.classList.toggle('is-visible', shouldShow);
@@ -130,28 +226,28 @@ function headerDropdown() {
     const toggle = document.querySelector('.nav__toggle');
 
     if (!dropdownItem || !toggle) return;
+    if (!isTouchDevice()) return;
 
-    const isTouch = window.matchMedia('(hover: none)').matches;
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
 
-    if (isTouch) {
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
+        const isOpen = dropdownItem.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+    });
 
-            const isOpen = dropdownItem.classList.toggle('is-open');
-            toggle.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!dropdownItem.contains(e.target)) {
-                dropdownItem.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
+    document.addEventListener('click', (e) => {
+        if (!dropdownItem.contains(e.target)) {
+            dropdownItem.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 }
 
+// =========================
+// Custom cursor
+// =========================
 function initCustomCursor(targetSelector) {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (!isFinePointer()) return;
 
     const targets = document.querySelectorAll(targetSelector);
     if (!targets.length) return;
@@ -179,18 +275,20 @@ function initCustomCursor(targetSelector) {
     });
 }
 
+// =========================
+// Numbers animation
+// =========================
 function animateCounter(element, duration = 1800) {
     const endValue = parseInt(element.dataset.value, 10);
     const prefix = element.dataset.prefix || '';
     const suffix = element.dataset.suffix || '';
 
-    let startValue = 0;
+    const startValue = 0;
     const startTime = performance.now();
 
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-
         const easedProgress = 1 - Math.pow(1 - progress, 3);
         const currentValue = Math.floor(startValue + (endValue - startValue) * easedProgress);
 
@@ -226,19 +324,20 @@ function initNumbersAnimation() {
             obs.unobserve(entry.target);
         });
     }, {
-        threshold: 0.35
+        threshold: 0.35,
     });
 
     observer.observe(section);
 }
 
+// =========================
+// Works cards
+// =========================
 function worksCards() {
     const cards = document.querySelectorAll('.works-card');
-
     if (!cards.length) return;
 
     const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
-
     if (!isDesktop) return;
 
     cards.forEach((card) => {
@@ -273,7 +372,6 @@ function worksCards() {
     });
 
     const grid = document.querySelector('.js-works-grid');
-
     if (!grid) return;
 
     grid.addEventListener('mouseleave', () => {
@@ -291,7 +389,6 @@ function worksCards() {
 
 function worksParallax() {
     const cards = document.querySelectorAll('.works-card');
-
     if (!cards.length) return;
 
     const mediaQuery = window.matchMedia('(min-width: 1025px)');
@@ -307,7 +404,7 @@ function worksParallax() {
             currentY: 0,
             targetY: 0,
         };
-    }).filter(item => item.parallax);
+    }).filter((item) => item.parallax);
 
     if (!items.length) return;
 
@@ -327,11 +424,9 @@ function worksParallax() {
 
         items.forEach((item) => {
             const rect = item.card.getBoundingClientRect();
-
             const progress = (rect.top + rect.height) / (windowHeight + rect.height);
             const centered = 0.5 - progress;
 
-            // было 36 — это заметно. Делаем гораздо мягче
             item.targetY = clamp(centered * 38, -9, 9);
         });
     };
@@ -373,6 +468,9 @@ function worksParallax() {
     mediaQuery.addEventListener('change', requestTick);
 }
 
+// =========================
+// Contact CTA words
+// =========================
 function sloganWordsRotate() {
     const wrapper = document.querySelector('.contact-cta__words-inner');
     if (!wrapper) return;
@@ -383,6 +481,7 @@ function sloganWordsRotate() {
     let currentIndex = 0;
     let wordHeight = words[0].getBoundingClientRect().height;
     let intervalId = null;
+    let resizeTimeout = null;
 
     const updatePosition = () => {
         wrapper.style.transform = `translateY(-${currentIndex * wordHeight}px)`;
@@ -405,8 +504,6 @@ function sloganWordsRotate() {
     updateSizes();
     startRotation();
 
-    let resizeTimeout = null;
-
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
 
@@ -416,20 +513,19 @@ function sloganWordsRotate() {
     });
 }
 
+// =========================
+// Floating labels
+// =========================
 function initFloatingLabels() {
     const fields = document.querySelectorAll('.contact-form__field');
+    if (!fields.length) return;
 
     fields.forEach((field) => {
         const input = field.querySelector('input, textarea');
-
         if (!input) return;
 
         const toggleFilled = () => {
-            if (input.value.trim() !== '') {
-                field.classList.add('is-filled');
-            } else {
-                field.classList.remove('is-filled');
-            }
+            field.classList.toggle('is-filled', input.value.trim() !== '');
         };
 
         toggleFilled();
@@ -446,12 +542,14 @@ function initApp() {
 
     preloaderAnimation();
     initPageTransitions();
+    initPageShowHandler();
 
     if (alreadyShown) {
         pageEnterAnimation();
     }
 
-    initSmoothScroll();
+    const lenis = initLenis();
+    initAnchorScroll(lenis);
 
     headerDropdown();
     headerSticky();
