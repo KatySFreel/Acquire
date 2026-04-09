@@ -2,7 +2,6 @@
   position: relative;
   min-height: 864px;
   background: var(--dark-blue);
-  overflow: hidden;
 
   @include lg {
     min-height: 864px;
@@ -224,14 +223,15 @@
 
 // numbers
 .numbers {
-  padding: 110px 0;
+  padding: calc(110px - 40px) 0 110px;
+
 
   @include lg {
-    padding: 90px 0;
+    padding: calc(90px - 40px) 0 90px;
   }
 
   @include md {
-    padding: 70px 0;
+    padding: calc(70px - 40px) 0 70px;
   }
 }
 
@@ -312,8 +312,11 @@
   margin-left: auto;
   padding-left: 126px;
 
-  @include lg {
+  @include xl-1280 {
     padding: 0;
+  }
+
+  @include lg {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -332,6 +335,14 @@
 
   @include md {
     gap: 12px;
+  }
+
+  &:first-child {
+    margin-right: 150px;
+
+    @include xl-1280 {
+      margin: 0;
+    }
   }
 
   &:last-child {

@@ -145,11 +145,15 @@ input, textarea, select {
   text-transform: uppercase;
 
   @include lg {
-    font-size: 56px;
+    font-size: 50px;
   }
 
   @include md {
-    font-size: 42px;
+    font-size: 40px;
+  }
+
+  span {
+    color: var(--blue-accent);
   }
 }
 

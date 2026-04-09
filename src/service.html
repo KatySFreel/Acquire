@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+<div class="site-container">
+  @include('partials/preloader.html')
+  <div class="page-transition"></div>
+
+  <section class="service-hero sticky-section">
+    @include('partials/header.html')
+
+    <div class="service-hero__wrapper">
+      <div class="service-hero__bg">
+        <video class="service-hero__video" autoplay muted loop playsinline preload="auto">
+          <source src="video/hero-video.webm" type="video/webm">
+          <source src="video/hero-video.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="service-hero__container">
+        <p class="service-hero__text">
+          AFFILIATE MARKETING AGENCY | LONDON | DUBAI
+        </p>
+
+        <h1 class="service-hero__title">
+          AFFILIATE PARTNERSHIPS
+        </h1>
+      </div>
+
+      <div class="custom-cursor" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    @include('partials/header-dark.html')
+
+    <section class="service-block">
+      <div class="container">
+        <div class="service-block__intro">
+          <h2 class="service-block__title h2">
+            <span>High-performing</span>
+            Affiliate Programmes
+          </h2>
+
+          <div class="service-block__content">
+            <p>
+              We understand the dynamic affiliate marketing landscape and we're here to help your business thrive.
+            </p>
+
+            <p>
+              We offer comprehensive affiliate program management services designed to streamline your operations and
+              maximise your results. Our team specialises in handling every aspect of your affiliate program,
+              ensuring seamless execution and optimal performance.
+            </p>
+          </div>
+
+          <button type="button" class="service-block__btn btn-arrow btn-arrow--full btn-reset">
+            <a href="#form">Request a free audit</a>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sub-services">
+      <div class="container">
+        <div class="sub-services__inner">
+          <h2 class="sub-services__title h2">
+            Our Affiliate Marketing <span>Services</span>
+          </h2>
+
+          <div class="sub-services__slider-wrap">
+            <button class="sub-services__nav sub-services__nav--prev btn-reset" type="button" aria-label="Previous service">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="img/svg/sprite.svg#arrow-max"></use>
+              </svg>
+            </button>
+
+            <div class="sub-services__slider swiper js-service-slider" aria-label="Affiliate marketing services slider">
+              <ul class="sub-services__list list-reset swiper-wrapper">
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    01
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Full-program management
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      We offer a variety of payment models and SLAs to support you. Whether you're launching a new
+                      affiliate programme or looking to optimise an existing one, we've got you covered.
+                    </p>
+                    <p>
+                      From inception to execution, we handle it all, including campaign setup, partner recruitment,
+                      reporting dashboard creation, and budget management.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    02
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Partner Recruitment
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      Building a strong network of affiliate partners is crucial for success. We leverage our extensive network of affiliate partners to identify strategic opportunities for collaboration and expansion.
+                    </p>
+                    <p>
+                      We employ proven strategies to recruit new partners and foster long-term relationships, expanding your reach and driving growth.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    03
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Tailored Approach
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      We design programmes with clear goals, smart commissioning and a balanced mix of partners so the channel supports wider business objectives.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    04
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Proven Results
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      With a track record of delivering exceptional results for our clients, we’re confident in our ability to help you achieve your objectives. Let our success stories speak for themselves.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    05
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Honest & Transparent
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      Transparency is key in our partnership. We provide detailed reports and analytics, so you can track the performance of your affiliate marketing campaigns in real-time.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    06
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Affiliate Specialists
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      Affiliate is our core focus. You get a dedicated team that acts as an extension of your brand. You get deep channel knowledge, structured management and continuous optimisation rather than set and forget.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    07
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Consultancy
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      Looking for expert guidance to launch a new programme or optimise an existing one? We provide tailored short- and long-term strategies for your internal teams to execute.
+                    </p>
+
+                    <p>
+                      Whether you’re new to affiliate marketing or your programme has plateaued, our specialists help unlock new opportunities for growth.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-services__item swiper-slide">
+                  <span class="sub-services__item-index">
+                    08
+                  </span>
+
+                  <h3 class="sub-services__item-title">
+                    Temporary Cover
+                  </h3>
+
+                  <div class="sub-services__item-text">
+                    <p>
+                      Looking to find cover for your affiliate manager going on leave? Provide a handover and access to the relevant system and we can help you manage your affiliate program until they return. All timeframes considered.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <button class="sub-services__nav sub-services__nav--next btn-reset" type="button" aria-label="Next service">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="img/svg/sprite.svg#arrow-max"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-advantages">
+      <div class="container">
+        <div class="service-advantages__inner">
+          <h2 class="service-advantages__title h2">
+            <span>Why choose</span> Acquire?
+          </h2>
+
+          <div class="service-advantages__content">
+            <ul class="service-advantages__list list-reset">
+              <li class="service-advantages__item">
+                <h3>Affiliate specialists</h3>
+                <p>
+                  Acquire is an affiliate first, performance marketing agency focused on helping brands unlock
+                  incremental revenue from the affiliate channel. Our commitment to driving incremental revenue through
+                  collaborative partnerships has made us a trusted partner to brands looking for a more strategic and
+                  accountable way to run their programme.
+                </p>
+              </li>
+
+              <li class="service-advantages__item">
+                <h3>Tailored strategies</h3>
+                <p>
+                  We design programmes with clear goals, smart commissioning and a balanced mix of partners so the
+                  channel supports wider business objectives. We don't set and forget. Publisher mix, placements,
+                  content, CPA tiers and reporting evolve as performance does, not once per quarter.
+                </p>
+              </li>
+            </ul>
+
+            <div class="service-advantages__media">
+              <picture class="service-advantages__image">
+                <source srcset="img/service/why-choose-md.jpg" media="(max-width: 390px)">
+                <source srcset="img/service/why-choose-lg.jpg" media="(max-width: 1024px)">
+                <img src="img/service/why-choose-xl.jpg" alt="Acquire affiliate team at work">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="numbers service-numbers">
+      <div class="container">
+        <div class="numbers__inner">
+          <div class="numbers__top">
+            <h2 class="numbers__title h2">
+              DRIVING GLOBAL GROWTH <span>THROUGH DIGITAL</span> EXCELLENCE
+            </h2>
+
+            <p class="numbers__text">
+              Over the last 12 years, we have
+            </p>
+
+            <button type="button" class="numbers__btn btn-reset">
+              <a class="btn-arrow" href="#">
+                <span>About Us</span>
+
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <use href="img/svg/sprite.svg#arrow-max"></use>
+                </svg>
+              </a>
+            </button>
+          </div>
+
+          <div class="numbers__items">
+            <div class="numbers__item">
+              <div class="numbers__value numbers__value--wide js-counter" data-value="200" data-prefix="$" data-suffix="m+">0</div>
+              <div class="numbers__label">Generated worldwide</div>
+            </div>
+
+            <div class="numbers__item">
+              <div class="numbers__value js-counter" data-value="60" data-suffix="+">0</div>
+              <div class="numbers__label">Brands</div>
+            </div>
+
+            <div class="numbers__item">
+              <div class="numbers__value js-counter" data-value="15" data-suffix="+">0</div>
+              <div class="numbers__label">Countries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-case">
+      <div class="container">
+        <div class="service-case__inner">
+          <h2 class="service-case__title h2">
+            Lancôme: <span>Driving Sustainable and Impactful Growth</span>
+          </h2>
+
+          <div class="service-case__brand">
+            <img src="img/service/logo1.png" alt="">
+          </div>
+
+          <div class="service-case__info">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M0 4.85453L5.64308 4.76937L8.68426 0L10.5427 5.45068L16 6.89852L11.4551 10.3392L11.6973 16L7.05668 12.7296L1.83038 14.819L3.42979 9.25478L0 4.85453Z" fill="#5F6C8C"/>
+            </svg>
+
+            <h3>Affiliate management</h3>
+
+            <p>
+              Acquire implemented a comprehensive affiliate marketing strategy tailored to Whittard of Chelsea's
+              unique brand and customer base.
+            </p>
+          </div>
+
+          <div class="service-case__metric">
+            <span class="service-case__metric-label">We achieved</span>
+            <span class="service-case__metric-value">+22%</span>
+            <span class="service-case__metric-text">YoY growth</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-faq" id="service-faq">
+      <div class="container">
+        <div class="service-faq__top">
+          <h2 class="service-faq__title h2">Frequently <span>Asked</span> Questions</h2>
+        </div>
+
+        <div class="service-faq__list" itemscope itemtype="https://schema.org/FAQPage">
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" open>
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">01</span>
+              <span class="service-faq__question-text">How does affiliate marketing work for brands?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  Affiliate marketing is a performance-based marketing channel where brands reward partners for driving
+                  measurable outcomes such as sales or leads. Affiliates promote products through content websites,
+                  media publishers, cashback platforms, loyalty programmes, and influencer channels using trackable
+                  links. When a customer completes a purchase through that link, the affiliate earns a commission.
+                  Because payment is tied to actual performance, affiliate marketing is considered one of the most
+                  cost-efficient digital marketing channels.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">02</span>
+              <span class="service-faq__question-text">What does an affiliate marketing agency actually do?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  An affiliate marketing agency manages strategy, partner recruitment, activation, commission planning,
+                  reporting and ongoing optimisation so the programme grows in a controlled and commercially efficient
+                  way.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">03</span>
+              <span class="service-faq__question-text">How long does it take for an affiliate programme to grow?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  Timelines vary by market, offer strength, tracking setup and recruitment pace, but most programmes
+                  need a focused launch period before they reach stable month-on-month growth.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">04</span>
+              <span class="service-faq__question-text">What types of affiliate partners can promote a brand?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  Typical partner groups include content publishers, media partners, deal sites, cashback and loyalty
+                  platforms, influencers, technology partners and strategic brand-to-brand collaborations.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">05</span>
+              <span class="service-faq__question-text">Do I need an affiliate marketing agency or can I run a programme in-house?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  In-house teams can manage programmes, but agencies often accelerate growth by bringing specialist
+                  recruitment networks, benchmarking, commercial experience and dedicated optimisation resource.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">06</span>
+              <span class="service-faq__question-text">How do brands track affiliate sales accurately?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  Accurate tracking usually depends on a reliable affiliate platform, validated conversion events,
+                  attribution rules, testing protocols and regular checks across landing pages and checkout flows.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">07</span>
+              <span class="service-faq__question-text">How much does affiliate programme management cost?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  Cost depends on programme scope, market complexity, number of partners, reporting depth and whether
+                  support covers strategy only, full management or a hybrid engagement.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="service-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="service-faq__question" itemprop="name">
+              <span class="service-faq__question-index">08</span>
+              <span class="service-faq__question-text">Is affiliate marketing suitable for all businesses?</span>
+              <span class="service-faq__question-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="service-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>
+                  Not every business is equally ready for affiliate growth, but brands with clear offers, stable
+                  operations, strong margins and a measurable conversion path usually benefit the most.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <script class="js-faq-schema" type="application/ld+json"></script>
+      </div>
+    </section>
+
+    <section class="contact-cta" id="form">
+      <div class="contact-cta__bg">
+        <video
+            class="contact-cta__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+        >
+          <source src="video/form-video.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="contact-cta__overlay"></div>
+
+      <div class="container">
+        <div class="contact-cta__inner">
+          <div class="contact-cta__slogan">
+            <p class="contact-cta__slogan-text">
+              We Drive
+              <span class="contact-cta__words">
+                <span class="contact-cta__words-inner">
+                  <span class="contact-cta__word">Revenue</span>
+                  <span class="contact-cta__word">Growth</span>
+                  <span class="contact-cta__word">Performance</span>
+                  <span class="contact-cta__word">Results</span>
+                </span>
+              </span>
+            </p>
+          </div>
+
+          <div class="contact-cta__content">
+            <h2 class="contact-cta__title h2">Get in touch</h2>
+
+            <p class="contact-cta__text">
+              If you're interested in taking your business to the next level, get in touch with us and our experts will contact you.
+            </p>
+
+            <form class="contact-form" action="#" method="post">
+              <div class="contact-form__grid">
+                <label class="contact-form__field">
+                  <span class="contact-form__label">First Name*</span>
+                  <input class="input-reset" type="text" name="first_name" required>
+                  <span class="contact-form__error-text">This field is required</span>
+                </label>
+
+                <label class="contact-form__field">
+                  <span class="contact-form__label">Last Name*</span>
+                  <input class="input-reset" type="text" name="last_name" required>
+                  <span class="contact-form__error-text">This field is required</span>
+                </label>
+
+                <label class="contact-form__field">
+                  <span class="contact-form__label">Email*</span>
+                  <input class="input-reset" type="email" name="email" required>
+                  <span class="contact-form__error-text">Please enter a valid email</span>
+                </label>
+
+                <label class="contact-form__field">
+                  <span class="contact-form__label">Phone*</span>
+                  <input class="input-reset" type="tel" name="phone" required>
+                  <span class="contact-form__error-text">Please enter a valid phone number</span>
+                </label>
+
+                <label class="contact-form__field contact-form__field--full">
+                  <span class="contact-form__label">Website</span>
+                  <input class="input-reset" type="text" name="website">
+                  <span class="contact-form__error-text">Error text</span>
+                </label>
+              </div>
+
+              <p class="contact-form__policy">
+                By submitting this form you agree to our
+                <a href="#">privacy policy</a>
+              </p>
+
+              <div class="contact-form__captcha"></div>
+
+              <button class="contact-form__submit btn-arrow btn-arrow--full btn-reset" type="submit">
+                Send form
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="awards">
+      <div class="awards__inner">
+        <h2 class="awards__title">Award-winning agency</h2>
+
+        <div class="awards__marquee">
+          <div class="awards__track">
+
+            <div class="awards__list">
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/1.png" alt="PMW Awards Global">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Best Affiliate &amp; Partnership Marketing Agency</li>
+                  <li>Silver Award</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/5.png" alt="Hello Partner">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Top 30 Global Affiliate Agencies</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/2.png" alt="Performance Marketing Awards">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Independent Agency</li>
+                  <li>Highly Commended</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Global Agency of the Year</li>
+                  <li>Highly Commended</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/4.png" alt="Golden Link Awards">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Agency of the Year</li>
+                  <li>Highly Commended</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="awards__list">
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/1.png" alt="PMW Awards Global">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Best Affiliate &amp; Partnership Marketing Agency</li>
+                  <li>Silver Award</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/5.png" alt="Hello Partner">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Top 30 Global Affiliate Agencies</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/2.png" alt="Performance Marketing Awards">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Independent Agency</li>
+                  <li>Highly Commended</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Global Agency of the Year</li>
+                  <li>Highly Commended</li>
+                </ul>
+              </article>
+
+              <article class="award-card">
+                <div class="award-card__logo">
+                  <img src="img/awards/4.png" alt="Golden Link Awards">
+                </div>
+
+                <ul class="award-card__meta list-reset">
+                  <li>Agency of the Year</li>
+                  <li>Highly Commended</li>
+                </ul>
+              </article>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  @include('partials/footer.html')
+</div>
+</body>
+</html>

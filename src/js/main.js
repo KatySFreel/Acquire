@@ -1,4 +1,6 @@
 import Lenis from '@studio-freight/lenis';
+import Swiper from 'swiper';
+import { Navigation } from 'swiper/modules';
 
 // =========================
 // App state
@@ -202,7 +204,7 @@ function initPageShowHandler() {
 // Header
 // =========================
 function headerSticky() {
-    const offerSection = document.querySelector('.offer');
+    const offerSection = document.querySelector('.sticky-section');
     const darkHeader = document.querySelector('.main .header--dark');
 
     if (!offerSection || !darkHeader) return;
@@ -534,6 +536,70 @@ function initFloatingLabels() {
     });
 }
 
+function initFaqSchema() {
+    const schemaNode = document.querySelector('.js-faq-schema');
+    const faqItems = document.querySelectorAll('.service-faq__item');
+
+    if (!schemaNode || !faqItems.length) return;
+
+    const entities = [...faqItems].map((item) => {
+        const question = item.querySelector('.service-faq__question');
+        const answer = item.querySelector('[itemprop="text"]');
+
+        const questionText = question ? question.textContent.trim() : '';
+        const answerText = answer ? answer.textContent.replace(/\s+/g, ' ').trim() : '';
+
+        if (!questionText || !answerText) return null;
+
+        return {
+            '@type': 'Question',
+            name: questionText,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: answerText,
+            },
+        };
+    }).filter(Boolean);
+
+    if (!entities.length) return;
+
+    schemaNode.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: entities,
+    });
+}
+
+function initServiceSlider() {
+    const slider = document.querySelector('.js-service-slider');
+    if (!slider) return;
+
+    new Swiper(slider, {
+        modules: [Navigation],
+        speed: 700,
+        slidesPerView: 1.08,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.sub-services__nav--next',
+            prevEl: '.sub-services__nav--prev',
+        },
+        breakpoints: {
+            391: {
+                slidesPerView: 1.02,
+                spaceBetween: 16,
+            },
+            769: {
+                slidesPerView: 1.5,
+                spaceBetween: 20,
+            },
+            1025: {
+                slidesPerView: 2.8,
+                spaceBetween: 20,
+            },
+        },
+    });
+}
+
 // =========================
 // App init
 // =========================
@@ -555,11 +621,14 @@ function initApp() {
     headerSticky();
     initCustomCursor('.offer__wrapper');
     initCustomCursor('.quote-block');
+    initCustomCursor('.service-hero__wrapper');
     initNumbersAnimation();
     worksCards();
     worksParallax();
     sloganWordsRotate();
     initFloatingLabels();
+    initFaqSchema();
+    initServiceSlider();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
