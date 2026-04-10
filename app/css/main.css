@@ -524,7 +524,6 @@ body.is-page-entering.is-page-entering-ready .page-transition {
     position: absolute;
     bottom: calc(100% - 75px);
     margin: 0;
-    overflow-x: auto;
   }
 }
 
@@ -599,7 +598,7 @@ body.is-page-entering.is-page-entering-ready .page-transition {
 @media (max-width: 768px) {
   .nav__link,
   .nav__toggle {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -633,7 +632,7 @@ body.is-page-entering.is-page-entering-ready .page-transition {
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: calc(100vw - 40px);
-    gap: 16px;
+    gap: 11px;
   }
 }
 

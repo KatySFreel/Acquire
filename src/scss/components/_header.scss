@@ -76,7 +76,6 @@
     position: absolute;
     bottom: calc(100% - 75px);
     margin: 0;
-    overflow-x: auto;
   }
 }
 
@@ -145,7 +144,7 @@
   }
 
   @include md {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -167,7 +166,7 @@
   @include md {
     justify-content: space-between;
     width: calc(100vw - 40px);
-    gap: min(16px, 24px);
+    gap: min(11px, 24px);
   }
 }
 
