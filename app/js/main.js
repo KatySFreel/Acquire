@@ -11220,9 +11220,8 @@ function initApp() {
   initAnchorScroll(lenis);
   headerDropdown();
   headerSticky();
-  initCustomCursor('.offer__wrapper');
+  initCustomCursor('.sticky-section');
   initCustomCursor('.quote-block');
-  initCustomCursor('.service-hero__wrapper');
   initNumbersAnimation();
   worksCards();
   worksParallax();

@@ -1174,25 +1174,50 @@
 }
 
 .contact-cta__text {
-  color: var(--blue-grey);
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  max-width: 420px;
   margin-bottom: 60px;
-
-  @include lg {
-    max-width: 100%;
-  }
 
   @include md {
     margin-bottom: 40px;
   }
+
+  p {
+    color: var(--blue-grey);
+    font-family: "Roboto-Medium", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    max-width: 420px;
+
+    @include lg {
+      max-width: 100%;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
 }
 
 // contact-form
+.contact-form {
+  &--dark {
+    .contact-form__field input {
+      color: var(--dark-blue);
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill {
+      -webkit-text-fill-color: var(--dark-blue);
+      transition: background-color 9999s ease-in-out 0s;
+      -webkit-box-shadow: 0 0 0 1000px transparent inset;
+      box-shadow: 0 0 0 1000px transparent inset;
+    }
+  }
+}
+
 .contact-form__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

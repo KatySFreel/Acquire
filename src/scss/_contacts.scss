@@ -1,0 +1,286 @@
+.contacts-offer {
+  position: relative;
+  height: 100%;
+  background: var(--dark-blue);
+}
+
+.contacts-offer__wrapper {
+  position: relative;
+  margin-top: -40px;
+  overflow: hidden;
+
+  @media (hover: hover) and (pointer: fine) {
+    cursor: none;
+  }
+
+  &:before {
+    content: url("../img/service/grad.png");
+    position: absolute;
+    left: 50%;
+    transform: translateY(50%);
+    bottom: 270px;
+    width: 1920px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 1;
+    rotate: 90deg;
+    opacity: .7;
+
+    @include md {
+      content: none;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    cursor: none;
+  }
+}
+
+.contacts-offer__picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+}
+
+.contacts-offer__container {
+  width: 100%;
+  max-width: calc(1100px + 80px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+  padding: calc(205px - 40px) 40px;
+
+  @include lg {
+    gap: 24px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @include md {
+    gap: 20px;
+  }
+}
+
+.contacts-offer__title {
+  font-family: "BebasNeue-Regular", sans-serif;
+  text-transform: uppercase;
+  color: var(--white);
+  text-align: center;
+  font-size: 140px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 80%;
+
+  @include lg {
+    font-size: 70px;
+  }
+
+  @include md {
+    font-size: 50px;
+  }
+}
+
+
+//contacts-info
+.contacts-info {
+  position: relative;
+  overflow: hidden;
+  padding: calc(60px - 40px) 0 60px;
+
+  @include md {
+    padding: 0 0 40px;
+  }
+}
+
+.contacts-info__inner {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(340px, 1fr);
+  align-items: center;
+  gap: 40px;
+
+  @include lg {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+.contact-offices__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+
+  @include md {
+    gap: 20px;
+  }
+}
+
+.contact-offices__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 248px;
+  overflow: hidden;
+  border-radius: 6px;
+  height: 100%;
+
+  @include md {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    height: auto;
+  }
+
+  .contact-offices__card {
+    &:before {
+      content: url("../img/service/grad.png");
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+
+  &:first-child {
+    .contact-offices__card {
+      &:before {
+        left: 952px;
+        rotate: -200deg;
+        bottom: 0;
+      }
+    }
+  }
+
+  &:last-child {
+    .contact-offices__card {
+      &:before {
+        left: -880px;
+        bottom: 210px;
+      }
+    }
+  }
+}
+
+.contact-offices__map {
+  min-height: 248px;
+  filter: grayscale(100%);
+
+  @include md {
+    min-height: 190px;
+  }
+}
+
+.contact-offices__map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.contact-offices__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 248px;
+  padding: 20px;
+  color: var(--white);
+  background: var(--dark-blue);
+  position: relative;
+  overflow: hidden;
+
+  @include md {
+    min-height: auto;
+  }
+}
+
+.contact-offices__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: var(--white);
+  font-family: "BebasNeue-Regular", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  z-index: 1;
+
+  @include md {
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: var(--blue-text);
+  }
+}
+
+.contact-offices__info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 1;
+
+  @include md {
+    gap: 14px;
+  }
+}
+
+.contact-offices__info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.contact-offices__info-item svg,
+.contact-offices__phone svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: var(--blue-grey);
+}
+
+.contact-offices__info-item p,
+.contact-offices__phone {
+  color: var(--blue-text);
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+
+  @include md {
+    font-size: 14px;
+  }
+}
+
+.contact-offices__phone {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .2s ease-in-out;
+
+  @include hover {
+    color: var(--yellow-accent);
+  }
+}

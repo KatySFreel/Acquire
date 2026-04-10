@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+<div class="site-container">
+  @include('partials/preloader.html')
+  <div class="page-transition"></div>
+
+  <section class="contacts-offer sticky-section">
+    @include('partials/header.html')
+
+    <div class="contacts-offer__wrapper">
+      <picture class="contacts-offer__picture">
+        <source srcset="img/contacts/contact-md.jpg" media="(max-width: 390px)">
+        <source srcset="img/contacts/contact-lg.jpg" media="(max-width: 1024px)">
+        <img src="img/contacts/contact-xl.jpg" alt="Acquire affiliate team at work">
+      </picture>
+
+      <div class="contacts-offer__container">
+        <h1 class="contacts-offer__title">
+          Contact Us
+        </h1>
+      </div>
+
+      <div class="custom-cursor" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    @include('partials/header-dark.html')
+
+
+    <section class="contacts-info" id="form">
+        <div class="container">
+          <div class="contacts-info__inner">
+            <div class="contact-offices__list">
+              <article class="contact-offices__item">
+                <div class="contact-offices__map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.3078878484225!2d-0.07630612323645677!3d51.507567210690915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034825469545%3A0xf48d309f45cee71c!2sWeWork%20-%20Office%20Space%20%26%20Coworking!5e0!3m2!1sru!2sge!4v1775824187801!5m2!1sru!2sge" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="contact-offices__card">
+                  <h2 class="contact-offices__title">
+                    <svg viewBox="0 0 20 20" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#star"></use>
+                    </svg>
+
+                    London Office
+                  </h2>
+
+                  <div class="contact-offices__info">
+                    <div class="contact-offices__info-item">
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <use href="img/svg/sprite.svg#pin"></use>
+                      </svg>
+
+                      <p>
+                        Acquire<br>
+                        We Work, 1 St Katharine’s Way<br>
+                        London<br>
+                        E1W 1UN<br>
+                        United Kingdom
+                      </p>
+                    </div>
+
+                    <a class="contact-offices__phone" href="tel:+440203870643">
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <use href="img/svg/sprite.svg#phone"></use>
+                      </svg>
+                      <span>+44 (0)20 387 0643</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="contact-offices__item">
+                <div class="contact-offices__map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.3498493229345!2d55.14992627575933!3d25.0900160360329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b3f7bf160f5%3A0x715090f7c6a2a66e!2sThe%20Acquire%20Group!5e0!3m2!1sru!2sge!4v1775824341060!5m2!1sru!2sge" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="contact-offices__card">
+                  <h2 class="contact-offices__title">
+                    <svg viewBox="0 0 20 20" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#star"></use>
+                    </svg>
+
+                    Dubai Office
+                  </h2>
+
+                  <div class="contact-offices__info">
+                    <div class="contact-offices__info-item">
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <use href="img/svg/sprite.svg#pin"></use>
+                      </svg>
+
+                      <p>
+                        Acquire<br>
+                        Office 25, Level 38<br>
+                        Media One Tower<br>
+                        Dubai Media City<br>
+                        Dubai, UAE
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="contacts-info__content">
+              <h2 class="contact-cta__title h2">Get in touch</h2>
+
+              <div class="contact-cta__text contacts-info__text">
+                <p>
+                  Interested in working together?<br>
+                  Leave your details and our team will contact you to discuss your project and goals.
+                </p>
+
+                <p>
+                  We typically respond within one business day.
+                </p>
+              </div>
+
+              <form class="contact-form contact-form--dark" action="#" method="post">
+                <div class="contact-form__grid">
+                  <label class="contact-form__field contact-form__field--full">
+                    <span class="contact-form__label">First Name*</span>
+                    <input class="input-reset" type="text" name="first_name" required>
+                    <span class="contact-form__error-text">This field is required</span>
+                  </label>
+
+                  <label class="contact-form__field contact-form__field--full">
+                    <span class="contact-form__label">Last Name*</span>
+                    <input class="input-reset" type="text" name="last_name" required>
+                    <span class="contact-form__error-text">This field is required</span>
+                  </label>
+
+                  <label class="contact-form__field contact-form__field--full">
+                    <span class="contact-form__label">Email*</span>
+                    <input class="input-reset" type="email" name="email" required>
+                    <span class="contact-form__error-text">Please enter a valid email</span>
+                  </label>
+
+                  <label class="contact-form__field contact-form__field--full">
+                    <span class="contact-form__label">Phone*</span>
+                    <input class="input-reset" type="tel" name="phone" required>
+                    <span class="contact-form__error-text">Please enter a valid phone number</span>
+                  </label>
+
+                  <label class="contact-form__field contact-form__field--full">
+                    <span class="contact-form__label">Website</span>
+                    <input class="input-reset" type="text" name="website">
+                    <span class="contact-form__error-text">Error text</span>
+                  </label>
+                </div>
+
+                <p class="contact-form__policy">
+                  By submitting this form you agree to our
+                  <a href="#">privacy policy</a>
+                </p>
+
+                <div class="contact-form__captcha"></div>
+
+                <button class="contact-form__submit btn-arrow btn-arrow--full btn-reset" type="submit">
+                  Send form
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+  </main>
+
+  @include('partials/footer.html')
+</div>
+</body>
+</html>
