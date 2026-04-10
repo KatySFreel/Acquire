@@ -570,6 +570,69 @@ function initFaqSchema() {
     });
 }
 
+function initFaqAccordion() {
+    const items = document.querySelectorAll('.service-faq__item');
+    if (!items.length) return;
+
+    items.forEach((item) => {
+        const summary = item.querySelector('.service-faq__question');
+        const content = item.querySelector('.service-faq__answer');
+
+        if (!summary || !content) return;
+
+        if (item.hasAttribute('open')) {
+            content.style.height = `${content.scrollHeight}px`;
+        } else {
+            content.style.height = '0px';
+        }
+
+        summary.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const isOpen = item.hasAttribute('open');
+
+            if (isOpen) {
+                closeItem(item, content);
+            } else {
+                openItem(item, content);
+            }
+        });
+
+        content.addEventListener('transitionend', (e) => {
+            if (e.propertyName !== 'height') return;
+
+            if (item.hasAttribute('open')) {
+                content.style.height = 'auto';
+            }
+        });
+    });
+
+    function openItem(item, content) {
+        item.setAttribute('open', '');
+
+        content.style.height = '0px';
+
+        requestAnimationFrame(() => {
+            content.style.height = `${content.scrollHeight}px`;
+        });
+    }
+
+    function closeItem(item, content) {
+        content.style.height = `${content.scrollHeight}px`;
+
+        requestAnimationFrame(() => {
+            content.style.height = '0px';
+        });
+
+        content.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName !== 'height') return;
+
+            item.removeAttribute('open');
+            content.removeEventListener('transitionend', handler);
+        });
+    }
+}
+
 function initServiceSlider() {
     const slider = document.querySelector('.js-service-slider');
     if (!slider) return;
@@ -628,6 +691,7 @@ function initApp() {
     sloganWordsRotate();
     initFloatingLabels();
     initFaqSchema();
+    initFaqAccordion();
     initServiceSlider();
 }
 

@@ -571,7 +571,7 @@
   }
 
   @include md {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr minmax(100px, .6fr);
     gap: 20px;
   }
 }
@@ -617,6 +617,8 @@
 
   @include lg {
     grid-column: 1 / 2;
+    margin-left: 0;
+    gap: 8px;
   }
 
   svg {
@@ -631,13 +633,11 @@
     text-transform: uppercase;
     font-style: normal;
     font-weight: 400;
-    line-height: 100%; /* 30px */
-
+    line-height: 100%;
     grid-column: 2/3;
 
     @include md {
-      margin-bottom: 10px;
-      font-size: 22px;
+      font-size: 24px;
     }
   }
 
@@ -648,14 +648,14 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 140%; /* 22.4px */
+    line-height: 140%;
     grid-column: 1/3;
     grid-row: 2/3;
     padding-left: 24px;
 
     @include md {
-      max-width: 210px;
-      font-size: 11px;
+      max-width: 100%;
+      font-size: 14px;
     }
   }
 }
@@ -669,8 +669,8 @@
   color: var(--white);
 
   @include lg {
-    grid-column: 2 / 3;
-    grid-row: 2/3;
+    grid-column: 1/2;
+    grid-row: 3/4;
   }
 
   @include md {
@@ -716,193 +716,116 @@
   }
 }
 
-.service-overview__inner {
-  display: grid;
-  grid-template-columns: minmax(280px, 480px) minmax(0, 1fr);
-  gap: 40px;
+
+//faq
+.service-faq {
+  padding: 110px 0;
 
   @include lg {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    padding: 80px 0;
   }
-}
-
-.service-overview__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
 
   @include md {
-    grid-template-columns: 1fr;
-  }
-}
-
-.service-overview__item,
-.service-includes__card,
-.service-process__item {
-  padding: 28px;
-  border: 1px solid var(--blue-text);
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgb(250 251 252 / 0.82) 0%, #fff 100%);
-
-  @include md {
-    padding: 20px;
+    padding: 60px 0;
   }
 
-  h3 {
-    margin-bottom: 14px;
-    color: var(--dark-blue);
-    font-family: "BebasNeue-Regular", sans-serif;
-    font-size: 34px;
-    font-weight: 400;
-    line-height: 1;
-    text-transform: uppercase;
-
-    @include md {
-      font-size: 28px;
+  .container {
+    @include lg {
+      padding: 0;
     }
   }
-
-  p {
-    color: var(--blue-dark-text);
-    font-family: "Roboto-Medium", sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-  }
 }
 
-.service-includes {
-  background: #f2f5f8;
-}
-
-.service-includes__top,
-.service-process__top,
-.service-faq__top {
-  display: grid;
-  grid-template-columns: minmax(200px, 812px) 310px;
-  align-items: end;
-  justify-content: space-between;
-  gap: 20px 40px;
+.service-faq__title {
   margin-bottom: 40px;
 
+  @include lg {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
   @include md {
-    grid-template-columns: 1fr;
     margin-bottom: 30px;
   }
 }
 
-.service-includes__text,
-.service-process__text,
-.service-faq__text {
-  color: var(--blue-dark-text);
-  font-family: "Roboto-Medium", sans-serif;
-  font-size: 16px;
-  line-height: 1.4;
-}
-
-.service-includes__grid,
-.service-process__list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-
-  @include md {
-    grid-template-columns: 1fr;
-  }
-}
-
-.service-includes__card,
-.service-process__item {
-  position: relative;
-  min-height: 250px;
-
-  @include md {
-    min-height: 0;
-  }
-}
-
-.service-includes__index,
-.service-process__number {
-  display: inline-block;
-  margin-bottom: 28px;
-  color: var(--yellow-accent);
-  font-family: "BebasNeue-Regular", sans-serif;
-  font-size: 54px;
-  line-height: 0.9;
-}
-
-.service-process__item {
-  background: var(--dark-blue);
-  border-color: rgb(95 108 140 / 0.5);
-
-  h3 {
-    color: var(--white);
-  }
-
-  p {
-    color: var(--blue-text);
-  }
-}
-
 .service-faq__list {
-  border-top: 1px solid var(--blue-text);
+  padding-right: 166px;
+  padding-left: 166px;
+
+  @include lg {
+    padding: 0;
+  }
 }
 
 .service-faq__item {
   border-bottom: 1px solid var(--blue-text);
+  transition: all .2s ease-in-out;
 
   &[open] {
-    background: var(--dark-blue);
+    background: radial-gradient(62.34% 81.66% at 48.47% 1.26%, #4f6ca2 -7.31%, #1c2856 53.85%, var(--dark-blue) 100%);
+    border-bottom: 1px solid transparent;
+
+    @include lg {
+      background: radial-gradient(62.34% 81.66% at 48.47% -8.74%, #4f6ca2 -17.31%, #1c2856 73.85%, var(--dark-blue) 100%);
+    }
+
+    .service-faq__question {
+      border-bottom: 1px solid rgba(196, 217, 255, 0.10);
+    }
 
     .service-faq__question-index,
     .service-faq__question-text {
       color: var(--white);
     }
 
-    .service-faq__question-icon::before,
+    .service-faq__question-icon {
+      border: 1px solid var(--blue-dark-text);
+      color: var(--blue-dark-text);
+    }
+
+    .service-faq__question-index {
+      color: var(--blue-dark-text);
+    }
+
     .service-faq__question-icon::after {
-      color: var(--yellow-accent);
+      color: var(--blue-dark-text);
     }
 
     .service-faq__question-icon::before {
       opacity: 0;
+      color: var(--blue-dark-text);
     }
   }
-}
 
-.service-faq__top {
-  display: block;
-  margin-bottom: 28px;
-}
+  @include hover {
+    .service-faq__question-text {
+      color: var(--yellow-accent);
+    }
 
-.service-faq__title {
-  max-width: 760px;
-  color: var(--dark-blue);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+    .service-faq__question-icon {
+      border: 1px solid var(--yellow-accent);
+    }
 
-  span {
-    color: var(--blue-accent);
-  }
-
-  @include md {
-    max-width: 280px;
+    .service-faq__question-icon::before,
+    .service-faq__question-icon::after {
+      color: var(--yellow-accent);
+    }
   }
 }
 
 .service-faq__question {
   position: relative;
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr) 18px;
-  gap: 0 0;
-  align-items: start;
-  padding: 18px 20px 18px 0;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 20px 40px;
   cursor: pointer;
   list-style: none;
+  transition: all .2s ease-in-out;
 
-  @include md {
-    grid-template-columns: 26px minmax(0, 1fr) 14px;
-    padding: 14px 10px 14px 0;
+  @include lg {
+    padding: 20px;
   }
 }
 
@@ -911,42 +834,47 @@
 }
 
 .service-faq__question-index {
-  color: rgb(143 163 181 / 0.5);
-  font-family: "Roboto-Regular", sans-serif;
-  font-size: 10px;
-  line-height: 1.4;
+  width: 24px;
+  color: var(--blue-text);
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 110%;
+  transition: all .2s ease-in-out;
+
+  @include md {
+    font-size: 12px;
+  }
 }
 
 .service-faq__question-text {
   color: var(--dark-blue);
   font-family: "BebasNeue-Regular", sans-serif;
-  font-size: 50px;
+  font-size: 40px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-
-  @include lg {
-    font-size: 38px;
-  }
+  line-height: 100%;
+  width: 100%;
+  max-width: 797px;
+  transition: all .2s ease-in-out;
 
   @include md {
-    font-size: 24px;
+    font-size: 30px;
   }
 }
 
 .service-faq__question-icon {
   position: relative;
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 30px;
+  height: 30px;
   margin-top: 4px;
+  border-radius: 2px;
+  padding: 5px;
   border: 1px solid var(--blue-text);
-
-  @include md {
-    width: 14px;
-    height: 14px;
-  }
+  margin-left: auto;
+  transition: all .2s ease-in-out;
 }
 
 .service-faq__question-icon::before,
@@ -955,40 +883,45 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 8px;
+  width: 14px;
   height: 1px;
   background: currentColor;
-  color: rgb(143 163 181 / 0.5);
+  color: var(--blue-text);
   transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease, color 0.2s ease;
-
-  @include md {
-    width: 6px;
-  }
+  transition: all .2s ease-in-out;
 }
 
 .service-faq__question-icon::before {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.service-faq__answer {
-  max-width: 980px;
-  padding: 0 20px 24px 34px;
+.service-faq__answer-inner {
+  padding: 20px 0;
+}
 
-  @include md {
-    padding: 0 10px 16px 26px;
+.service-faq__answer {
+  height: 0;
+  overflow: hidden;
+  padding: 0 64px;
+  transition: height 0.35s ease;
+
+  @include lg {
+    max-width: 100%;
+    padding: 0 44px;
   }
 
   p {
+    width: 100%;
+    max-width: 698px;
     color: var(--blue-text);
     font-family: "Roboto-Regular", sans-serif;
     font-size: 14px;
     font-weight: 400;
-    line-height: 1.45;
+    font-style: normal;
+    line-height: 140%;
 
-    @include md {
-      font-size: 11px;
-      line-height: 1.4;
+    @include lg {
+      max-width: 100%;
     }
   }
 }
