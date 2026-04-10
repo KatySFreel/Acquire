@@ -1,0 +1,125 @@
+.awards {
+  padding: 110px 0;
+  overflow: hidden;
+
+  @include lg {
+    padding: 80px 0;
+  }
+
+  @include md {
+    padding: 60px 0;
+  }
+}
+
+.awards__inner {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.awards__title {
+  text-align: center;
+  color: var(--blue-accent);
+  font-family: "BebasNeue-Regular", sans-serif;
+  font-size: calc(167rem/16);
+  line-height: 1;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+
+  @include lg {
+    font-size: 12vw;
+  }
+
+  @include md {
+    font-size: 11vw;
+  }
+}
+
+.awards__marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.awards__track {
+  display: flex;
+  width: max-content;
+  animation: awards-scroll 30s linear infinite;
+}
+
+.awards__list {
+  display: flex;
+  align-items: flex-start;
+}
+
+.award-card {
+  flex: 0 0 auto;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+
+  @include md {
+    flex: 0 0 250px;
+  }
+}
+
+.award-card__logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+
+  @include md {
+    min-height: 52px;
+    margin-bottom: 18px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+    object-position: left center;
+  }
+}
+
+.award-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 80%;
+  margin: auto 0;
+}
+
+.award-card__meta li {
+  position: relative;
+  margin: 0;
+  padding-left: 26px;
+  color: var(--dark-blue);
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 14px */
+
+  &::before {
+    content: url("../img/star.svg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@keyframes awards-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

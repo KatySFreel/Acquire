@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+<div class="site-container">
+  @include('partials/preloader.html')
+  <div class="page-transition"></div>
+
+  <section class="news-offer sticky-section">
+    @include('partials/header.html')
+
+    <div class="news-offer__wrapper">
+      <picture class="news-offer__picture">
+        <source srcset="img/contacts/contact-md.jpg" media="(max-width: 390px)">
+        <source srcset="img/contacts/contact-lg.jpg" media="(max-width: 1024px)">
+        <img src="img/contacts/contact-xl.jpg" alt="Acquire affiliate team at work">
+      </picture>
+
+      <div class="news-offer__container">
+        <p class="news-offer__text">
+          From strategy to execution — aligned with your objectives.
+        </p>
+
+        <h1 class="news-offer__title">
+          NEws
+        </h1>
+      </div>
+
+      <div class="custom-cursor" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    @include('partials/header-dark.html')
+  </main>
+
+  @include('partials/footer.html')
+</div>
+</body>
+</html>

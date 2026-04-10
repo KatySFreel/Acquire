@@ -3,7 +3,7 @@
 
 @include('partials/head.html')
 
-<body class="page__body">
+<body class="page__body service-page">
 <div class="site-container">
   @include('partials/preloader.html')
   <div class="page-transition"></div>
@@ -272,48 +272,7 @@
       </div>
     </section>
 
-    <section class="numbers service-numbers">
-      <div class="container">
-        <div class="numbers__inner">
-          <div class="numbers__top">
-            <h2 class="numbers__title h2">
-              DRIVING GLOBAL GROWTH <span>THROUGH DIGITAL</span> EXCELLENCE
-            </h2>
-
-            <p class="numbers__text">
-              Over the last 12 years, we have
-            </p>
-
-            <button type="button" class="numbers__btn btn-reset">
-              <a class="btn-arrow" href="#">
-                <span>About Us</span>
-
-                <svg viewBox="0 0 20 20" aria-hidden="true">
-                  <use href="img/svg/sprite.svg#arrow-max"></use>
-                </svg>
-              </a>
-            </button>
-          </div>
-
-          <div class="numbers__items">
-            <div class="numbers__item">
-              <div class="numbers__value numbers__value--wide js-counter" data-value="200" data-prefix="$" data-suffix="m+">0</div>
-              <div class="numbers__label">Generated worldwide</div>
-            </div>
-
-            <div class="numbers__item">
-              <div class="numbers__value js-counter" data-value="60" data-suffix="+">0</div>
-              <div class="numbers__label">Brands</div>
-            </div>
-
-            <div class="numbers__item">
-              <div class="numbers__value js-counter" data-value="15" data-suffix="+">0</div>
-              <div class="numbers__label">Countries</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    @include('partials/numbers.html')
 
     <section class="service-case">
       <div class="container">
@@ -569,129 +528,7 @@
       </div>
     </section>
 
-    <section class="awards">
-      <div class="awards__inner">
-        <h2 class="awards__title">Award-winning agency</h2>
-
-        <div class="awards__marquee">
-          <div class="awards__track">
-
-            <div class="awards__list">
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/1.png" alt="PMW Awards Global">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Best Affiliate &amp; Partnership Marketing Agency</li>
-                  <li>Silver Award</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/5.png" alt="Hello Partner">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Top 30 Global Affiliate Agencies</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/2.png" alt="Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Independent Agency</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Global Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/4.png" alt="Golden Link Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-            </div>
-
-            <div class="awards__list">
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/1.png" alt="PMW Awards Global">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Best Affiliate &amp; Partnership Marketing Agency</li>
-                  <li>Silver Award</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/5.png" alt="Hello Partner">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Top 30 Global Affiliate Agencies</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/2.png" alt="Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Independent Agency</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Global Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/4.png" alt="Golden Link Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
+    @include('partials/awards.html')
   </main>
 
   @include('partials/footer.html')

@@ -511,7 +511,7 @@
 
 
 //service-numbers
-.service-numbers {
+.service-page .service-numbers {
   padding: 80px 0;
 
   @include lg {
@@ -523,6 +523,8 @@
   }
 }
 
+
+//service-case
 .service-case {
   padding: 40px 0;
   background: var(--dark-blue);

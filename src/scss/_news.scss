@@ -93,3 +93,232 @@
     font-size: 50px;
   }
 }
+
+.news-offer__text {
+  color: var(--blue-text);
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  text-transform: uppercase;
+
+  @include md {
+    font-size: 12px;
+  }
+}
+
+//news-articles
+.news-articles {
+  padding: 0 0 40px;
+  overflow: hidden;
+
+  @include md {
+    padding: 0 0 40px;
+  }
+}
+
+.news-articles__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+
+  @include lg {
+    gap: 20px;
+  }
+
+  @include md {
+    grid-template-columns: 1fr;
+  }
+}
+
+.news-articles-card {
+  position: relative;
+  aspect-ratio: 3/1.83;
+
+  &.is-active {
+    .news-articles-card__media-inner {
+      transform: translate3d(0, -14px, 0);
+    }
+
+    .news-articles-card__video {
+      opacity: 1;
+    }
+
+    .news-articles-card__button {
+      border-color: var(--yellow-accent);
+      background: var(--yellow-accent);
+    }
+  }
+
+  @include hover {
+    .news-articles-card__media-inner {
+      transform: translateY(-18px);
+    }
+
+    .news-articles-card__video {
+      opacity: 1;
+    }
+
+    .news-articles-card__button {
+      border-color: var(--yellow-accent);
+      background: var(--yellow-accent);
+    }
+  }
+}
+
+.news-articles-card__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.news-articles-card__parallax {
+  position: absolute;
+  inset: -6% 0;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.news-articles-card__media-inner {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.8s cubic-bezier(.22, .61, .36, 1);
+  will-change: transform;
+}
+
+.news-articles-card__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 116%;
+  object-fit: cover;
+
+  @include lg {
+    height: 100%;
+  }
+}
+
+.news-articles-card__video {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.news-articles-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+                  180deg,
+                  rgba(10, 14, 28, 0.08) 0%,
+                  rgba(10, 14, 28, 0.16) 35%,
+                  rgba(10, 14, 28, 0.34) 100%
+  );
+  z-index: 1;
+}
+
+.news-articles-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px;
+
+  @include md {
+    padding: 16px;
+  }
+}
+
+.news-articles-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.news-articles-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include lg {
+    gap: 0;
+  }
+}
+
+.news-articles-card__info-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  color: var(--blue-text);
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+
+  @include md {
+    font-size: 14px;
+  }
+
+  svg {
+    color: var(--blue-text);
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.news-articles-card__title {
+  color: var(--white);
+  font-family: "BebasNeue-Regular", sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+
+  @include lg {
+    font-size: 30px;
+  }
+
+  @include md {
+    font-size: 24px;
+  }
+}
+
+.news-articles-card__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.news-articles-card__button {
+  border-color: var(--white);
+  color: var(--white);
+  width: 100%;
+  max-width: 162px;
+  min-height: 40px;
+
+  @include lg {
+    width: 30px;
+    height: 30px;
+    min-height: inherit;
+    border-width: 1px;
+
+    span {
+      display: none;
+    }
+  }
+}
+
+.news-articles-card__tags {
+  color: var(--blue-text);
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: right;
+}

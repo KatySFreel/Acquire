@@ -89,48 +89,7 @@
   <main class="main">
     @include('partials/header-dark.html')
 
-    <section class="numbers">
-      <div class="container">
-        <div class="numbers__inner">
-          <div class="numbers__top">
-            <h2 class="numbers__title h2">
-              DRIVING GLOBAL GROWTH <span>THROUGH DIGITAL</span> EXCELLENCE
-            </h2>
-
-            <p class="numbers__text">
-              Over the last 12 years, we have
-            </p>
-
-            <button type="button" class="numbers__btn btn-reset">
-              <a class="btn-arrow" href="#">
-                <span>About Us</span>
-
-                <svg viewBox="0 0 20 20" aria-hidden="true">
-                  <use href="img/svg/sprite.svg#arrow-max"></use>
-                </svg>
-              </a>
-            </button>
-          </div>
-
-          <div class="numbers__items">
-            <div class="numbers__item">
-              <div class="numbers__value numbers__value--wide js-counter" data-value="200" data-prefix="$" data-suffix="m+">0</div>
-              <div class="numbers__label">Generated worldwide</div>
-            </div>
-
-            <div class="numbers__item">
-              <div class="numbers__value js-counter" data-value="60" data-suffix="+">0</div>
-              <div class="numbers__label">Brands</div>
-            </div>
-
-            <div class="numbers__item">
-              <div class="numbers__value js-counter" data-value="15" data-suffix="+">0</div>
-              <div class="numbers__label">Countries</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    @include('partials/numbers.html')
 
     <section class="expertise">
       <div class="expertise__inner">
@@ -326,10 +285,10 @@
           </div>
 
           <div class="works__grid js-works-grid">
-            <article class="works-card">
+            <article class="works-card js-animation-card">
               <a class="works-card__link" href="#" data-video="video/work-1.mp4">
                 <div class="works-card__media">
-                  <div class="works-card__parallax">
+                  <div class="works-card__parallax js-animation-card__parallax">
                     <div class="works-card__media-inner">
                       <img class="works-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
                       <video class="works-card__video" muted loop playsinline preload="metadata">
@@ -359,10 +318,10 @@
               </a>
             </article>
 
-            <article class="works-card">
+            <article class="works-card js-animation-card">
               <a class="works-card__link" href="#" data-video="video/work-2.mp4">
                 <div class="works-card__media">
-                  <div class="works-card__parallax">
+                  <div class="works-card__parallax js-animation-card__parallax">
                     <div class="works-card__media-inner">
                       <img class="works-card__image" src="img/works/work-2.jpg" alt="Aesop project">
                       <video class="works-card__video" muted loop playsinline preload="metadata">
@@ -392,10 +351,10 @@
               </a>
             </article>
 
-            <article class="works-card">
+            <article class="works-card js-animation-card">
               <a class="works-card__link" href="#" data-video="video/work-3.mp4">
                 <div class="works-card__media">
-                  <div class="works-card__parallax">
+                  <div class="works-card__parallax js-animation-card__parallax">
                     <div class="works-card__media-inner">
                       <img class="works-card__image" src="img/works/work-3.jpg" alt="Step One project">
                       <video class="works-card__video" muted loop playsinline preload="metadata">
@@ -425,10 +384,10 @@
               </a>
             </article>
 
-            <article class="works-card">
+            <article class="works-card js-animation-card">
               <a class="works-card__link" href="#" data-video="video/work-4.mp4">
                 <div class="works-card__media">
-                  <div class="works-card__parallax">
+                  <div class="works-card__parallax js-animation-card__parallax">
                     <div class="works-card__media-inner">
                       <img class="works-card__image" src="img/works/work-4.jpg" alt="Barry's project">
                       <video class="works-card__video" muted loop playsinline preload="metadata">
@@ -462,129 +421,7 @@
       </div>
     </section>
 
-    <section class="awards">
-      <div class="awards__inner">
-        <h2 class="awards__title">Award-winning agency</h2>
-
-        <div class="awards__marquee">
-          <div class="awards__track">
-
-            <div class="awards__list">
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/1.png" alt="PMW Awards Global">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Best Affiliate &amp; Partnership Marketing Agency</li>
-                  <li>Silver Award</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/5.png" alt="Hello Partner">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Top 30 Global Affiliate Agencies</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/2.png" alt="Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Independent Agency</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Global Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/4.png" alt="Golden Link Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-            </div>
-
-            <div class="awards__list">
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/1.png" alt="PMW Awards Global">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Best Affiliate &amp; Partnership Marketing Agency</li>
-                  <li>Silver Award</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/5.png" alt="Hello Partner">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Top 30 Global Affiliate Agencies</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/2.png" alt="Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Independent Agency</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Global Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-
-              <article class="award-card">
-                <div class="award-card__logo">
-                  <img src="img/awards/4.png" alt="Golden Link Awards">
-                </div>
-
-                <ul class="award-card__meta list-reset">
-                  <li>Agency of the Year</li>
-                  <li>Highly Commended</li>
-                </ul>
-              </article>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
+    @include('partials/awards.html')
 
     <section class="contact-cta" id="form">
       <div class="contact-cta__bg">

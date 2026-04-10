@@ -336,7 +336,7 @@ function initNumbersAnimation() {
 // Works cards
 // =========================
 function worksCards() {
-    const cards = document.querySelectorAll('.works-card');
+    const cards = document.querySelectorAll('.js-animation-card');
     if (!cards.length) return;
 
     const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
@@ -390,7 +390,7 @@ function worksCards() {
 }
 
 function worksParallax() {
-    const cards = document.querySelectorAll('.works-card');
+    const cards = document.querySelectorAll('.js-animation-card');
     if (!cards.length) return;
 
     const mediaQuery = window.matchMedia('(min-width: 1025px)');
@@ -398,7 +398,7 @@ function worksParallax() {
     let isRunning = false;
 
     const items = [...cards].map((card) => {
-        const parallax = card.querySelector('.works-card__parallax');
+        const parallax = card.querySelector('.js-animation-card__parallax');
 
         return {
             card,
