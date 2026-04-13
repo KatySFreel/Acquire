@@ -575,6 +575,21 @@
     max-width: 100%;
     margin-top: calc(24px - 16px);
   }
+
+  &--desk {
+    @include md {
+      display: none;
+    }
+  }
+
+  &--mob {
+    display: none;
+
+    @include md {
+      display: flex;
+      margin-top: 30px;
+    }
+  }
 }
 
 .works__grid {
@@ -1210,4 +1225,14 @@ textarea:-webkit-autofill {
 
 .quote-block__position {
   color: var(--blue-dark-text);
+}
+
+.hero {
+  .article-popular {
+    padding-bottom: 0;
+
+    @include md {
+      padding-bottom: 0;
+    }
+  }
 }

@@ -2323,6 +2323,22 @@ body.is-page-entering.is-page-entering-ready .page-transition {
     margin-top: 8px;
   }
 }
+@media (max-width: 768px) {
+  .works__btn--desk {
+    display: none;
+  }
+}
+.works__btn--mob {
+  display: none;
+}
+@media (max-width: 768px) {
+  .works__btn--mob {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 30px;
+  }
+}
 
 .works__grid {
   display: -ms-grid;
@@ -3037,6 +3053,15 @@ textarea:-webkit-autofill {
 
 .quote-block__position {
   color: var(--blue-dark-text);
+}
+
+.hero .article-popular {
+  padding-bottom: 0;
+}
+@media (max-width: 768px) {
+  .hero .article-popular {
+    padding-bottom: 0;
+  }
 }
 
 .service-hero {

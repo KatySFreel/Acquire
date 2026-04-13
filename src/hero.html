@@ -3,7 +3,7 @@
 
 @include('partials/head.html')
 
-<body class="page__body">
+<body class="page__body hero">
 <div class="site-container">
   @include('partials/preloader.html')
   <div class="page-transition"></div>
@@ -273,7 +273,7 @@
               Multi-vertical experience across our global portfolio
             </p>
 
-            <button type="button" class="works__btn btn-reset">
+            <button type="button" class="works__btn works__btn--desk btn-reset">
               <a class="works__link btn-arrow" href="/portfolio.html">
                 <span>View all</span>
 
@@ -417,6 +417,16 @@
               </a>
             </article>
           </div>
+
+          <button type="button" class="works__btn works__btn--mob btn-reset">
+            <a class="works__link btn-arrow" href="/portfolio.html">
+              <span>View all</span>
+
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="img/svg/sprite.svg#arrow-max"></use>
+              </svg>
+            </a>
+          </button>
         </div>
       </div>
     </section>
