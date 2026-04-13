@@ -7,33 +7,344 @@
 <div class="site-container">
   @include('partials/preloader.html')
   <div class="page-transition"></div>
-
-  <section class="news-offer sticky-section">
+  <div class="article-offer sticky-section">
     @include('partials/header.html')
-
-    <div class="news-offer__wrapper">
-      <picture class="news-offer__picture">
-        <source srcset="img/contacts/contact-md.jpg" media="(max-width: 390px)">
-        <source srcset="img/contacts/contact-lg.jpg" media="(max-width: 1024px)">
-        <img src="img/contacts/contact-xl.jpg" alt="Acquire affiliate team at work">
-      </picture>
-
-      <div class="news-offer__container">
-        <p class="news-offer__text">
-          From strategy to execution — aligned with your objectives.
-        </p>
-
-        <h1 class="news-offer__title">
-          NEws
-        </h1>
-      </div>
-
-      <div class="custom-cursor" aria-hidden="true"></div>
-    </div>
-  </section>
-
+  </div>
   <main class="main">
     @include('partials/header-dark.html')
+
+    <article class="article-post" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="article-post__container container">
+        <header class="article-post__header">
+          <h1 class="article-post__title" itemprop="headline">
+            We are a dynamic, diverse, and ambitious team
+          </h1>
+
+          <div class="article-post__intro">
+            <div class="article-post__author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+              <img class="article-post__author-avatar" src="img/article/author-tom.png" alt="Tom" itemprop="image">
+
+              <div class="article-post__author-content">
+                <div class="article-post__author-row">
+                  <p class="article-post__author-name" itemprop="name">Tom</p>
+                  <p class="article-post__author-role">SEO</p>
+                </div>
+
+                <p class="article-post__author-company">Acquire</p>
+
+                <div class="article-post__meta">
+                  <svg class="article-post__meta-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <use href="img/svg/sprite.svg#date"></use>
+                  </svg>
+
+                  <time class="article-post__date" datetime="2026-04-03" itemprop="datePublished">April 3, 2026</time>
+                  <span class="article-post__meta-separator" aria-hidden="true">|</span>
+                  <span class="article-post__read-time">3 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <nav class="article-post__share" aria-label="Share article">
+              <ul class="article-post__share-list list-reset">
+                <li class="article-post__share-item">
+                  <a class="article-post__share-link" href="#" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="article-post__share-item">
+                  <a class="article-post__share-link" href="#" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="article-post__share-item">
+                  <a class="article-post__share-link" href="#" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#x"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="article-post__share-item">
+                  <a class="article-post__share-link" href="#" aria-label="Share on WhatsApp">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#wh"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="article-post__share-item">
+                  <a class="article-post__share-link" href="mailto:?subject=Acquire article" aria-label="Share by email">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#mail"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="article-post__share-item">
+                  <a class="article-post__share-link" href="#" aria-label="Copy article link">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <use href="img/svg/sprite.svg#link"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+        <div class="article-post__content" itemprop="articleBody">
+          <figure>
+            <img src="img/article/article-hero.png" alt="Aesop products on a dark surface" itemprop="image">
+
+            <figcaption>
+              Acquire Digital Ltd is a digital marketing agency based in the UK
+            </figcaption>
+          </figure>
+
+          <section>
+            <h2>Introduction</h2>
+
+            <p>
+              At Acquire Digital Ltd ("we," "us," "our"), we are committed to protecting and respecting your privacy. This Privacy Policy outlines how we collect, use, store, and protect your personal data when you engage with us, use our services, or visit our website. It also informs you of your privacy rights and how the law protects you.
+            </p>
+
+            <p>
+              Acquire Digital Ltd is a digital marketing agency based in the UK. Our registered address is Acquire Digital Ltd, New Broad Street House, 35 New Broad Street, LONDON, EC2M 1NH, GB. We are registered with the Information Commissioner's Office (ICO) and the subsequent legislation the General Data Protection Regulation (GDPR) under the Data Protection Act 2018.
+            </p>
+
+            <p>
+              We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:
+            </p>
+
+            <ul>
+              <li>To provide and improve our services.</li>
+              <li>To manage our relationship with you.</li>
+              <li>To administer and protect our business and website.</li>
+              <li>To deliver relevant content and advertisements to you.</li>
+              <li>To comply with legal obligations.</li>
+            </ul>
+          </section>
+
+          <figure>
+            <img src="img/article/article-inline.png" alt="Three people running from a dinosaur in a jungle">
+
+            <figcaption>
+              We use different methods to collect data from and about you, including
+            </figcaption>
+          </figure>
+
+          <section>
+            <h2>How We Collect Your Personal Data</h2>
+
+            <p>
+              We use different methods to collect data from and about you, including:
+            </p>
+
+            <ul>
+              <li>Direct interactions: You may give us your Identity, Contact, and Marketing Data by filling in forms or by corresponding with us via post, phone, email, or otherwise.</li>
+              <li>Automated technologies: As you interact with our website, we may automatically collect Technical Data about your equipment, browsing actions, and patterns.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </article>
+
+    <section class="article-popular">
+      <div class="article-popular__container container">
+        <div class="article-popular__inner">
+          <h2 class="article-popular__title h2">
+            <span>Popular </span>Articles
+          </h2>
+
+          <div class="article-popular__content">
+            <button class="sub-services__nav sub-services__nav--prev btn-reset" type="button" aria-label="Previous service">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="img/svg/sprite.svg#arrow-max"></use>
+              </svg>
+            </button>
+
+            <div class="article-popular__slider swiper js-article-popular-slider">
+              <ul class="article-popular__slider-wrapper swiper-wrapper list-reset js-news-articles-grid">
+                <li class="article-popular__slider-item swiper-slide">
+                  <article class="news-articles-card js-animation-card">
+                    <a class="news-articles-card__link" href="article.html" data-video="video/work-1.mp4">
+                      <div class="news-articles-card__media">
+                        <div class="news-articles-card__parallax js-animation-card__parallax">
+                          <div class="news-articles-card__media-inner">
+                            <img class="news-articles-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="news-articles-card__overlay"></div>
+
+                      <div class="news-articles-card__content">
+                        <div class="news-articles-card__top">
+                          <h3 class="news-articles-card__title">Dubai Racing Club</h3>
+
+                          <div class="news-articles-card__info">
+                            <div class="news-articles-card__info-item">
+                              <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="img/svg/sprite.svg#date"></use>
+                              </svg>
+
+                              <p>
+                                06.05.2025
+                              </p>
+                            </div>
+
+                            <div class="news-articles-card__info-item">
+                              <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="img/svg/sprite.svg#view"></use>
+                              </svg>
+
+                              <p>
+                                123
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="news-articles-card__bottom">
+                          <button type="button" class="news-articles-card__button btn-arrow btn-reset">
+                            <span>Read More</span>
+
+                            <svg viewBox="0 0 20 20" aria-hidden="true">
+                              <use href="img/svg/sprite.svg#arrow-max"></use>
+                            </svg>
+                          </button>
+
+                          <span class="news-articles-card__tags">Paid Media | CRM</span>
+                        </div>
+                      </div>
+                    </a>
+                  </article>
+                </li>
+
+                <li class="article-popular__slider-item swiper-slide">
+                  <article class="news-articles-card js-animation-card">
+                    <a class="news-articles-card__link" href="article.html" data-video="video/work-1.mp4">
+                      <div class="news-articles-card__media">
+                        <div class="news-articles-card__parallax js-animation-card__parallax">
+                          <div class="news-articles-card__media-inner">
+                            <img class="news-articles-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="news-articles-card__overlay"></div>
+
+                      <div class="news-articles-card__content">
+                        <div class="news-articles-card__top">
+                          <h3 class="news-articles-card__title">Dubai Racing Club</h3>
+
+                          <div class="news-articles-card__info">
+                            <div class="news-articles-card__info-item">
+                              <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="img/svg/sprite.svg#date"></use>
+                              </svg>
+
+                              <p>
+                                06.05.2025
+                              </p>
+                            </div>
+
+                            <div class="news-articles-card__info-item">
+                              <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="img/svg/sprite.svg#view"></use>
+                              </svg>
+
+                              <p>
+                                123
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="news-articles-card__bottom">
+                          <button type="button" class="news-articles-card__button btn-arrow btn-reset">
+                            <span>Read More</span>
+
+                            <svg viewBox="0 0 20 20" aria-hidden="true">
+                              <use href="img/svg/sprite.svg#arrow-max"></use>
+                            </svg>
+                          </button>
+
+                          <span class="news-articles-card__tags">Paid Media | CRM</span>
+                        </div>
+                      </div>
+                    </a>
+                  </article>
+                </li>
+
+                <li class="article-popular__slider-item swiper-slide">
+                  <article class="news-articles-card js-animation-card">
+                    <a class="news-articles-card__link" href="article.html" data-video="video/work-1.mp4">
+                      <div class="news-articles-card__media">
+                        <div class="news-articles-card__parallax js-animation-card__parallax">
+                          <div class="news-articles-card__media-inner">
+                            <img class="news-articles-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="news-articles-card__overlay"></div>
+
+                      <div class="news-articles-card__content">
+                        <div class="news-articles-card__top">
+                          <h3 class="news-articles-card__title">Dubai Racing Club</h3>
+
+                          <div class="news-articles-card__info">
+                            <div class="news-articles-card__info-item">
+                              <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="img/svg/sprite.svg#date"></use>
+                              </svg>
+
+                              <p>
+                                06.05.2025
+                              </p>
+                            </div>
+
+                            <div class="news-articles-card__info-item">
+                              <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="img/svg/sprite.svg#view"></use>
+                              </svg>
+
+                              <p>
+                                123
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="news-articles-card__bottom">
+                          <button type="button" class="news-articles-card__button btn-arrow btn-reset">
+                            <span>Read More</span>
+
+                            <svg viewBox="0 0 20 20" aria-hidden="true">
+                              <use href="img/svg/sprite.svg#arrow-max"></use>
+                            </svg>
+                          </button>
+
+                          <span class="news-articles-card__tags">Paid Media | CRM</span>
+                        </div>
+                      </div>
+                    </a>
+                  </article>
+                </li>
+              </ul>
+            </div>
+
+            <button class="sub-services__nav sub-services__nav--next btn-reset" type="button" aria-label="Next service">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="img/svg/sprite.svg#arrow-max"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   @include('partials/footer.html')

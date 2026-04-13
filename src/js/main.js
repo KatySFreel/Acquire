@@ -634,10 +634,10 @@ function initFaqAccordion() {
 }
 
 function initServiceSlider() {
-    const slider = document.querySelector('.js-service-slider');
-    if (!slider) return;
+    const sliderService = document.querySelector('.js-service-slider');
+    if (!sliderService) return;
 
-    new Swiper(slider, {
+    new Swiper(sliderService, {
         modules: [Navigation],
         speed: 700,
         slidesPerView: 1.08,
@@ -657,7 +657,37 @@ function initServiceSlider() {
             },
             1025: {
                 slidesPerView: 2.8,
+                spaceBetween: 40,
+            },
+        },
+    });
+}
+
+function initArticlePopularSlider() {
+    const sliderPopularOffer = document.querySelector('.js-article-popular-slider');
+    if (!sliderPopularOffer) return;
+
+    new Swiper(sliderPopularOffer, {
+        modules: [Navigation],
+        speed: 700,
+        slidesPerView: 1.08,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.sub-services__nav--next',
+            prevEl: '.sub-services__nav--prev',
+        },
+        breakpoints: {
+            391: {
+                slidesPerView: 1.02,
+                spaceBetween: 16,
+            },
+            769: {
+                slidesPerView: 1.5,
                 spaceBetween: 20,
+            },
+            1025: {
+                slidesPerView: 2,
+                spaceBetween: 40,
             },
         },
     });
@@ -692,6 +722,7 @@ function initApp() {
     initFaqSchema();
     initFaqAccordion();
     initServiceSlider();
+    initArticlePopularSlider();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
