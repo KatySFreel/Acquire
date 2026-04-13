@@ -5726,7 +5726,12 @@ textarea:-webkit-autofill {
   .legal-post__aside.is-open .legal-post__nav {
     -ms-grid-rows: 1fr;
     grid-template-rows: 1fr;
+    height: 100vh;
   }
+}
+.legal-post__aside.is-open .legal-post__nav-list {
+  visibility: visible;
+  width: 100%;
 }
 
 .legal-post__nav-toggle {
@@ -5930,6 +5935,7 @@ textarea:-webkit-autofill {
     display: grid;
     -ms-grid-rows: 0fr;
     grid-template-rows: 0fr;
+    padding-bottom: 20px;
     overflow: hidden;
     min-height: 0;
     -webkit-transition: grid-template-rows 0.25s ease-in-out;
@@ -5939,16 +5945,11 @@ textarea:-webkit-autofill {
 }
 
 @media (max-width: 768px) {
-  .legal-post__aside.is-open .legal-post__nav {
-    -ms-grid-rows: 1fr;
-    grid-template-rows: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
   .legal-post__nav-list {
+    position: absolute;
+    visibility: hidden;
     min-height: 0;
-    max-height: calc(100dvh - 140px);
+    max-height: calc(100dvh - 148px);
     overflow-y: auto;
     -ms-scroll-chaining: none;
     overscroll-behavior: contain;

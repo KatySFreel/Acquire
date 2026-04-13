@@ -7,6 +7,7 @@ import { Navigation } from 'swiper/modules';
 // =========================
 const App = {
     lenis: null,
+    navLenis: null,
     pageLeaveTimeout: null,
 };
 
@@ -93,12 +94,16 @@ function initAnchorScroll(lenis) {
 }
 
 function lockScroll() {
+    document.body.classList.add('no-scroll');
+
     if (App.lenis) {
         App.lenis.stop();
     }
 }
 
 function unlockScroll() {
+    document.body.classList.remove('no-scroll');
+
     if (App.lenis) {
         App.lenis.start();
     }
@@ -804,7 +809,7 @@ function initLegalPostMobileNav() {
 
     if (!aside || !toggle || !links.length) return;
 
-    const mobileMedia = window.matchMedia('(max-width: 768px)');
+    const mobileMedia = window.matchMedia('(max-width: 767px)');
     let lastScrollY = window.scrollY;
     let isAnchorScrolling = false;
     let anchorScrollTimer = null;
@@ -819,6 +824,8 @@ function initLegalPostMobileNav() {
         }
 
         toggle.setAttribute('aria-expanded', 'false');
+
+        destroyNavLenis();
         unlockScroll();
     };
 
@@ -828,11 +835,23 @@ function initLegalPostMobileNav() {
         aside.classList.add('is-open');
         aside.classList.remove('is-hidden-on-scroll');
         toggle.setAttribute('aria-expanded', 'true');
+
         lockScroll();
+
+        setTimeout(() => {
+            createNavLenis();
+        }, 50);
     };
 
     const toggleNav = () => {
-        if (!mobileMedia.matches) return;
+        if (!mobileMedia.matches) {
+            aside.classList.remove('is-open');
+            aside.classList.remove('is-hidden-on-scroll');
+            toggle.setAttribute('aria-expanded', 'false');
+            destroyNavLenis();
+            unlockScroll();
+            return;
+        }
 
         const isOpen = aside.classList.contains('is-open');
 
@@ -887,6 +906,14 @@ function initLegalPostMobileNav() {
             aside.classList.remove('is-open');
             aside.classList.remove('is-hidden-on-scroll');
             toggle.setAttribute('aria-expanded', 'false');
+
+            isAnchorScrolling = false;
+            clearTimeout(anchorScrollTimer);
+
+            destroyNavLenis();
+            unlockScroll();
+
+            lastScrollY = window.scrollY;
         }
     };
 
@@ -908,6 +935,43 @@ function initLegalPostMobileNav() {
     }
 
     handleBreakpointChange();
+}
+
+function createNavLenis() {
+    const navList = document.querySelector('.legal-post__nav-list');
+    if (!navList) return;
+
+    if (App.navLenis) {
+        App.navLenis.destroy();
+        App.navLenis = null;
+    }
+
+    App.navLenis = new Lenis({
+        wrapper: navList,
+        content: navList,
+        duration: 1,
+        smoothWheel: true,
+        smoothTouch: false,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+    });
+
+    const rafNav = (time) => {
+        if (!App.navLenis) return;
+        App.navLenis.raf(time);
+
+        if (App.navLenis) {
+            requestAnimationFrame(rafNav);
+        }
+    };
+
+    requestAnimationFrame(rafNav);
+}
+
+function destroyNavLenis() {
+    if (App.navLenis) {
+        App.navLenis.destroy();
+        App.navLenis = null;
+    }
 }
 
 // =========================

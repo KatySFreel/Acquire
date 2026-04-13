@@ -10673,6 +10673,7 @@ __webpack_require__.r(__webpack_exports__);
 // =========================
 const App = {
   lenis: null,
+  navLenis: null,
   pageLeaveTimeout: null
 };
 
@@ -10742,11 +10743,13 @@ function initAnchorScroll(lenis) {
   }
 }
 function lockScroll() {
+  document.body.classList.add('no-scroll');
   if (App.lenis) {
     App.lenis.stop();
   }
 }
 function unlockScroll() {
+  document.body.classList.remove('no-scroll');
   if (App.lenis) {
     App.lenis.start();
   }
@@ -11318,7 +11321,7 @@ function initLegalPostMobileNav() {
   const toggle = post.querySelector('.legal-post__nav-toggle');
   const links = post.querySelectorAll('.legal-post__nav-link');
   if (!aside || !toggle || !links.length) return;
-  const mobileMedia = window.matchMedia('(max-width: 768px)');
+  const mobileMedia = window.matchMedia('(max-width: 767px)');
   let lastScrollY = window.scrollY;
   let isAnchorScrolling = false;
   let anchorScrollTimer = null;
@@ -11329,6 +11332,7 @@ function initLegalPostMobileNav() {
       aside.classList.add('is-hidden-on-scroll');
     }
     toggle.setAttribute('aria-expanded', 'false');
+    destroyNavLenis();
     unlockScroll();
   };
   const openNav = () => {
@@ -11337,9 +11341,19 @@ function initLegalPostMobileNav() {
     aside.classList.remove('is-hidden-on-scroll');
     toggle.setAttribute('aria-expanded', 'true');
     lockScroll();
+    setTimeout(() => {
+      createNavLenis();
+    }, 50);
   };
   const toggleNav = () => {
-    if (!mobileMedia.matches) return;
+    if (!mobileMedia.matches) {
+      aside.classList.remove('is-open');
+      aside.classList.remove('is-hidden-on-scroll');
+      toggle.setAttribute('aria-expanded', 'false');
+      destroyNavLenis();
+      unlockScroll();
+      return;
+    }
     const isOpen = aside.classList.contains('is-open');
     if (isOpen) {
       closeNav();
@@ -11382,6 +11396,11 @@ function initLegalPostMobileNav() {
       aside.classList.remove('is-open');
       aside.classList.remove('is-hidden-on-scroll');
       toggle.setAttribute('aria-expanded', 'false');
+      isAnchorScrolling = false;
+      clearTimeout(anchorScrollTimer);
+      destroyNavLenis();
+      unlockScroll();
+      lastScrollY = window.scrollY;
     }
   };
   toggle.addEventListener('click', toggleNav);
@@ -11400,6 +11419,36 @@ function initLegalPostMobileNav() {
     mobileMedia.addListener(handleBreakpointChange);
   }
   handleBreakpointChange();
+}
+function createNavLenis() {
+  const navList = document.querySelector('.legal-post__nav-list');
+  if (!navList) return;
+  if (App.navLenis) {
+    App.navLenis.destroy();
+    App.navLenis = null;
+  }
+  App.navLenis = new _studio_freight_lenis__WEBPACK_IMPORTED_MODULE_0__["default"]({
+    wrapper: navList,
+    content: navList,
+    duration: 1,
+    smoothWheel: true,
+    smoothTouch: false,
+    easing: t => 1 - Math.pow(1 - t, 3)
+  });
+  const rafNav = time => {
+    if (!App.navLenis) return;
+    App.navLenis.raf(time);
+    if (App.navLenis) {
+      requestAnimationFrame(rafNav);
+    }
+  };
+  requestAnimationFrame(rafNav);
+}
+function destroyNavLenis() {
+  if (App.navLenis) {
+    App.navLenis.destroy();
+    App.navLenis = null;
+  }
 }
 
 // =========================

@@ -170,19 +170,15 @@
   &.is-open .legal-post__nav {
     @include md {
       grid-template-rows: 1fr;
+      height: 100vh;
     }
   }
-}
 
-//.legal-post__nav {
-//  @include md {
-//    display: none;
-//    position: relative;
-//    height: calc(100vh - 130px);
-//    padding-bottom: 20px;
-//    overflow: hidden;
-//  }
-//}
+  &.is-open .legal-post__nav-list {
+    visibility: visible;
+    width: 100%;
+  }
+}
 
 .legal-post__nav-toggle {
   display: none;
@@ -358,22 +354,19 @@
   @include md {
     display: grid;
     grid-template-rows: 0fr;
+    padding-bottom: 20px;
     overflow: hidden;
     min-height: 0;
     transition: grid-template-rows .25s ease-in-out;
   }
 }
 
-.legal-post__aside.is-open .legal-post__nav {
-  @include md {
-    grid-template-rows: 1fr;
-  }
-}
-
 .legal-post__nav-list {
   @include md {
+    position: absolute;
+    visibility: hidden;
     min-height: 0;
-    max-height: calc(100dvh - 140px);
+    max-height: calc(100dvh - 148px);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
