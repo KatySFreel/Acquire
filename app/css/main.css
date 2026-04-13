@@ -3060,6 +3060,7 @@ textarea:-webkit-autofill {
 @media (max-width: 768px) {
   .hero .article-popular {
     padding-bottom: 0;
+    padding-top: 60px;
   }
 }
 
@@ -4889,7 +4890,7 @@ textarea:-webkit-autofill {
 @media (max-width: 768px) {
   .article-post {
     padding-top: 62px;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
   }
 }
 
@@ -4923,7 +4924,7 @@ textarea:-webkit-autofill {
 }
 @media (max-width: 768px) {
   .article-post__header {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     gap: 30px;
   }
 }
@@ -5247,8 +5248,8 @@ textarea:-webkit-autofill {
 }
 @media (max-width: 768px) {
   .article-popular {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
 
