@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+<div class="site-container">
+  @include('partials/preloader.html')
+  <div class="page-transition"></div>
+
+  <section class="no-found-offer sticky-section">
+    @include('partials/header.html')
+
+    <div class="no-found-offer__wrapper">
+      <picture class="no-found-offer__picture">
+        <source srcset="img/404/404-md.jpg" media="(max-width: 390px)">
+        <source srcset="img/404/404-lg.jpg" media="(max-width: 1024px)">
+        <img src="img/404/404-xl.jpg" alt="Acquire affiliate team at work">
+      </picture>
+
+      <div class="no-found-offer__container">
+        <h1 class="no-found-offer__title">
+          404
+        </h1>
+        
+        <p class="no-found-offer__text">
+          Page Not Found
+        </p>
+      </div>
+
+      <div class="custom-cursor" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    @include('partials/header-dark.html')
+
+    <section class="no-found-block">
+      <div class="container">
+        <div class="no-found-block__intro">
+          <h2 class="no-found-block__title h2">
+            This page <span>cannot be found</span>
+          </h2>
+
+          <div class="no-found-block__content">
+            <p>
+              It looks like the page you were trying to reach no longer exists or has been moved.
+            </p>
+
+            <p>
+              You can return to the homepage or explore our no-founds to find what you're looking for.
+            </p>
+          </div>
+
+          <button type="button" class="no-found-block__btn btn-arrow btn-reset">
+            <a href="hero.html">Go to the home page</a>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  @include('partials/footer.html')
+</div>
+</body>
+</html>

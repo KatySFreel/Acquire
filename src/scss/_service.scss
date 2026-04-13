@@ -130,7 +130,11 @@
   color: var(--dark-blue);
   grid-column: 1/2;
   grid-row: 1/2;
-  max-width: 511px;
+  padding-right: 40px;
+
+  @include lg {
+    padding-right: 0;
+  }
 }
 
 .service-block__btn {

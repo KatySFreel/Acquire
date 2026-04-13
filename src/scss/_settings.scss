@@ -17,6 +17,10 @@ body.popup-open {
   overflow: hidden !important;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 html.popup-open {
   overflow: hidden !important;
 }
