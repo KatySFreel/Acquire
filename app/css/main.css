@@ -848,7 +848,7 @@ body.is-page-entering.is-page-entering-ready .page-transition {
   display: grid;
   -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(28px, 3vw, 56px);
+  gap: 24px;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
@@ -5232,13 +5232,21 @@ textarea:-webkit-autofill {
 }
 .article-post__content section ul li {
   position: relative;
-  padding-left: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 8px;
 }
 .article-post__content section ul li::before {
-  content: "*";
-  position: absolute;
-  left: 0;
-  top: 3px;
+  content: "•";
+  position: relative;
 }
 .article-post__content section a {
   -webkit-transition: color 0.2s ease;
@@ -5911,17 +5919,19 @@ textarea:-webkit-autofill {
 }
 .legal-post__section li {
   position: relative;
-  padding-left: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  gap: 8px;
 }
 .legal-post__section li::before {
   content: "•";
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: var(--blue-text);
 }
 .legal-post__section li:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .legal-post__section ul {
   margin: 0;

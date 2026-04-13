@@ -49,7 +49,7 @@
 .footer__top {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(28px, 3vw, 56px);
+  gap: 24px;
   align-items: start;
 
   @include lg {
