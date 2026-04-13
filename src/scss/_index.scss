@@ -90,8 +90,7 @@
 
   @include md {
     min-height: 756px;
-    padding-top: 286px;
-    padding-bottom: 95px;
+    padding: 286px 20px 95px;
   }
 }
 
@@ -107,7 +106,7 @@
 
   @include md {
     width: 331px;
-    max-width: calc(100% - 32px);
+    max-width: 100%;
   }
 
   svg {

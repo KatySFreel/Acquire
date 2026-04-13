@@ -1709,8 +1709,7 @@ body.is-page-entering.is-page-entering-ready .page-transition {
 @media (max-width: 768px) {
   .offer__container {
     min-height: 756px;
-    padding-top: 286px;
-    padding-bottom: 95px;
+    padding: 286px 20px 95px;
   }
 }
 
@@ -1728,7 +1727,7 @@ body.is-page-entering.is-page-entering-ready .page-transition {
 @media (max-width: 768px) {
   .offer__logo {
     width: 331px;
-    max-width: calc(100% - 32px);
+    max-width: 100%;
   }
 }
 .offer__logo svg {
