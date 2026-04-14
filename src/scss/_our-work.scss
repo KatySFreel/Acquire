@@ -1,0 +1,131 @@
+.works-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+}
+
+.works-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.works-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(18 25 47 / 0.36);
+}
+
+.works-modal__container {
+  @include md {
+    padding: 0;
+  }
+}
+
+.works-modal__dialog {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+
+  @include md {
+    padding: 0;
+    align-items: flex-end;
+  }
+}
+
+.works-modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  opacity: 0.5;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-grey);
+  border: 1px solid var(--blue-grey);
+  transition:
+          color 0.3s ease,
+          border-color 0.3s ease,
+          background-color 0.3s ease;
+
+  @include md {
+    top: 16px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @include hover {
+    color: var(--yellow-accent);
+    border: 1px solid var(--yellow-accent);
+    opacity: 1;
+  }
+}
+
+.case--modal {
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  background: var(--white);
+
+  &::before {
+    display: none;
+  }
+
+  .case__title {
+    color: var(--dark-blue);
+
+    span {
+      color: var(--yellow-accent);
+    }
+  }
+
+  .case__info {
+    h3 {
+      color: var(--dark-blue);
+    }
+
+    p {
+      color: var(--blue-grey);
+    }
+  }
+
+  .case__brand {
+    padding-left: 0;
+    margin-right: 0;
+  }
+
+  .case__metrics {
+    border-left: 1px solid var(--blue-text);
+    color: var(--dark-blue);
+  }
+
+  .case__metric-value {
+    color: var(--blue-accent);
+  }
+
+  .case__metric-label {
+    color: var(--dark-blue);
+  }
+}

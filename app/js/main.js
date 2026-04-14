@@ -11478,6 +11478,99 @@ function destroyNavLenis() {
     App.navLenis = null;
   }
 }
+function initWorksModal() {
+  const modal = document.getElementById('worksModal');
+  const cards = document.querySelectorAll('.works-card');
+  if (!modal || !cards.length) return;
+  const titleNode = modal.querySelector('.case__title');
+  const logoNode = modal.querySelector('.works-modal__logo');
+  const infoTitleNode = modal.querySelector('.works-modal__info-title');
+  const infoTextNode = modal.querySelector('.works-modal__info-text');
+  const dialog = modal.querySelector('.works-modal__dialog');
+  const metricsContainer = modal.querySelector('.works-modal__metrics');
+  let lastActiveTrigger = null;
+  const openModal = trigger => {
+    const {
+      caseTitle = '',
+      caseAccent = '',
+      caseLogo = '',
+      caseLogoAlt = '',
+      caseInfoTitle = '',
+      caseInfoText = ''
+    } = trigger.dataset;
+    lastActiveTrigger = trigger;
+    titleNode.innerHTML = `${caseTitle ? `${caseTitle} ` : ''}<span>${caseAccent}</span>`;
+    infoTitleNode.textContent = caseInfoTitle;
+    infoTextNode.textContent = caseInfoText;
+
+    // логотип
+    if (caseLogo) {
+      logoNode.src = caseLogo;
+      logoNode.alt = caseLogoAlt;
+      logoNode.hidden = false;
+    } else {
+      logoNode.hidden = true;
+      logoNode.removeAttribute('src');
+      logoNode.alt = '';
+    }
+    metricsContainer.innerHTML = '';
+    const metrics = [{
+      label: trigger.dataset.caseMetricLabel1,
+      value: trigger.dataset.caseMetricValue1
+    }, {
+      label: trigger.dataset.caseMetricLabel2,
+      value: trigger.dataset.caseMetricValue2
+    }];
+    metrics.forEach(({
+      label,
+      value
+    }) => {
+      if (!label || !value) return;
+      const item = document.createElement('div');
+      item.className = 'case__metrics-item';
+      item.innerHTML = `
+            <span class="case__metric-label">${label}</span>
+            <span class="case__metric-value">${value}</span>
+        `;
+      metricsContainer.appendChild(item);
+    });
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    lockScroll();
+  };
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    unlockScroll();
+    if (lastActiveTrigger) {
+      lastActiveTrigger.focus();
+    }
+  };
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      openModal(card);
+    });
+  });
+  if (dialog) {
+    dialog.addEventListener('click', e => {
+      if (e.target === e.currentTarget) {
+        closeModal();
+      }
+    });
+  }
+  modal.addEventListener('click', e => {
+    const closeTarget = e.target.closest('[data-modal-close]');
+    if (closeTarget) {
+      closeModal();
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+}
 
 // =========================
 // App init
@@ -11499,6 +11592,7 @@ function initApp() {
   initNumbersAnimation();
   worksCards();
   worksParallax();
+  initWorksModal();
   sloganWordsRotate();
   initFloatingLabels();
   initFaqSchema();
