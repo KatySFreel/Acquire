@@ -352,7 +352,17 @@
 
         <div class="article-post__content" itemprop="articleBody">
           <figure>
-            <img src="img/article/article-hero.png" alt="Aesop products on a dark surface" itemprop="image">
+            <picture>
+              <source srcset="img/article/article-hero.avif" type="image/avif">
+              <source srcset="img/article/article-hero.webp" type="image/webp">
+              <img
+                  src="img/article/article-hero.png"
+                  alt="Aesop products on a dark surface"
+                  itemprop="image"
+                  decoding="async"
+                  fetchpriority="high"
+              >
+            </picture>
 
             <figcaption>
               Acquire Digital Ltd is a digital marketing agency based in the UK
@@ -384,7 +394,16 @@
           </section>
 
           <figure>
-            <img src="img/article/article-inline.png" alt="Three people running from a dinosaur in a jungle">
+            <picture>
+              <source srcset="img/article/article-inline.avif" type="image/avif">
+              <source srcset="img/article/article-inline.webp" type="image/webp">
+              <img
+                  src="img/article/article-inline.png"
+                  alt="Three people running from a dinosaur in a jungle"
+                  loading="lazy"
+                  decoding="async"
+              >
+            </picture>
 
             <figcaption>
               We use different methods to collect data from and about you, including
@@ -429,7 +448,17 @@
                       <div class="news-articles-card__media">
                         <div class="news-articles-card__parallax js-animation-card__parallax">
                           <div class="news-articles-card__media-inner">
-                            <img class="news-articles-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                            <picture>
+                              <source srcset="img/works/work-1.avif" type="image/avif">
+                              <source srcset="img/works/work-1.webp" type="image/webp">
+                              <img
+                                  class="news-articles-card__image"
+                                  src="img/works/work-1.jpg"
+                                  alt="Dubai Racing Club"
+                                  loading="lazy"
+                                  decoding="async"
+                              >
+                            </picture>
                           </div>
                         </div>
                       </div>
@@ -485,7 +514,17 @@
                       <div class="news-articles-card__media">
                         <div class="news-articles-card__parallax js-animation-card__parallax">
                           <div class="news-articles-card__media-inner">
-                            <img class="news-articles-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                            <picture>
+                              <source srcset="img/works/work-1.avif" type="image/avif">
+                              <source srcset="img/works/work-1.webp" type="image/webp">
+                              <img
+                                  class="news-articles-card__image"
+                                  src="img/works/work-1.jpg"
+                                  alt="Dubai Racing Club"
+                                  loading="lazy"
+                                  decoding="async"
+                              >
+                            </picture>
                           </div>
                         </div>
                       </div>
@@ -541,7 +580,17 @@
                       <div class="news-articles-card__media">
                         <div class="news-articles-card__parallax js-animation-card__parallax">
                           <div class="news-articles-card__media-inner">
-                            <img class="news-articles-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                            <picture>
+                              <source srcset="img/works/work-1.avif" type="image/avif">
+                              <source srcset="img/works/work-1.webp" type="image/webp">
+                              <img
+                                  class="news-articles-card__image"
+                                  src="img/works/work-1.jpg"
+                                  alt="Dubai Racing Club"
+                                  loading="lazy"
+                                  decoding="async"
+                              >
+                            </picture>
                           </div>
                         </div>
                       </div>
@@ -693,17 +742,21 @@
   </div>
 </section>
 
-    <section class="awards">
+    <section class="awards" aria-labelledby="awards-title">
   <div class="awards__inner">
-    <h2 class="awards__title">Award-winning agency</h2>
+    <h2 class="awards__title" id="awards-title">Award-winning agency</h2>
 
     <div class="awards__marquee">
       <div class="awards__track">
 
-        <div class="awards__list">
+        <div class="awards__list" aria-hidden="true">
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/1.png" alt="PMW Awards Global">
+              <picture>
+                <source srcset="img/awards/1.avif" type="image/avif">
+                <source srcset="img/awards/1.webp" type="image/webp">
+                <img src="img/awards/1.png" alt="PMW Awards Global" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -714,7 +767,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/5.png" alt="Hello Partner">
+              <picture>
+                <source srcset="img/awards/5.avif" type="image/avif">
+                <source srcset="img/awards/5.webp" type="image/webp">
+                <img src="img/awards/5.png" alt="Hello Partner" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -724,7 +781,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/2.png" alt="Performance Marketing Awards">
+              <picture>
+                <source srcset="img/awards/2.avif" type="image/avif">
+                <source srcset="img/awards/2.webp" type="image/webp">
+                <img src="img/awards/2.png" alt="Performance Marketing Awards" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -735,7 +796,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
+              <picture>
+                <source srcset="img/awards/3.avif" type="image/avif">
+                <source srcset="img/awards/3.webp" type="image/webp">
+                <img src="img/awards/3.png" alt="Global Performance Marketing Awards" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -746,7 +811,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/4.png" alt="Golden Link Awards">
+              <picture>
+                <source srcset="img/awards/4.avif" type="image/avif">
+                <source srcset="img/awards/4.webp" type="image/webp">
+                <img src="img/awards/4.png" alt="Golden Link Awards" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -756,10 +825,14 @@
           </article>
         </div>
 
-        <div class="awards__list">
+        <div class="awards__list" aria-hidden="true">
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/1.png" alt="PMW Awards Global">
+              <picture>
+                <source srcset="img/awards/1.avif" type="image/avif">
+                <source srcset="img/awards/1.webp" type="image/webp">
+                <img src="img/awards/1.png" alt="PMW Awards Global" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -770,7 +843,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/5.png" alt="Hello Partner">
+              <picture>
+                <source srcset="img/awards/5.avif" type="image/avif">
+                <source srcset="img/awards/5.webp" type="image/webp">
+                <img src="img/awards/5.png" alt="Hello Partner" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -780,7 +857,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/2.png" alt="Performance Marketing Awards">
+              <picture>
+                <source srcset="img/awards/2.avif" type="image/avif">
+                <source srcset="img/awards/2.webp" type="image/webp">
+                <img src="img/awards/2.png" alt="Performance Marketing Awards" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -791,7 +872,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/3.png" alt="Global Performance Marketing Awards">
+              <picture>
+                <source srcset="img/awards/3.avif" type="image/avif">
+                <source srcset="img/awards/3.webp" type="image/webp">
+                <img src="img/awards/3.png" alt="Global Performance Marketing Awards" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">
@@ -802,7 +887,11 @@
 
           <article class="award-card">
             <div class="award-card__logo">
-              <img src="img/awards/4.png" alt="Golden Link Awards">
+              <picture>
+                <source srcset="img/awards/4.avif" type="image/avif">
+                <source srcset="img/awards/4.webp" type="image/webp">
+                <img src="img/awards/4.png" alt="Golden Link Awards" loading="lazy" decoding="async">
+              </picture>
             </div>
 
             <ul class="award-card__meta list-reset">

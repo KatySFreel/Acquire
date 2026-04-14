@@ -1,6 +1,6 @@
 import Lenis from '@studio-freight/lenis';
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
 
 // =========================
 // App state
@@ -226,18 +226,27 @@ function headerSticky() {
 
     if (!offerSection || !darkHeader) return;
 
-    function toggleDarkHeader() {
+    let ticking = false;
+
+    const update = () => {
         const offerRect = offerSection.getBoundingClientRect();
         const shouldShow = offerRect.bottom <= 0;
 
         darkHeader.classList.toggle('is-visible', shouldShow);
-    }
+        ticking = false;
+    };
 
-    window.addEventListener('scroll', toggleDarkHeader, { passive: true });
-    window.addEventListener('resize', toggleDarkHeader);
-    window.addEventListener('load', toggleDarkHeader);
+    const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+    };
 
-    toggleDarkHeader();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    window.addEventListener('load', update);
+
+    update();
 }
 
 function headerDropdown() {
@@ -711,10 +720,10 @@ function initArticlePopularSlider() {
 }
 
 function initTeamSlider() {
-    const sliderPopularOffer = document.querySelector('.js-about-us-slider');
-    if (!sliderPopularOffer) return;
+    const sliderTeamSlider = document.querySelector('.js-about-us-slider');
+    if (!sliderTeamSlider) return;
 
-    new Swiper(sliderPopularOffer, {
+    new Swiper(sliderTeamSlider, {
         modules: [Navigation],
         speed: 700,
         slidesPerView: 1.08,
@@ -1031,7 +1040,12 @@ function initWorksModal() {
 
         lastActiveTrigger = trigger;
 
-        titleNode.innerHTML = `${caseTitle ? `${caseTitle} ` : ''}<span>${caseAccent}</span>`;
+        const accentNode = titleNode.querySelector('span');
+
+        titleNode.childNodes[0].textContent = caseTitle ? `${caseTitle} ` : '';
+        if (accentNode) {
+            accentNode.textContent = caseAccent;
+        }
         infoTitleNode.textContent = caseInfoTitle;
         infoTextNode.textContent = caseInfoText;
 
@@ -1046,32 +1060,34 @@ function initWorksModal() {
             logoNode.alt = '';
         }
 
-        metricsContainer.innerHTML = '';
+        if (metricsContainer) {
+            metricsContainer.innerHTML = '';
 
-        const metrics = [
-            {
-                label: trigger.dataset.caseMetricLabel1,
-                value: trigger.dataset.caseMetricValue1,
-            },
-            {
-                label: trigger.dataset.caseMetricLabel2,
-                value: trigger.dataset.caseMetricValue2,
-            },
-        ];
+            const metrics = [
+                {
+                    label: trigger.dataset.caseMetricLabel1,
+                    value: trigger.dataset.caseMetricValue1,
+                },
+                {
+                    label: trigger.dataset.caseMetricLabel2,
+                    value: trigger.dataset.caseMetricValue2,
+                },
+            ];
 
-        metrics.forEach(({ label, value }) => {
-            if (!label || !value) return;
+            metrics.forEach(({ label, value }) => {
+                if (!label || !value) return;
 
-            const item = document.createElement('div');
-            item.className = 'case__metrics-item';
+                const item = document.createElement('div');
+                item.className = 'case__metrics-item';
 
-            item.innerHTML = `
+                item.innerHTML = `
             <span class="case__metric-label">${label}</span>
             <span class="case__metric-value">${value}</span>
         `;
 
-            metricsContainer.appendChild(item);
-        });
+                metricsContainer.appendChild(item);
+            });
+        }
 
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
@@ -1117,6 +1133,26 @@ function initWorksModal() {
     });
 }
 
+function initOffersSlider() {
+    const sliderOffersSlider = document.querySelector('.js-offer-swiper');
+    if (!sliderOffersSlider) return;
+
+    new Swiper(sliderOffersSlider, {
+        modules: [Autoplay, EffectFade],
+        speed: 700,
+        effect: "fade",
+        fadeEffect: {
+            crossFade: true,
+        },
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
+}
+
 // =========================
 // App init
 // =========================
@@ -1151,6 +1187,7 @@ function initApp() {
     initLegalPostNav(lenis);
     initLegalPostMobileNav();
     initTeamSlider();
+    initOffersSlider();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

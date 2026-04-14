@@ -1,0 +1,26 @@
+.article-popular {
+  overflow: hidden;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  @include md {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.article-popular__title {
+  margin-bottom: 40px;
+
+  @include md {
+    margin-bottom: 30px;
+  }
+}
+
+.article-popular__content {
+  position: relative;
+}
+
+.article-popular__slider {
+  overflow: visible;
+}

@@ -2036,15 +2036,31 @@ textarea:-webkit-autofill {
   rotate: 90deg;
   opacity: 0.7;
 }
-@media (max-width: 768px) {
-  .offer__wrapper:before {
-    content: none;
-  }
-}
 @media (hover: hover) and (pointer: fine) {
   .offer__wrapper {
     cursor: none;
   }
+}
+
+.offer-swiper {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.offer-swiper picture {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: relative;
+}
+.offer-swiper picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .offer__picture {
@@ -2070,7 +2086,6 @@ textarea:-webkit-autofill {
   z-index: 1;
   pointer-events: none;
 }
-
 .offer__bg::after {
   content: "";
   position: absolute;
@@ -2105,13 +2120,17 @@ textarea:-webkit-autofill {
   gap: 30px;
   position: relative;
   z-index: 2;
-  padding: 165px 40px;
+  padding: 60px 40px;
+  height: 526px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 @media (max-width: 1024px) {
   .offer__container {
     gap: 24px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 40px 20px;
+    height: 390px;
   }
 }
 @media (max-width: 768px) {
@@ -2449,6 +2468,35 @@ textarea:-webkit-autofill {
   .case__metric-text {
     font-size: 24px;
   }
+}
+
+.article-popular {
+  overflow: hidden;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+@media (max-width: 768px) {
+  .article-popular {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.article-popular__title {
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .article-popular__title {
+    margin-bottom: 30px;
+  }
+}
+
+.article-popular__content {
+  position: relative;
+}
+
+.article-popular__slider {
+  overflow: visible;
 }
 
 .offer-hero {
@@ -3270,6 +3318,13 @@ textarea:-webkit-autofill {
   .works-card__video {
     height: 100%;
   }
+}
+.works-card__image img,
+.works-card__video img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .works-card__video {
@@ -5122,35 +5177,6 @@ textarea:-webkit-autofill {
   .article-post__content section a:hover {
     color: var(--yellow-accent);
   }
-}
-
-.article-popular {
-  overflow: hidden;
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-@media (max-width: 768px) {
-  .article-popular {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-}
-
-.article-popular__title {
-  margin-bottom: 40px;
-}
-@media (max-width: 768px) {
-  .article-popular__title {
-    margin-bottom: 30px;
-  }
-}
-
-.article-popular__content {
-  position: relative;
-}
-
-.article-popular__slider {
-  overflow: visible;
 }
 
 .no-found-block {

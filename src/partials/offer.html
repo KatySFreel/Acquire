@@ -4,17 +4,27 @@
   <div class="offer__wrapper">
 
     @if (typeof mediaType !== 'undefined') {
-      @if (mediaType === 'image' && typeof imgXl !== 'undefined' && imgXl) {
+      @if (mediaType === 'image' && typeof imgAlt) {
       <picture class="offer__picture">
-        <source srcset="@imgSm" media="(max-width: 390px)">
-        <source srcset="@imgMd" media="(max-width: 1024px)">
-        <img src="@imgXl" alt="@imgAlt">
+        <!-- AVIF -->
+        <source srcset="@img-sm.avif" media="(max-width: 390px)" type="image/avif">
+        <source srcset="@img-md.avif" media="(max-width: 1024px)" type="image/avif">
+        <source srcset="@img-xl.avif" type="image/avif">
+
+        <!-- WEBP -->
+        <source srcset="@img-sm.webp" media="(max-width: 390px)" type="image/webp">
+        <source srcset="@img-md.webp" media="(max-width: 1024px)" type="image/webp">
+        <source srcset="@img-xl.webp" type="image/webp">
+
+        <!-- JPG fallback -->
+        <source srcset="@img-sm.jpg" media="(max-width: 390px)">
+        <source srcset="@img-md.jpg" media="(max-width: 1024px)">
+        <img src="@img-xl.jpg" alt="@imgAlt">
       </picture>
       }
 
       @if (mediaType === 'video' && typeof videoSrcMp4 !== 'undefined' && videoSrcMp4) {
       <div class="offer__bg">
-
         <video class="offer__video" autoplay muted loop playsinline preload="auto">
           <source src="@videoSrcWebm" type="video/webm">
           <source src="@videoSrcMp4" type="video/mp4">

@@ -8,15 +8,98 @@
   @include('partials/preloader.html')
   <div class="page-transition"></div>
 
-  @include('partials/offer.html', {
-  "sectionClass": "offer sticky-section",
-  "title": "News",
-  "mediaType": "image",
-  "imgSm": "img/news/news-md.jpg",
-  "imgMd": "img/news/news-lg.jpg",
-  "imgXl": "img/news/news-xl.jpg",
-  "imgAlt": "Acquire affiliate team at work"
-  })
+  <section class="offer sticky-section">
+    @include('partials/header.html')
+
+    <div class="offer__wrapper">
+      <div class="offer-swiper swiper js-offer-swiper">
+        <div class="offer-swiper__wrapper swiper-wrapper">
+          <div class="offer-swiper__item swiper-slide">
+            <picture class="offer-swiper__picture">
+              <!-- AVIF -->
+              <source srcset="./img/works/offers/w-1-md.avif" media="(max-width: 390px)" type="image/avif">
+              <source srcset="./img/works/offers/w-1-lg.avif" media="(max-width: 1024px)" type="image/avif">
+              <source srcset="./img/works/offers/w-1-xl.avif" type="image/avif">
+
+              <!-- WEBP -->
+              <source srcset="./img/works/offers/w-1-md.webp" media="(max-width: 390px)" type="image/webp">
+              <source srcset="./img/works/offers/w-1-lg.webp" media="(max-width: 1024px)" type="image/webp">
+              <source srcset="./img/works/offers/w-1-xl.webp" type="image/webp">
+
+              <!-- JPG fallback -->
+              <source srcset="./img/works/offers/w-1-md.jpg" media="(max-width: 390px)">
+              <source srcset="./img/works/offers/w-1-lg.jpg" media="(max-width: 1024px)">
+              <img src="./img/works/offers/w-1-xl.jpg" alt="">
+            </picture>
+          </div>
+
+          <div class="offer-swiper__item swiper-slide">
+            <picture class="offer-swiper__picture">
+              <!-- AVIF -->
+              <source srcset="./img/works/offers/w-2-md.avif" media="(max-width: 390px)" type="image/avif">
+              <source srcset="./img/works/offers/w-2-lg.avif" media="(max-width: 1024px)" type="image/avif">
+              <source srcset="./img/works/offers/w-2-xl.avif" type="image/avif">
+
+              <!-- WEBP -->
+              <source srcset="./img/works/offers/w-2-md.webp" media="(max-width: 390px)" type="image/webp">
+              <source srcset="./img/works/offers/w-2-lg.webp" media="(max-width: 1024px)" type="image/webp">
+              <source srcset="./img/works/offers/w-2-xl.webp" type="image/webp">
+
+              <!-- JPG fallback -->
+              <source srcset="./img/works/offers/w-2-md.jpg" media="(max-width: 390px)">
+              <source srcset="./img/works/offers/w-2-lg.jpg" media="(max-width: 1024px)">
+              <img src="./img/works/offers/w-2-xl.jpg" alt="">
+            </picture>
+          </div>
+
+          <div class="offer-swiper__item swiper-slide">
+            <picture class="offer-swiper__picture">
+              <!-- AVIF -->
+              <source srcset="./img/works/offers/w-3-md.avif" media="(max-width: 390px)" type="image/avif">
+              <source srcset="./img/works/offers/w-3-lg.avif" media="(max-width: 1024px)" type="image/avif">
+              <source srcset="./img/works/offers/w-3-xl.avif" type="image/avif">
+
+              <!-- WEBP -->
+              <source srcset="./img/works/offers/w-3-md.webp" media="(max-width: 390px)" type="image/webp">
+              <source srcset="./img/works/offers/w-3-lg.webp" media="(max-width: 1024px)" type="image/webp">
+              <source srcset="./img/works/offers/w-3-xl.webp" type="image/webp">
+
+              <!-- JPG fallback -->
+              <source srcset="./img/works/offers/w-3-md.jpg" media="(max-width: 390px)">
+              <source srcset="./img/works/offers/w-3-lg.jpg" media="(max-width: 1024px)">
+              <img src="./img/works/offers/w-3-xl.jpg" alt="">
+            </picture>
+          </div>
+
+          <div class="offer-swiper__item swiper-slide">
+            <picture class="offer-swiper__picture">
+              <!-- AVIF -->
+              <source srcset="./img/works/offers/w-4-md.avif" media="(max-width: 390px)" type="image/avif">
+              <source srcset="./img/works/offers/w-4-lg.avif" media="(max-width: 1024px)" type="image/avif">
+              <source srcset="./img/works/offers/w-4-xl.avif" type="image/avif">
+
+              <!-- WEBP -->
+              <source srcset="./img/works/offers/w-4-md.webp" media="(max-width: 390px)" type="image/webp">
+              <source srcset="./img/works/offers/w-4-lg.webp" media="(max-width: 1024px)" type="image/webp">
+              <source srcset="./img/works/offers/w-4-xl.webp" type="image/webp">
+
+              <!-- JPG fallback -->
+              <source srcset="./img/works/offers/w-4-md.jpg" media="(max-width: 390px)">
+              <source srcset="./img/works/offers/w-4-lg.jpg" media="(max-width: 1024px)">
+              <img src="./img/works/offers/w-4-xl.jpg" alt="">
+            </picture>
+          </div>
+        </div>
+      </div>
+
+      <div class="offer__container">
+        <p class="offer__text">From strategy to execution — aligned with your objectives.</p>
+        <h1 class="offer__title">Our Work</h1>
+      </div>
+
+      <div class="custom-cursor" aria-hidden="true"></div>
+    </div>
+  </section>
 
   <main class="main">
     @include('partials/header-dark.html')
@@ -40,7 +123,12 @@
               <div class="works-card__media">
                 <div class="works-card__parallax js-animation-card__parallax">
                   <div class="works-card__media-inner">
-                    <img class="works-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                    <picture class="works-card__image">
+                      <source srcset="img/works/work-1.avif" type="image/avif">
+                      <source srcset="img/works/work-1.webp" type="image/webp">
+                      <img src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                    </picture>
+
                     <video class="works-card__video" muted loop playsinline preload="metadata">
                       <source src="video/works/1.mp4" type="video/mp4">
                     </video>
@@ -82,7 +170,12 @@
               <div class="works-card__media">
                 <div class="works-card__parallax js-animation-card__parallax">
                   <div class="works-card__media-inner">
-                    <img class="works-card__image" src="img/works/work-2.jpg" alt="Aesop project">
+                    <picture class="works-card__image">
+                      <source srcset="img/works/work-2.avif" type="image/avif">
+                      <source srcset="img/works/work-2.webp" type="image/webp">
+                      <img src="img/works/work-2.jpg" alt="Aesop project">
+                    </picture>
+
                     <video class="works-card__video" muted loop playsinline preload="metadata">
                       <source src="video/works/1.mp4" type="video/mp4">
                     </video>
@@ -124,7 +217,12 @@
               <div class="works-card__media">
                 <div class="works-card__parallax js-animation-card__parallax">
                   <div class="works-card__media-inner">
-                    <img class="works-card__image" src="img/works/work-3.jpg" alt="Step One project">
+                    <picture class="works-card__image">
+                      <source srcset="img/works/work-3.avif" type="image/avif">
+                      <source srcset="img/works/work-3.webp" type="image/webp">
+                      <img src="img/works/work-3.jpg" alt="Step One project">
+                    </picture>
+
                     <video class="works-card__video" muted loop playsinline preload="metadata">
                       <source src="video/works/1.mp4" type="video/mp4">
                     </video>
@@ -166,7 +264,12 @@
               <div class="works-card__media">
                 <div class="works-card__parallax js-animation-card__parallax">
                   <div class="works-card__media-inner">
-                    <img class="works-card__image" src="img/works/work-4.jpg" alt="Barry's project">
+                    <picture class="works-card__image">
+                      <source srcset="img/works/work-4.avif" type="image/avif">
+                      <source srcset="img/works/work-4.webp" type="image/webp">
+                      <img src="img/works/work-4.jpg" alt="Barry's project">
+                    </picture>
+
                     <video class="works-card__video" muted loop playsinline preload="metadata">
                       <source src="video/works/1.mp4" type="video/mp4">
                     </video>

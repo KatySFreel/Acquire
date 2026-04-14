@@ -10853,17 +10853,24 @@ function headerSticky() {
   const offerSection = document.querySelector('.sticky-section');
   const darkHeader = document.querySelector('.main .header--dark');
   if (!offerSection || !darkHeader) return;
-  function toggleDarkHeader() {
+  let ticking = false;
+  const update = () => {
     const offerRect = offerSection.getBoundingClientRect();
     const shouldShow = offerRect.bottom <= 0;
     darkHeader.classList.toggle('is-visible', shouldShow);
-  }
-  window.addEventListener('scroll', toggleDarkHeader, {
+    ticking = false;
+  };
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', onScroll, {
     passive: true
   });
-  window.addEventListener('resize', toggleDarkHeader);
-  window.addEventListener('load', toggleDarkHeader);
-  toggleDarkHeader();
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  update();
 }
 function headerDropdown() {
   const dropdownItem = document.querySelector('.nav__item--has-dropdown');
@@ -11246,9 +11253,9 @@ function initArticlePopularSlider() {
   });
 }
 function initTeamSlider() {
-  const sliderPopularOffer = document.querySelector('.js-about-us-slider');
-  if (!sliderPopularOffer) return;
-  new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](sliderPopularOffer, {
+  const sliderTeamSlider = document.querySelector('.js-about-us-slider');
+  if (!sliderTeamSlider) return;
+  new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](sliderTeamSlider, {
     modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_2__.Navigation],
     speed: 700,
     slidesPerView: 1.08,
@@ -11499,7 +11506,11 @@ function initWorksModal() {
       caseInfoText = ''
     } = trigger.dataset;
     lastActiveTrigger = trigger;
-    titleNode.innerHTML = `${caseTitle ? `${caseTitle} ` : ''}<span>${caseAccent}</span>`;
+    const accentNode = titleNode.querySelector('span');
+    titleNode.childNodes[0].textContent = caseTitle ? `${caseTitle} ` : '';
+    if (accentNode) {
+      accentNode.textContent = caseAccent;
+    }
     infoTitleNode.textContent = caseInfoTitle;
     infoTextNode.textContent = caseInfoText;
 
@@ -11513,27 +11524,29 @@ function initWorksModal() {
       logoNode.removeAttribute('src');
       logoNode.alt = '';
     }
-    metricsContainer.innerHTML = '';
-    const metrics = [{
-      label: trigger.dataset.caseMetricLabel1,
-      value: trigger.dataset.caseMetricValue1
-    }, {
-      label: trigger.dataset.caseMetricLabel2,
-      value: trigger.dataset.caseMetricValue2
-    }];
-    metrics.forEach(({
-      label,
-      value
-    }) => {
-      if (!label || !value) return;
-      const item = document.createElement('div');
-      item.className = 'case__metrics-item';
-      item.innerHTML = `
+    if (metricsContainer) {
+      metricsContainer.innerHTML = '';
+      const metrics = [{
+        label: trigger.dataset.caseMetricLabel1,
+        value: trigger.dataset.caseMetricValue1
+      }, {
+        label: trigger.dataset.caseMetricLabel2,
+        value: trigger.dataset.caseMetricValue2
+      }];
+      metrics.forEach(({
+        label,
+        value
+      }) => {
+        if (!label || !value) return;
+        const item = document.createElement('div');
+        item.className = 'case__metrics-item';
+        item.innerHTML = `
             <span class="case__metric-label">${label}</span>
             <span class="case__metric-value">${value}</span>
         `;
-      metricsContainer.appendChild(item);
-    });
+        metricsContainer.appendChild(item);
+      });
+    }
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     lockScroll();
@@ -11571,6 +11584,24 @@ function initWorksModal() {
     }
   });
 }
+function initOffersSlider() {
+  const sliderOffersSlider = document.querySelector('.js-offer-swiper');
+  if (!sliderOffersSlider) return;
+  new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](sliderOffersSlider, {
+    modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_2__.Autoplay, swiper_modules__WEBPACK_IMPORTED_MODULE_2__.EffectFade],
+    speed: 700,
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
+    slidesPerView: 1,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    }
+  });
+}
 
 // =========================
 // App init
@@ -11602,6 +11633,7 @@ function initApp() {
   initLegalPostNav(lenis);
   initLegalPostMobileNav();
   initTeamSlider();
+  initOffersSlider();
 }
 document.addEventListener('DOMContentLoaded', initApp);
 })();
