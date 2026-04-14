@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body about-us-page">
+<div class="site-container">
+  @include('partials/preloader.html')
+  <div class="page-transition"></div>
+
+  @include('partials/offer.html', {
+  "sectionClass": "about-us-offer offer sticky-section",
+  "title": "About us",
+  "mediaType": "image",
+  "imgSm": "img/about-us/ab-md.jpg",
+  "imgMd": "img/about-us/ab-lg.jpg",
+  "imgXl": "img/about-us/ab-xl.jpg",
+  "imgAlt": "Acquire affiliate team at work"
+  })
+
+  <main class="main">
+    @include('partials/header-dark.html')
+
+    <section class="sub-about-uss">
+      <div class="container">
+        <div class="sub-about-uss__inner">
+          <h2 class="sub-about-uss__title h2">
+            Our Affiliate Marketing <span>about-uss</span>
+          </h2>
+
+          <div class="sub-about-uss__slider-wrap">
+            <button class="sub-service-uss__nav sub-service-uss__nav--prev btn-reset" type="button" aria-label="Previous about-us">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="img/svg/sprite.svg#arrow-max"></use>
+              </svg>
+            </button>
+
+            <div class="sub-about-uss__slider swiper js-about-us-slider" aria-label="Affiliate marketing about-uss slider">
+              <ul class="sub-about-uss__list list-reset swiper-wrapper">
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    01
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Full-program management
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      We offer a variety of payment models and SLAs to support you. Whether you're launching a new
+                      affiliate programme or looking to optimise an existing one, we've got you covered.
+                    </p>
+                    <p>
+                      From inception to execution, we handle it all, including campaign setup, partner recruitment,
+                      reporting dashboard creation, and budget management.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    02
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Partner Recruitment
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      Building a strong network of affiliate partners is crucial for success. We leverage our extensive network of affiliate partners to identify strategic opportunities for collaboration and expansion.
+                    </p>
+                    <p>
+                      We employ proven strategies to recruit new partners and foster long-term relationships, expanding your reach and driving growth.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    03
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Tailored Approach
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      We design programmes with clear goals, smart commissioning and a balanced mix of partners so the channel supports wider business objectives.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    04
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Proven Results
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      With a track record of delivering exceptional results for our clients, we’re confident in our ability to help you achieve your objectives. Let our success stories speak for themselves.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    05
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Honest & Transparent
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      Transparency is key in our partnership. We provide detailed reports and analytics, so you can track the performance of your affiliate marketing campaigns in real-time.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    06
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Affiliate Specialists
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      Affiliate is our core focus. You get a dedicated team that acts as an extension of your brand. You get deep channel knowledge, structured management and continuous optimisation rather than set and forget.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    07
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Consultancy
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      Looking for expert guidance to launch a new programme or optimise an existing one? We provide tailored short- and long-term strategies for your internal teams to execute.
+                    </p>
+
+                    <p>
+                      Whether you’re new to affiliate marketing or your programme has plateaued, our specialists help unlock new opportunities for growth.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="sub-about-uss__item swiper-slide">
+                  <span class="sub-about-uss__item-index">
+                    08
+                  </span>
+
+                  <h3 class="sub-about-uss__item-title">
+                    Temporary Cover
+                  </h3>
+
+                  <div class="sub-about-uss__item-text">
+                    <p>
+                      Looking to find cover for your affiliate manager going on leave? Provide a handover and access to the relevant system and we can help you manage your affiliate program until they return. All timeframes considered.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <button class="sub-service-uss__nav sub-service-uss__nav--next btn-reset" type="button" aria-label="Next about-us">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="img/svg/sprite.svg#arrow-max"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    @include('partials/form.html')
+
+    @include('partials/awards.html')
+  </main>
+
+  @include('partials/footer.html')
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<section class="@sectionClass">
+  @include('header.html')
+
+  <div class="offer__wrapper">
+
+    @if (typeof mediaType !== 'undefined') {
+      @if (mediaType === 'image' && typeof imgXl !== 'undefined' && imgXl) {
+      <picture class="offer__picture">
+        <source srcset="@imgSm" media="(max-width: 390px)">
+        <source srcset="@imgMd" media="(max-width: 1024px)">
+        <img src="@imgXl" alt="@imgAlt">
+      </picture>
+      }
+
+      @if (mediaType === 'video' && typeof videoSrcMp4 !== 'undefined' && videoSrcMp4) {
+      <div class="service-hero__bg">
+
+        <video class="offer__video" autoplay muted loop playsinline preload="auto">
+          <source src="@videoSrcWebm" type="video/webm">
+          <source src="@videoSrcMp4" type="video/mp4">
+        </video>
+      </div>
+      }
+    }
+
+    <div class="offer__container">
+      @if (typeof text !== 'undefined' && text) {
+      <p class="offer__text">@text</p>
+      }
+
+      <h1 class="offer__title">@title</h1>
+    </div>
+
+    <div class="custom-cursor" aria-hidden="true"></div>
+  </div>
+</section>

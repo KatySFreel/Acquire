@@ -8,23 +8,11 @@
   @include('partials/preloader.html')
   <div class="page-transition"></div>
 
-  <section class="legal-offer sticky-section">
-    @include('partials/header.html')
-
-    <div class="legal-offer__wrapper">
-      <div class="legal-offer__container">
-        <p class="legal-offer__text">
-          TERMS AND CONDITIONS FOR THE SUPPLY OF SERVICES OF ACQUIRE DIGITAL LTD
-        </p>
-
-        <h1 class="legal-offer__title">
-          Terms & Conditions
-        </h1>
-      </div>
-
-      <div class="custom-cursor" aria-hidden="true"></div>
-    </div>
-  </section>
+  @include('partials/offer.html', {
+  "sectionClass": "offer sticky-section",
+  "title": "Terms & Conditions",
+  "text": "TERMS AND CONDITIONS FOR THE SUPPLY OF SERVICES OF ACQUIRE DIGITAL LTD"
+  })
 
   <main class="main">
     @include('partials/header-dark.html')

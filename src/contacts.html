@@ -8,25 +8,15 @@
   @include('partials/preloader.html')
   <div class="page-transition"></div>
 
-  <section class="contacts-offer sticky-section">
-    @include('partials/header.html')
-
-    <div class="contacts-offer__wrapper">
-      <picture class="contacts-offer__picture">
-        <source srcset="img/contacts/contact-md.jpg" media="(max-width: 390px)">
-        <source srcset="img/contacts/contact-lg.jpg" media="(max-width: 1024px)">
-        <img src="img/contacts/contact-xl.jpg" alt="Acquire affiliate team at work">
-      </picture>
-
-      <div class="contacts-offer__container">
-        <h1 class="contacts-offer__title">
-          Contact Us
-        </h1>
-      </div>
-
-      <div class="custom-cursor" aria-hidden="true"></div>
-    </div>
-  </section>
+  @include('partials/offer.html', {
+  "sectionClass": "offer sticky-section",
+  "title": "Contact Us",
+  "mediaType": "image",
+  "imgSm": "img/contacts/contact-md.jpg",
+  "imgMd": "img/contacts/contact-lg.jpg",
+  "imgXl": "img/contacts/contact-xl.jpg",
+  "imgAlt": "Acquire affiliate team at work"
+  })
 
   <main class="main">
     @include('partials/header-dark.html')

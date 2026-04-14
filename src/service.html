@@ -8,30 +8,14 @@
   @include('partials/preloader.html')
   <div class="page-transition"></div>
 
-  <section class="service-hero sticky-section">
-    @include('partials/header.html')
-
-    <div class="service-hero__wrapper">
-      <div class="service-hero__bg">
-        <video class="service-hero__video" autoplay muted loop playsinline preload="auto">
-          <source src="video/hero-video.webm" type="video/webm">
-          <source src="video/hero-video.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="service-hero__container">
-        <p class="service-hero__text">
-          AFFILIATE MARKETING AGENCY | LONDON | DUBAI
-        </p>
-
-        <h1 class="service-hero__title">
-          AFFILIATE PARTNERSHIPS
-        </h1>
-      </div>
-
-      <div class="custom-cursor" aria-hidden="true"></div>
-    </div>
-  </section>
+  @include('partials/offer.html', {
+  "sectionClass": "offer sticky-section",
+  "title": "AFFILIATE PARTNERSHIPS",
+  "text": "AFFILIATE MARKETING AGENCY | LONDON | DUBAI",
+  "mediaType": "video",
+  "videoSrcWebm": "video/hero-video.webm",
+  "videoSrcMp4": "video/hero-video.mp4"
+  })
 
   <main class="main">
     @include('partials/header-dark.html')

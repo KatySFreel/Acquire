@@ -8,29 +8,16 @@
   @include('partials/preloader.html')
   <div class="page-transition"></div>
 
-  <section class="no-found-offer sticky-section">
-    @include('partials/header.html')
-
-    <div class="no-found-offer__wrapper">
-      <picture class="no-found-offer__picture">
-        <source srcset="img/404/404-md.jpg" media="(max-width: 390px)">
-        <source srcset="img/404/404-lg.jpg" media="(max-width: 1024px)">
-        <img src="img/404/404-xl.jpg" alt="Acquire affiliate team at work">
-      </picture>
-
-      <div class="no-found-offer__container">
-        <h1 class="no-found-offer__title">
-          404
-        </h1>
-        
-        <p class="no-found-offer__text">
-          Page Not Found
-        </p>
-      </div>
-
-      <div class="custom-cursor" aria-hidden="true"></div>
-    </div>
-  </section>
+  @include('partials/offer.html', {
+  "sectionClass": "offer sticky-section",
+  "title": "404",
+  "text": "Page Not Found",
+  "mediaType": "image",
+  "imgSm": "img/404/404-md.jpg",
+  "imgMd": "img/404/404-lg.jpg",
+  "imgXl": "img/404/404-xl.jpg",
+  "imgAlt": "Acquire affiliate team at work"
+  })
 
   <main class="main">
     @include('partials/header-dark.html')
