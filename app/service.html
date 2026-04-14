@@ -517,9 +517,25 @@
 
             <div class="service-advantages__media">
               <picture class="service-advantages__image">
+                <!-- AVIF -->
+                <source srcset="img/service/why-choose-md.avif" media="(max-width: 390px)" type="image/avif">
+                <source srcset="img/service/why-choose-lg.avif" media="(max-width: 1024px)" type="image/avif">
+                <source srcset="img/service/why-choose-xl.avif" type="image/avif">
+
+                <!-- WEBP -->
+                <source srcset="img/service/why-choose-md.webp" media="(max-width: 390px)" type="image/webp">
+                <source srcset="img/service/why-choose-lg.webp" media="(max-width: 1024px)" type="image/webp">
+                <source srcset="img/service/why-choose-xl.webp" type="image/webp">
+
+                <!-- JPG fallback -->
                 <source srcset="img/service/why-choose-md.jpg" media="(max-width: 390px)">
                 <source srcset="img/service/why-choose-lg.jpg" media="(max-width: 1024px)">
-                <img src="img/service/why-choose-xl.jpg" alt="Acquire affiliate team at work">
+                <img
+                    src="img/service/why-choose-xl.jpg"
+                    alt="Acquire affiliate team at work"
+                    loading="lazy"
+                    decoding="async"
+                >
               </picture>
             </div>
           </div>
