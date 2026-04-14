@@ -11259,15 +11259,15 @@ function initTeamSlider() {
     },
     breakpoints: {
       391: {
-        slidesPerView: 1.02,
+        slidesPerView: 1.8,
         spaceBetween: 16
       },
       769: {
-        slidesPerView: 1.5,
+        slidesPerView: 2.8,
         spaceBetween: 20
       },
       1025: {
-        slidesPerView: 2,
+        slidesPerView: 3.85,
         spaceBetween: 40
       }
     }

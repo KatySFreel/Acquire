@@ -21,165 +21,145 @@
   <main class="main">
     @include('partials/header-dark.html')
 
-    <section class="sub-about-uss">
+    <section class="our-story">
       <div class="container">
-        <div class="sub-about-uss__inner">
-          <h2 class="sub-about-uss__title h2">
-            Our Affiliate Marketing <span>about-uss</span>
+        <div class="our-story__wrapper">
+          <h2 class="h2 our-story__title">Our <span>story</span></h2>
+
+          <div class="our-story__content">
+            <p>
+              We are a dynamic, diverse, and ambitious team. We thrive on innovation, consistently pushing boundaries, and achieving collective growth.<br><br>
+
+              For a decade, Acquire has excelled in providing premium, specialist affiliate marketing solutions to clients worldwide. It all began when Tom, the founder, recognised a significant void in the market for tailored, high-quality affiliate management services that aligned closely with clients’ KPIs and brand values. Acquire prides itself on its unwavering commitment to honesty and transparency in management, fostering long-lasting relationships with clients.
+            </p>
+
+            <p>
+              Acquire are industry specialists in affiliate and partner marketing management. We have excelled in growing programs for Global brands in Beauty, Fashion, Luxury Goods, Travel, Lifestyle and more. Today, Acquire stands as a global, comprehensive digital marketing agency headquartered in London with a presence in Dubai. Our mission is clear: to drive incremental revenue and foster growth for SMEs to Enterprise brands.
+            </p>
+
+            <picture class="our-story__picture our-story__picture--one">
+              <source srcset="./img/about-us/os-1-md.jpg" media="(max-width: 1024px)">
+              <img src="./img/about-us/os-1-xl.jpg" alt="">
+            </picture>
+
+            <picture class="our-story__picture our-story__picture--second">
+              <source srcset="./img/about-us/os-2-md.jpg" media="(max-width: 1024px)">
+              <img src="./img/about-us/os-2-xl.jpg" alt="">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sub-about-us">
+      <div class="container">
+        <div class="sub-about-us__inner">
+          <h2 class="sub-about-us__title h2">
+            Senior Management <span>Team</span>
           </h2>
 
-          <div class="sub-about-uss__slider-wrap">
-            <button class="sub-service-uss__nav sub-service-uss__nav--prev btn-reset" type="button" aria-label="Previous about-us">
+          <div class="sub-about-us__slider-wrap">
+            <button class="sub-services__nav sub-services__nav--prev btn-reset" type="button" aria-label="Previous service">
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <use href="img/svg/sprite.svg#arrow-max"></use>
               </svg>
             </button>
 
-            <div class="sub-about-uss__slider swiper js-about-us-slider" aria-label="Affiliate marketing about-uss slider">
-              <ul class="sub-about-uss__list list-reset swiper-wrapper">
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    01
+            <div class="sub-about-us__slider swiper js-about-us-slider" aria-label="Affiliate marketing about-us slider">
+              <ul class="sub-about-us__list list-reset swiper-wrapper">
+                <li class="sub-about-us__item swiper-slide">
+                  <div class="sub-about-us__item-picture">
+                    <picture>
+                      <source srcset="./img/about-us/team/t-1.avif" type="image/avif">
+                      <source srcset="./img/about-us/team/t-1.webp" type="image/webp">
+                      <img src="./img/about-us/team/t-1.png" alt="TOM">
+                    </picture>
+                  </div>
+
+                  <span class="sub-about-us__item-name">
+                    TOM
                   </span>
 
-                  <h3 class="sub-about-uss__item-title">
-                    Full-program management
+                  <h3 class="sub-about-us__item-work">
+                    CEO
                   </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      We offer a variety of payment models and SLAs to support you. Whether you're launching a new
-                      affiliate programme or looking to optimise an existing one, we've got you covered.
-                    </p>
-                    <p>
-                      From inception to execution, we handle it all, including campaign setup, partner recruitment,
-                      reporting dashboard creation, and budget management.
-                    </p>
-                  </div>
                 </li>
 
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    02
+                <li class="sub-about-us__item swiper-slide">
+                  <div class="sub-about-us__item-picture">
+                    <picture>
+                      <source srcset="./img/about-us/team/t-2.avif" type="image/avif">
+                      <source srcset="./img/about-us/team/t-2.webp" type="image/webp">
+                      <img src="./img/about-us/team/t-2.png" alt="LOUIS">
+                    </picture>
+                  </div>
+
+                  <span class="sub-about-us__item-name">
+                    LOUIS
                   </span>
 
-                  <h3 class="sub-about-uss__item-title">
-                    Partner Recruitment
+                  <h3 class="sub-about-us__item-work">
+                    Managing Director
                   </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      Building a strong network of affiliate partners is crucial for success. We leverage our extensive network of affiliate partners to identify strategic opportunities for collaboration and expansion.
-                    </p>
-                    <p>
-                      We employ proven strategies to recruit new partners and foster long-term relationships, expanding your reach and driving growth.
-                    </p>
-                  </div>
                 </li>
 
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    03
+                <li class="sub-about-us__item swiper-slide">
+                  <div class="sub-about-us__item-picture">
+                    <picture>
+                      <source srcset="./img/about-us/team/t-3.avif" type="image/avif">
+                      <source srcset="./img/about-us/team/t-3.webp" type="image/webp">
+                      <img src="./img/about-us/team/t-3.png" alt="LAURA">
+                    </picture>
+                  </div>
+
+                  <span class="sub-about-us__item-name">
+                    LAURA
                   </span>
 
-                  <h3 class="sub-about-uss__item-title">
-                    Tailored Approach
+                  <h3 class="sub-about-us__item-work">
+                    Head of Client Services
                   </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      We design programmes with clear goals, smart commissioning and a balanced mix of partners so the channel supports wider business objectives.
-                    </p>
-                  </div>
                 </li>
 
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    04
+                <li class="sub-about-us__item swiper-slide">
+                  <div class="sub-about-us__item-picture">
+                    <picture>
+                      <source srcset="./img/about-us/team/t-4.avif" type="image/avif">
+                      <source srcset="./img/about-us/team/t-4.webp" type="image/webp">
+                      <img src="./img/about-us/team/t-4.png" alt="Harry Avent">
+                    </picture>
+                  </div>
+
+                  <span class="sub-about-us__item-name">
+                    Harry Avent
                   </span>
 
-                  <h3 class="sub-about-uss__item-title">
-                    Proven Results
+                  <h3 class="sub-about-us__item-work">
+                    Senior Management Team
                   </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      With a track record of delivering exceptional results for our clients, we’re confident in our ability to help you achieve your objectives. Let our success stories speak for themselves.
-                    </p>
-                  </div>
                 </li>
 
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    05
+                <li class="sub-about-us__item swiper-slide">
+                  <div class="sub-about-us__item-picture">
+                    <picture>
+                      <source srcset="./img/about-us/team/t-5.avif" type="image/avif">
+                      <source srcset="./img/about-us/team/t-5.webp" type="image/webp">
+                      <img src="./img/about-us/team/t-5.png" alt="TOM">
+                    </picture>
+                  </div>
+
+                  <span class="sub-about-us__item-name">
+                    Pierre Abou Nasser
                   </span>
 
-                  <h3 class="sub-about-uss__item-title">
-                    Honest & Transparent
+                  <h3 class="sub-about-us__item-work">
+                    Head of Paid Media
                   </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      Transparency is key in our partnership. We provide detailed reports and analytics, so you can track the performance of your affiliate marketing campaigns in real-time.
-                    </p>
-                  </div>
-                </li>
-
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    06
-                  </span>
-
-                  <h3 class="sub-about-uss__item-title">
-                    Affiliate Specialists
-                  </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      Affiliate is our core focus. You get a dedicated team that acts as an extension of your brand. You get deep channel knowledge, structured management and continuous optimisation rather than set and forget.
-                    </p>
-                  </div>
-                </li>
-
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    07
-                  </span>
-
-                  <h3 class="sub-about-uss__item-title">
-                    Consultancy
-                  </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      Looking for expert guidance to launch a new programme or optimise an existing one? We provide tailored short- and long-term strategies for your internal teams to execute.
-                    </p>
-
-                    <p>
-                      Whether you’re new to affiliate marketing or your programme has plateaued, our specialists help unlock new opportunities for growth.
-                    </p>
-                  </div>
-                </li>
-
-                <li class="sub-about-uss__item swiper-slide">
-                  <span class="sub-about-uss__item-index">
-                    08
-                  </span>
-
-                  <h3 class="sub-about-uss__item-title">
-                    Temporary Cover
-                  </h3>
-
-                  <div class="sub-about-uss__item-text">
-                    <p>
-                      Looking to find cover for your affiliate manager going on leave? Provide a handover and access to the relevant system and we can help you manage your affiliate program until they return. All timeframes considered.
-                    </p>
-                  </div>
                 </li>
               </ul>
             </div>
 
-            <button class="sub-service-uss__nav sub-service-uss__nav--next btn-reset" type="button" aria-label="Next about-us">
+            <button class="sub-services__nav sub-services__nav--next btn-reset" type="button" aria-label="Next service">
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <use href="img/svg/sprite.svg#arrow-max"></use>
               </svg>

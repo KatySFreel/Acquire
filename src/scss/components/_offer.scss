@@ -52,6 +52,28 @@
   }
 }
 
+.offer__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.offer__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+          linear-gradient(
+                          180deg,
+                          rgba(31, 38, 64, 0.08) 0%,
+                          rgba(31, 38, 64, 0.18) 18%,
+                          rgba(31, 38, 64, 0.42) 42%,
+                          rgba(31, 38, 64, 0.72) 100%
+          ),
+          rgba(31, 38, 64, 0.22);
+}
+
 .offer__video {
   position: relative;
   display: block;

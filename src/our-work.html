@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+<div class="site-container">
+  @include('partials/preloader.html')
+  <div class="page-transition"></div>
+
+  @include('partials/offer.html', {
+  "sectionClass": "offer sticky-section",
+  "title": "News",
+  "mediaType": "image",
+  "imgSm": "img/news/news-md.jpg",
+  "imgMd": "img/news/news-lg.jpg",
+  "imgXl": "img/news/news-xl.jpg",
+  "imgAlt": "Acquire affiliate team at work"
+  })
+
+  <main class="main">
+    @include('partials/header-dark.html')
+
+    <section class="news-articles">
+      <div class="container">
+        <div class="news-articles__inner">
+          <div class="news-articles__grid js-news-articles-grid">
+            <article class="works-card js-animation-card">
+              <a class="works-card__link" href="#" data-video="video/work-1.mp4">
+                <div class="works-card__media">
+                  <div class="works-card__parallax js-animation-card__parallax">
+                    <div class="works-card__media-inner">
+                      <img class="works-card__image" src="img/works/work-1.jpg" alt="Dubai Racing Club">
+                      <video class="works-card__video" muted loop playsinline preload="metadata">
+                        <source src="video/works/1.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="works-card__overlay"></div>
+
+                <div class="works-card__content">
+                  <h3 class="works-card__title">Dubai Racing Club</h3>
+
+                  <div class="works-card__bottom">
+                    <button type="button" class="works-card__button btn-arrow btn-reset">
+                      <span>Read More</span>
+
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <use href="img/svg/sprite.svg#arrow-max"></use>
+                      </svg>
+                    </button>
+
+                    <span class="works-card__tags">Paid Media | CRM</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="works-card js-animation-card">
+              <a class="works-card__link" href="#" data-video="video/work-2.mp4">
+                <div class="works-card__media">
+                  <div class="works-card__parallax js-animation-card__parallax">
+                    <div class="works-card__media-inner">
+                      <img class="works-card__image" src="img/works/work-2.jpg" alt="Aesop project">
+                      <video class="works-card__video" muted loop playsinline preload="metadata">
+                        <source src="video/works/1.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="works-card__overlay"></div>
+
+                <div class="works-card__content">
+                  <h3 class="works-card__title">Aesop</h3>
+
+                  <div class="works-card__bottom">
+                    <button type="button" class="works-card__button btn-arrow btn-reset">
+                      <span>Read More</span>
+
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <use href="img/svg/sprite.svg#arrow-max"></use>
+                      </svg>
+                    </button>
+
+                    <span class="works-card__tags">Affiliate Marketing</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="works-card js-animation-card">
+              <a class="works-card__link" href="#" data-video="video/work-3.mp4">
+                <div class="works-card__media">
+                  <div class="works-card__parallax js-animation-card__parallax">
+                    <div class="works-card__media-inner">
+                      <img class="works-card__image" src="img/works/work-3.jpg" alt="Step One project">
+                      <video class="works-card__video" muted loop playsinline preload="metadata">
+                        <source src="video/works/1.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="works-card__overlay"></div>
+
+                <div class="works-card__content">
+                  <h3 class="works-card__title">Step One</h3>
+
+                  <div class="works-card__bottom">
+                    <button type="button" class="works-card__button btn-arrow btn-reset">
+                      <span>Read More</span>
+
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <use href="img/svg/sprite.svg#arrow-max"></use>
+                      </svg>
+                    </button>
+
+                    <span class="works-card__tags">Affiliate Marketing</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="works-card js-animation-card">
+              <a class="works-card__link" href="#" data-video="video/work-4.mp4">
+                <div class="works-card__media">
+                  <div class="works-card__parallax js-animation-card__parallax">
+                    <div class="works-card__media-inner">
+                      <img class="works-card__image" src="img/works/work-4.jpg" alt="Barry's project">
+                      <video class="works-card__video" muted loop playsinline preload="metadata">
+                        <source src="video/works/1.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="works-card__overlay"></div>
+
+                <div class="works-card__content">
+                  <h3 class="works-card__title">Barry’s</h3>
+
+                  <div class="works-card__bottom">
+                    <button type="button" class="works-card__button btn-arrow btn-reset">
+                      <span>Read More</span>
+
+                      <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <use href="img/svg/sprite.svg#arrow-max"></use>
+                      </svg>
+                    </button>
+
+                    <span class="works-card__tags">Paid Media</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+
+          <button type="button" class="pagination-btn btn-arrow btn-reset">
+            <span>4</span> of <span>8</span> See more
+          </button>
+        </div>
+      </div>
+    </section>
+
+    @include('partials/form.html')
+
+    @include('partials/awards.html')
+  </main>
+
+  @include('partials/footer.html')
+</div>
+</body>
+</html>
