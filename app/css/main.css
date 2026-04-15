@@ -2497,6 +2497,8 @@ textarea:-webkit-autofill {
 
 .offer-hero {
   position: relative;
+  height: 100vh;
+  height: 100dvh;
   min-height: 864px;
   background: var(--dark-blue);
 }
@@ -2507,6 +2509,8 @@ textarea:-webkit-autofill {
 }
 @media (max-width: 768px) {
   .offer-hero {
+    height: calc(100vh - 40px);
+    height: calc(100dvh - 40px);
     min-height: 756px;
   }
 }
@@ -2572,6 +2576,8 @@ textarea:-webkit-autofill {
 .offer-hero__container {
   position: relative;
   z-index: 4;
+  height: calc(100vh - 40px);
+  height: calc(100dvh - 40px);
   min-height: 864px;
   padding-top: 170px;
   padding-bottom: 130px;
@@ -2596,7 +2602,7 @@ textarea:-webkit-autofill {
 @media (max-width: 768px) {
   .offer-hero__container {
     min-height: 756px;
-    padding: 286px 20px 95px;
+    padding: 226px 20px 150px;
   }
 }
 
@@ -3285,8 +3291,8 @@ textarea:-webkit-autofill {
   position: absolute;
   inset: -6% 0;
   will-change: transform;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0) translateZ(0);
+  transform: translate3d(0, 0, 0) translateZ(0);
 }
 
 .works-card__media-inner {
@@ -5960,6 +5966,7 @@ textarea:-webkit-autofill {
   position: relative;
   z-index: 1;
   min-height: 100vh;
+  min-height: 100dvh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6057,6 +6064,11 @@ textarea:-webkit-autofill {
 .case--modal .case__metrics {
   border-left: 1px solid var(--blue-text);
   color: var(--dark-blue);
+}
+@media (max-width: 768px) {
+  .case--modal .case__metrics {
+    border: none;
+  }
 }
 .case--modal .case__metric-value {
   color: var(--blue-accent);

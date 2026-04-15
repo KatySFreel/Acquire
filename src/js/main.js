@@ -40,11 +40,20 @@ function isInternalLink(link) {
 // Smooth scroll / Lenis
 // =========================
 function initLenis() {
+    const shouldDisableLenis =
+        window.matchMedia('(max-width: 1024px)').matches ||
+        window.matchMedia('(hover: none)').matches;
+
+    if (shouldDisableLenis) {
+        App.lenis = null;
+        return null;
+    }
+
     const lenis = new Lenis({
-        duration: 1.2,
+        duration: 0.9,
         smoothWheel: true,
         smoothTouch: false,
-        easing: (t) => 1 - Math.pow(1 - t, 3),
+        easing: (t) => 1 - Math.pow(1 - t, 2),
     });
 
     function raf(time) {
@@ -230,9 +239,7 @@ function headerSticky() {
 
     const update = () => {
         const offerRect = offerSection.getBoundingClientRect();
-        const shouldShow = offerRect.bottom <= 0;
-
-        darkHeader.classList.toggle('is-visible', shouldShow);
+        darkHeader.classList.toggle('is-visible', offerRect.bottom <= 0);
         ticking = false;
     };
 
@@ -244,8 +251,6 @@ function headerSticky() {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', update);
-    window.addEventListener('load', update);
-
     update();
 }
 
@@ -463,13 +468,13 @@ function worksParallax() {
         let shouldContinue = false;
 
         items.forEach((item) => {
-            item.currentY += (item.targetY - item.currentY) * 0.08;
+            item.currentY += (item.targetY - item.currentY) * 0.12;
 
             if (Math.abs(item.targetY - item.currentY) > 0.02) {
                 shouldContinue = true;
             }
 
-            item.parallax.style.transform = `translate3d(0, ${item.currentY.toFixed(3)}px, 0)`;
+            item.parallax.style.transform = `translate3d(0, ${Math.round(item.currentY)}px, 0)`;
         });
 
         if (shouldContinue) {

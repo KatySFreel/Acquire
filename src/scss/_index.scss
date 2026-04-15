@@ -1,5 +1,7 @@
 .offer-hero {
   position: relative;
+  height: 100vh;
+  height: 100dvh;
   min-height: 864px;
   background: var(--dark-blue);
 
@@ -8,6 +10,8 @@
   }
 
   @include md {
+    height: calc(100vh - 40px);
+    height: calc(100dvh - 40px);
     min-height: 756px;
   }
 }
@@ -75,6 +79,8 @@
 .offer-hero__container {
   position: relative;
   z-index: 4;
+  height: calc(100vh - 40px);
+  height: calc(100dvh - 40px);
   min-height: 864px;
   padding-top: 170px;
   padding-bottom: 130px;
@@ -90,7 +96,7 @@
 
   @include md {
     min-height: 756px;
-    padding: 286px 20px 95px;
+    padding: 226px 20px 150px;
   }
 }
 
@@ -650,7 +656,7 @@
   position: absolute;
   inset: -6% 0;
   will-change: transform;
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0) translateZ(0);
 }
 
 .works-card__media-inner {
