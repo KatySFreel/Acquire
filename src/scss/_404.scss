@@ -12,6 +12,7 @@
   padding-left: calc(166px - 40px);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, auto);
   gap: 20px 0;
   align-items: start;
 
@@ -42,7 +43,7 @@
 .no-found-block__btn {
   width: 310px;
   grid-column: 2/3;
-  grid-row: 2/3;
+  grid-row: 3 / 4;
 
   @include md {
     width: 100%;
